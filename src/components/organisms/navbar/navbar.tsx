@@ -44,8 +44,10 @@ export const Navbar = () => {
         )}
       >
         <Container className="flex items-center justify-between lg:pr-24">
-          <Link href="/">
-            <Image src="/nss.svg" alt="Logo" width={120} height={50} className="lg:w-36" />
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/logo-nesas.svg" alt="Logo Nesas" width={50} height={50} />
+            <span className="h-10 w-[1px] bg-slate-400" />
+            <Image src="/nss.svg" alt="Logo NSS" width={120} height={50} className="lg:w-32" />
           </Link>
           <div className="flex items-center sm:gap-5 lg:gap-10">
             <ul className="hidden gap-4 text-sm font-medium sm:flex text-slate-900 items-ceter">

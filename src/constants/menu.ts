@@ -68,14 +68,14 @@ export const navigationGeneral = [
     label: 'Chatbot'
   },
   {
-    url: '/forum',
-    icon: HiAnnotation,
-    label: 'Forum'
-  },
-  {
     url: '/news',
     icon: RiArticleFill,
     label: 'Berita'
+  },
+  {
+    url: '/contact',
+    icon: HiAnnotation,
+    label: 'Kontak'
   },
   {
     url: '#!',
@@ -83,14 +83,24 @@ export const navigationGeneral = [
     label: 'Lainnya',
     childs: [
       {
-        url: '#!',
+        url: 'https://ppdb.jabarprov.go.id/',
         icon: RiArticleFill,
-        label: 'Lainnya'
+        label: 'PPDB'
       },
       {
         url: '#!',
         icon: RiArticleFill,
-        label: 'Lainnya'
+        label: 'Forum'
+      },
+      {
+        url: '#!',
+        icon: RiArticleFill,
+        label: 'Polling'
+      },
+      {
+        url: '#!',
+        icon: RiArticleFill,
+        label: 'Ekstrakurikuler'
       }
     ]
   }
