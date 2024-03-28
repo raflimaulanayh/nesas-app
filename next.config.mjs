@@ -1,9 +1,16 @@
 /** @type {import('next').NextConfig} */
 
+import withPWA from 'next-pwa'
+
 const nextConfig = {
+  ...withPWA({
+    dest: 'public',
+    register: true,
+    skipWaiting: true
+  }),
   reactStrictMode: true,
   images: {
-    remotePatterns: []
+    domains: ['utfs.io']
   },
   env: {
     SITE_NAME: 'Nesas Smart School',
@@ -15,4 +22,4 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+export default nextConfig
