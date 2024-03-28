@@ -1,0 +1,396 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Users {
+  id             String           @id @default(cuid())
+  username       String?
+  email          String           @unique
+  password       String
+  role_id        String
+  photo          String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  userRoles      UserRoles?       @relation(fields: [role_id], references: [id])
+  teachers       Teachers[]
+  students       Students[]
+  userActivities UserActivities[]
+  news           News[]
+  comments       Comments[]
+
+  @@index([role_id])
+}
+
+model UserRoles {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  users     Users[]
+}
+
+model Teachers {
+  id               String                 @id @default(cuid())
+  user_id          String?
+  nip              String?                @unique
+  name             String?
+  gender           GenderType?
+  birth_date       String?
+  phone_number     String?
+  address          String?                @db.Text
+  join_date        String?
+  end_date         String?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+  user             Users?                 @relation(fields: [user_id], references: [id])
+  ujikoms          Ujikoms[]
+  teacherPositions EducationalPositions[]
+
+  @@index([user_id])
+}
+
+model EducationalPositions {
+  id        String     @id @default(cuid())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  teachers  Teachers[]
+}
+
+model Majors {
+  id                 String               @id @default(cuid())
+  name               String
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  classes            Classes[]
+  companyInternships CompanyInternships[]
+}
+
+model Classes {
+  id           String     @id @default(cuid())
+  grade        Int
+  class_number Int
+  major_id     String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  major        Majors     @relation(fields: [major_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  students     Students[]
+
+  @@index([major_id])
+}
+
+model Students {
+  id                  String          @id @default(cuid())
+  user_id             String?
+  nis                 String?         @unique
+  nisn                String?         @unique
+  name                String
+  gender              GenderType?
+  class_id            String?
+  birth_date          String?
+  phone_number        String?
+  phone_number_parent String?
+  address             String?         @db.Text
+  join_date           String?
+  end_date            String?
+  graduate_status     GraduateStatus? @default(ongoing)
+  internship_id       String?
+  ujikom_id           String?
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  user                Users?          @relation(fields: [user_id], references: [id])
+  class               Classes?        @relation(fields: [class_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  internship          Internships?    @relation(fields: [internship_id], references: [id])
+  ujikom              Ujikoms?        @relation(fields: [ujikom_id], references: [id])
+  payments            Payments[]
+  absents             Absents[]
+
+  @@index([class_id])
+  @@index([user_id])
+  @@index([internship_id])
+  @@index([ujikom_id])
+}
+
+model Internships {
+  id                 String              @id @default(cuid())
+  company_id         String?
+  start_date         String?
+  end_date           String?
+  status             InternshipStatus    @default(not_started)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  companyInternships CompanyInternships? @relation(fields: [company_id], references: [id])
+  students           Students[]
+
+  @@index([company_id])
+}
+
+enum CompanyStatus {
+  active
+  not_active
+  pending
+  filled
+}
+
+model CompanyInternships {
+  id           String        @id @default(cuid())
+  name         String
+  address      String?
+  contact      String?
+  leader_name  String?
+  status       CompanyStatus @default(not_active)
+  quota        Int?
+  requirements String?       @db.Text
+  signature    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  majors       Majors[]
+  internships  Internships[]
+}
+
+model Ujikoms {
+  id             String       @id @default(cuid())
+  project_name   String
+  project_design Bytes?
+  exam_date      String?
+  room_number    String?
+  status         UjikomStatus @default(not_started)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  teachers       Teachers[]
+  students       Students[]
+}
+
+model Payments {
+  id             String              @id @default(cuid())
+  student_id     String
+  total_price    Float
+  payment_date   String?
+  payment_status PaymentStatus       @default(unpaid)
+  notes          String?             @db.Text
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  student        Students            @relation(fields: [student_id], references: [id])
+  categories     PaymentCategories[]
+
+  @@index([student_id])
+}
+
+model PaymentCategories {
+  id        String     @id @default(cuid())
+  name      String
+  price     Float
+  year      Int
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  payments  Payments[]
+}
+
+model Absents {
+  id          String       @id @default(cuid())
+  student_id  String
+  absent_date DateTime     @default(now())
+  status      AbsentStatus @default(absent)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  student     Students     @relation(fields: [student_id], references: [id])
+
+  @@index([student_id])
+}
+
+model CompanyInternshipsToMajors {
+  A String
+  B String
+
+  @@unique([A, B], map: "_CompanyInternshipsToMajors_AB_unique")
+  @@index([B], map: "_CompanyInternshipsToMajors_B_index")
+  @@map("_CompanyInternshipsToMajors")
+}
+
+model PaymentCategoriesToPayments {
+  A String
+  B String
+
+  @@unique([A, B], map: "_PaymentCategoriesToPayments_AB_unique")
+  @@index([B], map: "_PaymentCategoriesToPayments_B_index")
+  @@map("_PaymentCategoriesToPayments")
+}
+
+model TeachersToUjikoms {
+  A String
+  B String
+
+  @@unique([A, B], map: "_TeachersToUjikoms_AB_unique")
+  @@index([B], map: "_TeachersToUjikoms_B_index")
+  @@map("_TeachersToUjikoms")
+}
+
+model UserActivities {
+  id              String           @id @default(cuid())
+  user_id         String
+  type_activity   TypeUserActivity
+  activity_detail String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  user            Users?           @relation(fields: [user_id], references: [id])
+
+  @@index([user_id])
+}
+
+model EducationalPositionsToTeachers {
+  A String
+  B String
+
+  @@unique([A, B], map: "_EducationalPositionsToTeachers_AB_unique")
+  @@index([B], map: "_EducationalPositionsToTeachers_B_index")
+  @@map("_EducationalPositionsToTeachers")
+}
+
+enum GraduateStatus {
+  ongoing
+  graduated
+  dropout
+  transferred
+}
+
+enum InternshipStatus {
+  not_started
+  pending
+  approved
+  rejected
+  canceled
+  ongoing
+  completed
+}
+
+enum GenderType {
+  male
+  female
+}
+
+enum UjikomStatus {
+  not_started
+  pending_review
+  approved
+  revision
+  rejected
+  canceled
+  ongoing
+  completed
+}
+
+enum PaymentStatus {
+  paid
+  unpaid
+  installments
+  refunded
+  canceled
+  pending
+  failed
+}
+
+enum AbsentStatus {
+  present
+  absent
+  sick
+  permission
+}
+
+enum TypeUserActivity {
+  signin
+  signout
+  create
+  update
+  delete
+  others
+}
+
+enum PostStatus {
+  public
+  private
+  draft
+}
+
+model News {
+  id            String     @id @default(cuid())
+  user_id       String
+  title         String
+  content       String     @db.Text
+  keyword       String?
+  category      String?
+  picture       String?
+  status        PostStatus
+  like_count    Int?
+  dislike_count Int?
+  view_count    Int?
+  slug          String?    @unique
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  user          Users?     @relation(fields: [user_id], references: [id])
+  comments      Comments[]
+
+  @@index([user_id])
+}
+
+model Comments {
+  id                  String   @id @default(cuid())
+  user_id             String
+  news_id             String
+  message             String   @db.Text
+  picture             String?
+  like_count          Int?
+  parent_comment_id   String?
+  reply_to_comment_id String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  user                Users?   @relation(fields: [user_id], references: [id])
+  news                News?    @relation(fields: [news_id], references: [id])
+
+  @@index([user_id])
+  @@index([news_id])
+}
+
+model Polls {
+  id          String        @id @default(cuid())
+  title       String
+  description String?
+  start_date  String
+  end_date    String
+  status      PostStatus
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  pollOptions PollOptions[]
+  pollVotes   PollVotes[]
+}
+
+model PollOptions {
+  id         String      @id @default(cuid())
+  poll_id    String
+  name       String
+  vote_count Int
+  poll       Polls?      @relation(fields: [poll_id], references: [id])
+  pollVotes  PollVotes[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@index([poll_id])
+}
+
+model PollVotes {
+  id        String       @id @default(cuid())
+  poll_id   String       @unique
+  poll      Polls?       @relation(fields: [poll_id], references: [id])
+  option_id String       @unique
+  option    PollOptions? @relation(fields: [option_id], references: [id])
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([poll_id])
+  @@index([option_id])
+}
