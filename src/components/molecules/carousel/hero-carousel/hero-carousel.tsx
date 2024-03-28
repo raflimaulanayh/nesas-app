@@ -44,7 +44,7 @@ export const HeroCarousel = () => {
       }}
       plugins={[
         Autoplay({
-          delay: 8000
+          delay: 5000
         })
       ]}
       setApi={setApi}
@@ -69,7 +69,7 @@ export const HeroCarousel = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="absolute z-30 hidden transform -translate-x-1/2 lg:block left-1/2 bottom-7">
+      <div className="absolute z-30 hidden lg:block left-10 bottom-7">
         <div className="grid w-full gap-2 " style={{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }}>
           {data.map((_, index) => (
             <div
