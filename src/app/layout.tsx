@@ -1,6 +1,7 @@
 import '@/shared/styles/app.css'
 
 import { siteConfig } from '@/constants/config'
+import { Analytics } from '@vercel/analytics/react'
 import { Rubik as FontSans } from 'next/font/google'
 import React from 'react'
 
@@ -40,6 +41,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <React.Fragment>
             {/* <ClientProvider>{children}</ClientProvider> */}
             {children}
+            <Analytics />
           </React.Fragment>
         </ThemeProvider>
       </body>

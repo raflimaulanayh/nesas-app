@@ -25,6 +25,7 @@
     "@types/react-scroll": "^1.8.10",
     "@types/react-slick": "^0.23.12",
     "@uploadthing/react": "^6.4.1",
+    "@vercel/analytics": "^1.2.2",
     "ai": "^3.0.15",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.1",
