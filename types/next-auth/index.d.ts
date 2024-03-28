@@ -7,22 +7,10 @@ declare module 'next-auth' {
       id: string
       email: string
       username: string
-      firstName: string
+      password: string
+      photo: string
       confirmed: boolean
-      gender: 'male' | 'female'
-      middleName: string
-      lastName: string
-      institution: string
-      country: {
-        id: number
-        name: string
-      }
-      province: {
-        id: number
-        name: string
-      }
-      birthDate: Date | string
-      phoneNumber: string
+      role: 'admin' | 'student' | 'teacher'
       accountComplete: boolean
     }
   }

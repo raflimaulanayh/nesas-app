@@ -1,10 +1,12 @@
-const Page = () => {
+import { SiteLayout } from '@/components/templates/site-layout'
+
+const LandingPage = () => {
   return (
-    <div>
+    <SiteLayout>
       <h1>Header</h1>
       <p>paragraf</p>
-    </div>
+    </SiteLayout>
   )
 }
 
-export default Page
+export default LandingPage
