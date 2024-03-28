@@ -6,7 +6,7 @@ import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { IoChevronDownSharp } from 'react-icons/io5'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/ui/popover'
@@ -19,11 +19,30 @@ const userNavigation = [{ name: 'Your profile', href: '/dashboard' }]
 export const Navbar = () => {
   const { data } = useSession()
   const pathname = usePathname()
+  const [scrolled, setScrolled] = useState(false)
   const [openStates, setOpenStates] = useState(new Array(navigationGeneral.length).fill(false))
+
+  const handleScroll = () => {
+    const offset = window.scrollY
+
+    if (offset > 1) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <Fragment>
-      <nav className="fixed top-0 z-40 w-full py-4 bg-white border-b shadow-sm lg:py-5">
+      <nav
+        className={cn(
+          'fixed top-0 z-40 w-full border-b shadow-sm duration-500 transition-all',
+          scrolled ? 'bg-white/90 py-3 lg:py-4' : 'bg-white py-5 lg:py-6'
+        )}
+      >
         <Container className="flex items-center justify-between lg:pr-24">
           <Link href="/">
             <Image src="/nss.svg" alt="Logo" width={120} height={50} className="lg:w-36" />
