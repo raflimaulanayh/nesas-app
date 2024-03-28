@@ -1,3 +1,4 @@
+import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,11 +8,17 @@ export const LandingNews = () => {
   return (
     <section className="py-10">
       <Container className="space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">Berita Utama</h2>
+        <header className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-slate-900">Berita Utama</h2>
+          <Link href="#!" className="inline-flex items-center text-sm font-semibold hover:text-primary text-slate-900">
+            <span>Lihat berita lainnya</span>
+            <ChevronRight size={20} />
+          </Link>
+        </header>
 
         <article className="grid gap-x-5 sm:grid-cols-2 lg:grid-cols-3">
           <Link href="#!" className="hover:bg-slate-100 group">
-            <figure className="flex items-center gap-3 py-5 border-b border-b-slate-300">
+            <figure className="flex items-center gap-3 py-5 border-b rounded lg:px-5 border-b-slate-300">
               <Image
                 src="/static/images/landing/hero-slide-1.jpg"
                 alt=""
@@ -27,7 +34,7 @@ export const LandingNews = () => {
           </Link>
 
           <Link href="#!" className="hover:bg-slate-100 group">
-            <figure className="flex items-center gap-3 py-5 border-b border-b-slate-300">
+            <figure className="flex items-center gap-3 py-5 border-b rounded lg:px-5 border-b-slate-300">
               <Image
                 src="/static/images/landing/hero-slide-1.jpg"
                 alt=""
@@ -43,7 +50,7 @@ export const LandingNews = () => {
           </Link>
 
           <Link href="#!" className="hover:bg-slate-100 group">
-            <figure className="flex items-center gap-3 py-5 border-b border-b-slate-300">
+            <figure className="flex items-center gap-3 py-5 border-b rounded lg:px-5 border-b-slate-300">
               <Image
                 src="/static/images/landing/hero-slide-1.jpg"
                 alt=""

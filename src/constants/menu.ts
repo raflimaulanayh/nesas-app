@@ -88,7 +88,7 @@ export const navigationGeneral = [
         label: 'PPDB'
       },
       {
-        url: '#!',
+        url: 'https://chat.whatsapp.com/IJ4wPOf14ZiLQjG7toalC5',
         icon: RiArticleFill,
         label: 'Forum'
       },

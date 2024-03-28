@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Desain Permodelan Informasi Bangunan (DPIB)",
+    "image": "/static/images/major/bangunan.png"
+  },
+  {
+    "name": "Teknik Elektronika Industri (TEI)",
+    "image": "/static/images/major/elektronika.png"
+  },
+  {
+    "name": "Teknik Audio Video (TAV)",
+    "image": "/static/images/major/elektronika.png"
+  },
+  {
+    "name": "Teknik Instalasi Tenaga Listrik (TITL)",
+    "image": "/static/images/major/listrik.png"
+  },
+  {
+    "name": "Teknik Komputer dan Jaringan (TKJ)",
+    "image": "/static/images/major/komputer.png"
+  },
+  {
+    "name": "Rekayasa Perangkat Lunak (RPL)",
+    "image": "/static/images/major/komputer.png"
+  },
+  {
+    "name": "Teknik Kendaraan Ringan Otomotif (TKRO)",
+    "image": "/static/images/major/otomotif.png"
+  },
+  {
+    "name": "Teknik Pemesinan (TPM)",
+    "image": "/static/images/major/mesin.png"
+  },
+  {
+    "name": "Teknik Pengelasan (TPL)",
+    "image": "/static/images/major/mesin.png"
+  },
+  {
+    "name": "Seni Karawitan (SK)",
+    "image": "/static/images/major/karawitan.png"
+  }
+]
