@@ -1,0 +1,193 @@
+/* #region  /**=========== Barlow Font =========== */
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-Thin.ttf');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-ExtraLight.ttf');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-Light.ttf');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-Regular.ttf');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-Medium.ttf');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-SemiBold.ttf');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-Bold.ttf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-ExtraBold.ttf');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('../fonts/Barlow/Barlow-Black.ttf');
+  font-weight: 900;
+  font-display: swap;
+}
+
+/* #endregion  /**======== Barlow Font =========== */
+
+/* #region  /**=========== Gotham Font =========== */
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-Thin.otf');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-XLight.otf');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-Light.otf');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-Book.otf');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-Medium.otf');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-Bold.otf');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-Black.otf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url('../fonts/Gotham/Gotham-Ultra.otf');
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* #endregion  /**======== Gotham Font =========== */
+
+/* #region  /**=========== Barlow Font =========== */
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-Thin.ttf');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-ExtraLight.ttf');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-Light.ttf');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-Regular.ttf');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-Medium.ttf');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-SemiBold.ttf');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-Bold.ttf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-ExtraBold.ttf');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter/Inter-ExtraBold.ttf');
+  font-weight: 900;
+  font-display: swap;
+}
+
+/* #endregion  /**======== Barlow Font =========== */

@@ -1,0 +1,6 @@
+**/node_modules/*
+**/out/*
+**/.next/*
+coverage
+src/shared/styles/app.css
+.next
