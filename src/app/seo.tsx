@@ -46,6 +46,7 @@ export const HeadMetaData = () => {
       <meta property="og:site_name" content="Nesas Smart School" />
       <meta property="og:url" content="https://nss.nesas.tech" />
       <meta property="og:image" content="https://nss.nesas.tech/favicon/apple-touch-icon.png" />
+      <meta name="google-site-verification" content="Gqyqj8Wqz8mehjAJGwCS4suumemPh68xYpepJ3nLtbA" />
     </Fragment>
   )
 }
