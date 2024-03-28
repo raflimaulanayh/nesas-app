@@ -8,7 +8,7 @@ import Container from '@/components/templates/container/container'
 export const LandingAbout = () => {
   return (
     <section className="w-full h-full">
-      <article className="relative z-20 flex justify-end -mt-10">
+      <article className="relative z-20 flex justify-end -mt-1 lg:-mt-10">
         <div className="py-10 bg-primary rounded-l-[2rem] rounded-t-none w-full sm:w-10/12 self-end h-full">
           <Container className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
             {overview.map((item, index) => (

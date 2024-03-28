@@ -9,8 +9,8 @@ export const LandingNews = () => {
       <Container className="space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Berita Utama</h2>
 
-        <article className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <Link href="#!" className="hover:bg-slate-100">
+        <article className="grid gap-x-5 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="#!" className="hover:bg-slate-100 group">
             <figure className="flex items-center gap-3 py-5 border-b border-b-slate-300">
               <Image
                 src="/static/images/landing/hero-slide-1.jpg"
@@ -26,7 +26,7 @@ export const LandingNews = () => {
             </figure>
           </Link>
 
-          <Link href="#!" className="hover:bg-slate-100">
+          <Link href="#!" className="hover:bg-slate-100 group">
             <figure className="flex items-center gap-3 py-5 border-b border-b-slate-300">
               <Image
                 src="/static/images/landing/hero-slide-1.jpg"
@@ -42,7 +42,7 @@ export const LandingNews = () => {
             </figure>
           </Link>
 
-          <Link href="#!" className="hover:bg-slate-100">
+          <Link href="#!" className="hover:bg-slate-100 group">
             <figure className="flex items-center gap-3 py-5 border-b border-b-slate-300">
               <Image
                 src="/static/images/landing/hero-slide-1.jpg"
