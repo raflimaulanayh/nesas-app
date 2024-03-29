@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Control, FieldValues, FormProps } from 'react-hook-form'
 
-import { CheckedIcon } from '@/components/atoms/icons'
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/atoms/ui/form'
 import { Input as FormInput } from '@/components/atoms/ui/input'
 import { Label } from '@/components/atoms/ui/label'
@@ -32,7 +31,6 @@ export const Input: React.FC<Input> = ({
   type,
   disabled,
   hint,
-  isVerified = false,
   ...props
 }) => {
   const [isFocus, setIsFocus] = useState(false)
@@ -48,11 +46,11 @@ export const Input: React.FC<Input> = ({
             className={cn(
               'border-2  pt-2 rounded-md',
               className,
-              isFocus ? 'border-primary-blue' : 'border-gray-200',
+              isFocus ? 'border-primary' : 'border-gray-200',
               disabled ? 'bg-gray-100' : ''
             )}
           >
-            <Label className="px-3 text-sm text-primary-blue">
+            <Label className="px-3 text-sm text-primary">
               {label} {required && <span> *</span>}
             </Label>
             <FormControl>
@@ -78,12 +76,6 @@ export const Input: React.FC<Input> = ({
               />
             </FormControl>
           </div>
-          {type === 'email' && isVerified && (
-            <div className="flex items-center space-x-1">
-              <CheckedIcon />
-              <p className="text-xs leading-tight text-green-600">Email verified success</p>
-            </div>
-          )}
           {hint && <p className="text-xs leading-tight text-gray-500">{hint}</p>}
           <FormMessage />
         </FormItem>
