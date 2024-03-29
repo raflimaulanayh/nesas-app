@@ -40,10 +40,10 @@ export const Navbar = () => {
       <nav
         className={cn(
           'fixed top-0 z-40 w-full border-b shadow-sm duration-500 transition-all',
-          scrolled ? 'bg-white/90 py-3 lg:py-4' : 'bg-white py-5 lg:py-6'
+          scrolled ? 'bg-white/90 py-3' : 'bg-white py-4'
         )}
       >
-        <Container className="flex items-center justify-between lg:pr-24">
+        <Container className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo-nesas.svg" alt="Logo Nesas" width={50} height={50} />
             <span className="h-10 w-[1px] bg-slate-400" />

@@ -1,12 +1,24 @@
+'use client'
+
 import { FacebookIcon, InstagramIcon, MapPinIcon, PhoneIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import Container from '@/components/templates/container/container'
 
+import { cn } from '@/lib/utils'
+
 export const Footer = () => {
+  const pathname = usePathname()
+
   return (
-    <footer className="text-sm pb-16 lg:pb-0 bg-no-repeat text-center text-white sm:block bg-cover bg-center w-full sm:text-base bg-[url(/static/images/bg-navbar.png)]">
+    <footer
+      className={cn(
+        'text-sm pb-16 lg:pb-0 bg-no-repeat text-center text-white bg-cover bg-center w-full sm:text-base bg-[url(/static/images/bg-navbar.png)]',
+        pathname === '/chatbot' ? 'hidden' : 'block'
+      )}
+    >
       <Container className="flex flex-col w-full py-7 gap-7">
         <div className="flex items-center justify-between gap-3">
           <Link target="_blank" href="https://nesas.tech">
