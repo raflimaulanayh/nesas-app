@@ -62,7 +62,12 @@ export const Navbar = () => {
                           setOpenStates(newOpenStates)
                         }}
                       >
-                        <PopoverTrigger className="flex hover:text-primary items-center gap-0.5">
+                        <PopoverTrigger
+                          className={cn(
+                            'flex hover:text-primary items-center gap-0.5',
+                            pathname == item.url ? 'text-primary' : 'text-slate-900'
+                          )}
+                        >
                           <p>{item.label}</p>
                           <ChevronDown className={cn('inline w-5 h-5', openStates[index] && 'rotate-180')} />
                         </PopoverTrigger>
@@ -73,7 +78,7 @@ export const Navbar = () => {
                                 <Link
                                   href={child.url}
                                   className={cn(
-                                    'block px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900'
+                                    'block px-3 py-1 text-sm leading-6 hover:bg-slate-100 text-slate-900 rounded'
                                   )}
                                 >
                                   {child.label}
@@ -87,7 +92,10 @@ export const Navbar = () => {
                   )
                 } else {
                   return (
-                    <li key={index} className="hover:text-primary">
+                    <li
+                      key={index}
+                      className={cn('hover:text-primary', pathname == item.url ? 'text-primary' : 'text-slate-900')}
+                    >
                       <Link href={item.url}>{item.label}</Link>
                     </li>
                   )
