@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toast } from '@/hooks/use-toast'
 import api from '@/services/api'
 import { useSession } from 'next-auth/react'
