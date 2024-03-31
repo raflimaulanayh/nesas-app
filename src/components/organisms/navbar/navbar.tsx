@@ -1,13 +1,14 @@
 'use client'
 
 import { navigationGeneral } from '@/constants/menu'
+import { useCurrentUser } from '@/hooks/use-current-user'
 import { ChevronDown } from 'lucide-react'
-import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
 import { IoChevronDownSharp } from 'react-icons/io5'
+import { signOut } from 'src/auth'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/ui/popover'
 import Container from '@/components/templates/container/container'
@@ -17,7 +18,7 @@ import { cn } from '@/lib/utils'
 const userNavigation = [{ name: 'Your profile', href: '/dashboard' }]
 
 export const Navbar = () => {
-  const { data } = useSession()
+  const user = useCurrentUser()
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [openStates, setOpenStates] = useState(new Array(navigationGeneral.length).fill(false))
@@ -102,18 +103,12 @@ export const Navbar = () => {
                 }
               })}
             </ul>
-            {data?.user ? (
+            {user ? (
               <Popover>
                 <PopoverTrigger className="-m-1.5 flex gap-2 items-center p-1.5">
                   <span className="sr-only">Open user menu</span>
-                  {data?.user?.photo ? (
-                    <Image
-                      src={data.user.photo}
-                      alt={`photo ${data.user.username}`}
-                      height={28}
-                      width={28}
-                      className="rounded-full"
-                    />
+                  {user?.photo ? (
+                    <Image src={user.photo} alt={`photo ${user.username}`} height={28} width={28} className="rounded-full" />
                   ) : (
                     <Image
                       src="/static/icons/user.svg"
@@ -125,7 +120,7 @@ export const Navbar = () => {
                   )}
                   <span className="hidden lg:flex lg:items-center">
                     <span className="text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">
-                      {data?.user?.username}
+                      {user?.username}
                     </span>
                     <IoChevronDownSharp className="w-5 h-5 ml-2 text-gray-400" aria-hidden="true" />
                   </span>

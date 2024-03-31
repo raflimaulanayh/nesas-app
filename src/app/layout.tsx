@@ -1,9 +1,7 @@
 import '@/shared/styles/app.css'
 
 import { siteConfig } from '@/constants/config'
-import { authOptions } from '@/services/auth'
 import { Analytics } from '@vercel/analytics/react'
-import { getServerSession } from 'next-auth'
 import { Rubik as FontSans } from 'next/font/google'
 import React from 'react'
 
@@ -33,8 +31,6 @@ export const metadata = {
   manifest: '/favicon/manifest.json'
 }
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions)
-
   return (
     <html lang="en">
       <head>
@@ -44,7 +40,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <body className={cn('antialiased min-h-screen', fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <React.Fragment>
-            <ClientProvider jwt={session?.jwt}>{children}</ClientProvider>
+            <ClientProvider>{children}</ClientProvider>
             <Analytics />
           </React.Fragment>
         </ThemeProvider>

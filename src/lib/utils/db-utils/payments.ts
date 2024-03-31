@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Payment } from 'types/data/payment'
 
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 export const createPayment = async (data: Payment) => {
   try {

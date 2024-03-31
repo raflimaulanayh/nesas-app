@@ -4,7 +4,7 @@ import { Absent } from 'types/data/absent'
 import z from 'zod'
 
 import { createAbsent } from '@/lib/utils/db-utils/absents'
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 enum AbsentStatus {
   present = 'present',

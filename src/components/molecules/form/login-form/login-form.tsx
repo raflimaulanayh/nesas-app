@@ -1,79 +1,57 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useHydration } from '@/hooks/use-hydration'
-import { useToast } from '@/hooks/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import { LoginSchema } from 'schemas'
 import * as z from 'zod'
 
+import { Alert } from '@/components/atoms/alert'
 import { Input } from '@/components/atoms/form-input'
 import { Loading } from '@/components/atoms/icons'
 import { Button } from '@/components/atoms/ui/button'
 import { Form } from '@/components/atoms/ui/form'
 
-import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
+import { login } from '@/lib/utils/actions/login'
 
 export const LoginForm = () => {
-  const router = useRouter()
-  const { toast } = useToast()
   const isHydrated = useHydration()
-  const [loading, setLoading] = useState(false)
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl')
 
-  const formSchema = z.object({
-    email: z
-      .string()
-      .nonempty({
-        message: 'Email harus diisi'
-      })
-      .email({
-        message: 'Email tidak valid'
-      }),
-    password: z
-      .string()
-      .nonempty({
-        message: 'Password harus diisi'
-      })
-      .min(6, {
-        message: 'Password minimal 6 karakter'
-      })
-  })
+  const [error, setError] = useState<string | undefined>('')
+  const [success, setSuccess] = useState<string | undefined>('')
+  const [isPending, startTransition] = useTransition()
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof LoginSchema>>({
+    resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: '',
       password: ''
     }
   })
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setLoading(true)
-    const signed: any = await signIn('credentials', {
-      redirect: false,
-      password: values.password,
-      identifier: values.email
-    })
-    if (signed.error && signed.error === 'CredentialsSignin') {
-      toast({
-        title: 'email & password salah',
-        variant: 'destructive'
-      })
-      setLoading(false)
-    } else {
-      toast({
-        title: 'Login sukses'
-      })
-      setLoading(false)
-      TrackUserActivity('anonymous', 'signin', 'User ' + values.email + ' Telah berhasil login')
+  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    setError('')
 
-      setTimeout(() => {
-        router.push('/dashboard')
-      }, 1000)
-    }
+    startTransition(() => {
+      login(values, callbackUrl)
+        .then((data: any) => {
+          if (data?.error) {
+            form.reset()
+            setError(data.error)
+          }
+
+          if (data?.success) {
+            form.reset()
+            setSuccess(data.success)
+          }
+        })
+        .catch(() => setError('Something went wrong'))
+    })
   }
 
   return (
@@ -87,26 +65,28 @@ export const LoginForm = () => {
       {isHydrated && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            {error && <Alert message={error} type="error" />}
             <Input name="email" label="Email" required placeholder="Masukan alamat email" {...form} />
             <Input name="password" label="Password" required type="password" placeholder="Masukan password" {...form} />
+            {success && <Alert message={success} type="success" />}
             <div className="flex justify-center py-2">
               <Button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
-                disabled={loading}
+                disabled={isPending}
               >
-                {loading ? <Loading /> : 'Login'}
+                {isPending ? <Loading /> : 'Login'}
               </Button>
             </div>
             <div className="space-y-1">
               <p className="text-center text-gray-700 ">
                 <span>Belum punya akun?</span>
-                <Link href="/register">
+                <Link href="/auth/register">
                   <span className="text-indigo-700 hover:underline"> Register sekarang</span>
                 </Link>
               </p>
               <p className="text-center text-gray-600">
-                <Link href="/forgot-password">
+                <Link href="/auth/reset-password">
                   <span className="text-indigo-700 hover:underline">Lupa password</span>
                 </Link>
               </p>

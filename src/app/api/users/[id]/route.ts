@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Params } from 'types/data/params'
 
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 export async function GET(request: Request, { params }: Params) {
   try {
@@ -11,8 +11,7 @@ export async function GET(request: Request, { params }: Params) {
       where: { id },
       include: {
         teachers: true,
-        students: true,
-        userRoles: true
+        students: true
       }
     })
 
@@ -27,7 +26,7 @@ export async function PUT(request: Request, { params }: Params) {
     const data = await request.json()
     const id = params.id
 
-    const { username, email, role_id, photo } = data
+    const { username, email, role, photo, active } = data
 
     const existingUser = await prisma.users.findUnique({
       where: { id }
@@ -52,13 +51,13 @@ export async function PUT(request: Request, { params }: Params) {
       data: {
         username,
         email,
-        role_id,
-        photo
+        role,
+        photo,
+        active
       },
       include: {
         teachers: true,
-        students: true,
-        userRoles: true
+        students: true
       }
     })
 

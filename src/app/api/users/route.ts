@@ -4,14 +4,15 @@ import { User } from 'types/data/user'
 import z from 'zod'
 
 import { createUser } from '@/lib/utils/db-utils/users'
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 const createUserSchema = z
   .object({
     email: z.string().email(),
     username: z.string(),
     password: z.string(),
-    role_id: z.string(),
+    role: z.string(),
+    active: z.boolean(),
     photo: z.optional(z.string())
   })
   .strict()
@@ -58,8 +59,7 @@ export async function GET() {
     const users = await prisma.users.findMany({
       include: {
         teachers: true,
-        students: true,
-        userRoles: true
+        students: true
       }
     })
 

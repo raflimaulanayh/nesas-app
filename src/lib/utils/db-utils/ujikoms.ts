@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Ujikom } from 'types/data/ujikom'
 
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 export const createUjikom = async (data: Ujikom) => {
   try {

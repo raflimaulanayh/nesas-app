@@ -3,36 +3,66 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model Users {
-  id             String           @id @default(cuid())
-  username       String?
-  email          String           @unique
-  password       String
-  role_id        String
-  photo          String?
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  userRoles      UserRoles?       @relation(fields: [role_id], references: [id])
-  teachers       Teachers[]
-  students       Students[]
-  userActivities UserActivities[]
-  news           News[]
-  comments       Comments[]
-
-  @@index([role_id])
+  id              String           @id @default(cuid())
+  username        String?
+  email           String?          @unique
+  emailVerified   DateTime?
+  password        String
+  role            String           @default("student")
+  photo           String?
+  accountComplete Boolean?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  active          Boolean?         @default(false)
+  teachers        Teachers[]
+  students        Students[]
+  userActivities  UserActivities[]
+  news            News[]
+  comments        Comments[]
+  Account         Account[]
 }
 
-model UserRoles {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  users     Users[]
+model Account {
+  id                String  @id @default(cuid())
+  user_id           String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  users             Users   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([user_id])
+}
+
+model VerificationToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model PasswordResetToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
 }
 
 model Teachers {
@@ -43,7 +73,7 @@ model Teachers {
   gender           GenderType?
   birth_date       String?
   phone_number     String?
-  address          String?                @db.Text
+  address          String?
   join_date        String?
   end_date         String?
   createdAt        DateTime               @default(now())
@@ -96,7 +126,7 @@ model Students {
   birth_date          String?
   phone_number        String?
   phone_number_parent String?
-  address             String?         @db.Text
+  address             String?
   join_date           String?
   end_date            String?
   graduate_status     GraduateStatus? @default(ongoing)
@@ -131,13 +161,6 @@ model Internships {
   @@index([company_id])
 }
 
-enum CompanyStatus {
-  active
-  not_active
-  pending
-  filled
-}
-
 model CompanyInternships {
   id           String        @id @default(cuid())
   name         String
@@ -146,7 +169,7 @@ model CompanyInternships {
   leader_name  String?
   status       CompanyStatus @default(not_active)
   quota        Int?
-  requirements String?       @db.Text
+  requirements String?
   signature    String?
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
@@ -173,7 +196,7 @@ model Payments {
   total_price    Float
   payment_date   String?
   payment_status PaymentStatus       @default(unpaid)
-  notes          String?             @db.Text
+  notes          String?
   createdAt      DateTime            @default(now())
   updatedAt      DateTime            @updatedAt
   student        Students            @relation(fields: [student_id], references: [id])
@@ -204,6 +227,96 @@ model Absents {
   @@index([student_id])
 }
 
+model UserActivities {
+  id              String           @id @default(cuid())
+  user_id         String
+  type_activity   TypeUserActivity
+  activity_detail String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  user            Users?           @relation(fields: [user_id], references: [id])
+
+  @@index([user_id])
+}
+
+model News {
+  id            String     @id @default(cuid())
+  user_id       String
+  title         String
+  content       String
+  keyword       String?
+  category      String?
+  picture       String?
+  status        PostStatus
+  like_count    Int?
+  dislike_count Int?
+  view_count    Int?
+  slug          String?    @unique
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  user          Users?     @relation(fields: [user_id], references: [id])
+  comments      Comments[]
+
+  @@index([user_id])
+}
+
+model Comments {
+  id                  String   @id @default(cuid())
+  user_id             String
+  news_id             String
+  message             String
+  picture             String?
+  like_count          Int?
+  parent_comment_id   String?
+  reply_to_comment_id String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  user                Users?   @relation(fields: [user_id], references: [id])
+  news                News?    @relation(fields: [news_id], references: [id])
+
+  @@index([user_id])
+  @@index([news_id])
+}
+
+model Polls {
+  id          String        @id @default(cuid())
+  title       String
+  description String?
+  start_date  String
+  end_date    String
+  status      PostStatus
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  pollOptions PollOptions[]
+  pollVotes   PollVotes[]
+}
+
+model PollOptions {
+  id         String      @id @default(cuid())
+  poll_id    String
+  name       String
+  vote_count Int
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  poll       Polls?      @relation(fields: [poll_id], references: [id])
+  pollVotes  PollVotes[]
+
+  @@index([poll_id])
+}
+
+model PollVotes {
+  id        String       @id @default(cuid())
+  poll_id   String       @unique
+  option_id String       @unique
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  poll      Polls?       @relation(fields: [poll_id], references: [id])
+  option    PollOptions? @relation(fields: [option_id], references: [id])
+
+  @@index([poll_id])
+  @@index([option_id])
+}
+
 model CompanyInternshipsToMajors {
   A String
   B String
@@ -211,6 +324,15 @@ model CompanyInternshipsToMajors {
   @@unique([A, B], map: "_CompanyInternshipsToMajors_AB_unique")
   @@index([B], map: "_CompanyInternshipsToMajors_B_index")
   @@map("_CompanyInternshipsToMajors")
+}
+
+model EducationalPositionsToTeachers {
+  A String
+  B String
+
+  @@unique([A, B], map: "_EducationalPositionsToTeachers_AB_unique")
+  @@index([B], map: "_EducationalPositionsToTeachers_B_index")
+  @@map("_EducationalPositionsToTeachers")
 }
 
 model PaymentCategoriesToPayments {
@@ -231,25 +353,11 @@ model TeachersToUjikoms {
   @@map("_TeachersToUjikoms")
 }
 
-model UserActivities {
-  id              String           @id @default(cuid())
-  user_id         String
-  type_activity   TypeUserActivity
-  activity_detail String?
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  user            Users?           @relation(fields: [user_id], references: [id])
-
-  @@index([user_id])
-}
-
-model EducationalPositionsToTeachers {
-  A String
-  B String
-
-  @@unique([A, B], map: "_EducationalPositionsToTeachers_AB_unique")
-  @@index([B], map: "_EducationalPositionsToTeachers_B_index")
-  @@map("_EducationalPositionsToTeachers")
+enum CompanyStatus {
+  active
+  not_active
+  pending
+  filled
 }
 
 enum GraduateStatus {
@@ -315,82 +423,4 @@ enum PostStatus {
   public
   private
   draft
-}
-
-model News {
-  id            String     @id @default(cuid())
-  user_id       String
-  title         String
-  content       String     @db.Text
-  keyword       String?
-  category      String?
-  picture       String?
-  status        PostStatus
-  like_count    Int?
-  dislike_count Int?
-  view_count    Int?
-  slug          String?    @unique
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
-  user          Users?     @relation(fields: [user_id], references: [id])
-  comments      Comments[]
-
-  @@index([user_id])
-}
-
-model Comments {
-  id                  String   @id @default(cuid())
-  user_id             String
-  news_id             String
-  message             String   @db.Text
-  picture             String?
-  like_count          Int?
-  parent_comment_id   String?
-  reply_to_comment_id String?
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
-  user                Users?   @relation(fields: [user_id], references: [id])
-  news                News?    @relation(fields: [news_id], references: [id])
-
-  @@index([user_id])
-  @@index([news_id])
-}
-
-model Polls {
-  id          String        @id @default(cuid())
-  title       String
-  description String?
-  start_date  String
-  end_date    String
-  status      PostStatus
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  pollOptions PollOptions[]
-  pollVotes   PollVotes[]
-}
-
-model PollOptions {
-  id         String      @id @default(cuid())
-  poll_id    String
-  name       String
-  vote_count Int
-  poll       Polls?      @relation(fields: [poll_id], references: [id])
-  pollVotes  PollVotes[]
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
-
-  @@index([poll_id])
-}
-
-model PollVotes {
-  id        String       @id @default(cuid())
-  poll_id   String       @unique
-  poll      Polls?       @relation(fields: [poll_id], references: [id])
-  option_id String       @unique
-  option    PollOptions? @relation(fields: [option_id], references: [id])
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
-
-  @@index([poll_id])
-  @@index([option_id])
 }

@@ -3,7 +3,6 @@ import { Control, FieldValues, FormProps } from 'react-hook-form'
 
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/atoms/ui/form'
 import { Label } from '@/components/atoms/ui/label'
-import { Textarea as FormTextarea } from '@/components/atoms/ui/textarea'
 
 import { cn } from '@/lib/utils'
 
@@ -45,10 +44,10 @@ export const Textarea: React.FC<Input> = ({
               </Label>
             )}
             <FormControl>
-              <FormTextarea
+              <textarea
                 placeholder={placeholder}
                 {...field}
-                className="focus:border-0"
+                className="focus:border-0 flex px-3 py-2 text-sm placeholder:text-muted-foreground  disabled:cursor-not-allowed disabled:opacity-50 !ring-0 !outline-none !bg-transparent !border-none w-full rounded-md"
                 onFocus={() => setIsFocus(true)}
                 onBlur={() => setIsFocus(false)}
               />

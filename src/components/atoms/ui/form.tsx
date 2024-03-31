@@ -1,8 +1,8 @@
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { Slot } from '@radix-ui/react-slot'
-import { FileWarningIcon } from 'lucide-react'
 import * as React from 'react'
 import { Controller, ControllerProps, FieldPath, FieldValues, FormProvider, useFormContext } from 'react-hook-form'
+import { TiWarning } from 'react-icons/ti'
 
 import { Label } from '@/components/atoms/ui/label'
 
@@ -121,10 +121,10 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<
       <p
         ref={ref}
         id={formMessageId}
-        className={cn('text-sm flex space-x-2 items-center font-medium text-destructive', className)}
+        className={cn('text-sm flex space-x-1 items-center font-medium text-destructive', className)}
         {...props}
       >
-        <FileWarningIcon />
+        <TiWarning size={20} />
         <span>{body}</span>
       </p>
     )

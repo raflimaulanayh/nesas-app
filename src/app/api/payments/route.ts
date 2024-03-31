@@ -4,7 +4,7 @@ import { Payment } from 'types/data/payment'
 import { z } from 'zod'
 
 import { createPayment } from '@/lib/utils/db-utils/payments'
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 enum PaymentStatus {
   paid = 'paid',

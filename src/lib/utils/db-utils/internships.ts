@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Internship } from 'types/data/internship'
 
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 export const createInternship = async (internship: Internship) => {
   // Memeriksa apakah company_id yang diberikan valid

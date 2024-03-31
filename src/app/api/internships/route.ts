@@ -4,7 +4,7 @@ import { Internship } from 'types/data/internship'
 import z from 'zod'
 
 import { createInternship } from '@/lib/utils/db-utils/internships'
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 enum InternshipStatus {
   not_started = 'not_started',

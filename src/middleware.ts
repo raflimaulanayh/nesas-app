@@ -1,35 +1,50 @@
-import { withAuth } from 'next-auth/middleware'
-import { NextRequest, NextResponse } from 'next/server'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import NextAuth from 'next-auth'
+import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from 'route'
 
-export default withAuth(
-  function middleware(request: NextRequest) {
-    const requestHeaders = new Headers(request.headers)
+import authConfig from './auth.config'
 
-    // Store current request pathname in a custom header
-    requestHeaders.set('x-pathname', request.nextUrl.pathname)
+const { auth } = NextAuth(authConfig)
 
-    return NextResponse.next({
-      request: {
-        headers: requestHeaders
-      }
-    })
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => {
-        if (token) {
-          return true
-        }
+export default auth((req: any) => {
+  const { nextUrl } = req
+  const isLoggedIn = !!req.auth
 
-        return false
-      }
-    },
-    pages: {
-      signIn: '/login'
-    }
+  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
+  const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname)
+
+  if (isApiAuthRoute) {
+    return null
   }
-)
+
+  if (isAuthRoute) {
+    if (isLoggedIn) {
+      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
+    }
+
+    return null
+  }
+
+  if (!isLoggedIn && !isPublicRoute) {
+    let callbackUrl = nextUrl.pathname
+    if (nextUrl.search) {
+      callbackUrl += nextUrl.search
+    }
+
+    const encodedCallbackUrl = encodeURIComponent(callbackUrl)
+
+    return Response.redirect(new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl))
+  }
+
+  return null || req
+})
+
+// Optionally, don't invoke Middleware on some paths
+// export const config = {
+//   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)']
+// }
 
 export const config = {
-  matcher: '/dashboard/:path*'
+  matcher: ['/dashboard/:path*', '/student/:path*', '/teacher/:path*']
 }

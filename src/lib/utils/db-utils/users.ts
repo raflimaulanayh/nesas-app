@@ -2,7 +2,7 @@
 import bcrypt from 'bcrypt'
 import { User } from 'types/data/user'
 
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 export const createUser = async (data: User) => {
   try {
@@ -23,13 +23,13 @@ export const createUser = async (data: User) => {
         email: data.email,
         username: data.username,
         password: hashedPassword,
-        role_id: data.role_id,
+        role: data.role,
+        active: data.active,
         photo: data.photo
       },
       include: {
         teachers: true,
-        students: true,
-        userRoles: true
+        students: true
       }
     })
 

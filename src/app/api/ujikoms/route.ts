@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import z from 'zod'
 
 import { createUjikom } from '@/lib/utils/db-utils/ujikoms'
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 enum UjikomStatus {
   not_started = 'not_started',

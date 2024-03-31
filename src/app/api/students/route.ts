@@ -4,7 +4,7 @@ import { Student } from 'types/data/student'
 import { z } from 'zod'
 
 import { createStudent } from '@/lib/utils/db-utils/students'
-import prisma from '@/lib/utils/prisma-client'
+import prisma from '@/lib/utils/prisma'
 
 enum Genders {
   male = 'male',

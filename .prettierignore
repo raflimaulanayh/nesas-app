@@ -6,3 +6,4 @@ coverage
 .gitkeep
 *.hbs
 pnpm-lock.yaml
+src/app/api/auth/**/*.ts

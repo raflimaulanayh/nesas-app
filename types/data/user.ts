@@ -3,7 +3,8 @@ interface TUser {
     username?: string
     email: string
     password: string
-    role_id: string
+    role: string
+    active?: boolean
     photo?: string
     createdAt?: string
   }[]
@@ -13,7 +14,8 @@ interface User {
   username?: string
   email: string
   password: string
-  role_id: string
+  role: string
+  active?: boolean
   photo?: string
   createdAt?: string
 }
