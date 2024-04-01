@@ -8,7 +8,7 @@ import { SiteLayout } from '@/components/templates/site-layout'
 const NewPasswordPage = () => {
   return (
     <SiteLayout>
-      <div className="flex flex-col justify-center min-h-screen">
+      <div className="flex flex-col min-h-screen py-14 lg:py-20">
         <Container>
           <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div className="px-6 py-10 bg-white shadow sm:rounded-lg sm:px-12">

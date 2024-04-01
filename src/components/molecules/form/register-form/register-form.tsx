@@ -44,7 +44,7 @@ export const RegisterForm = () => {
   }
 
   return (
-    <div className="px-6 py-10 bg-white shadow sm:rounded-lg sm:px-12">
+    <div className="px-6 py-10 bg-white border-2 rounded-md shadow-md sm:px-12">
       <h1 className="mb-5 text-3xl font-bold leading-9 tracking-tight text-center uppercase text-primary">Register</h1>
       {!isHydrated && (
         <div className="flex items-center justify-center min-h-[18rem]">

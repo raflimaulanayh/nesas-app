@@ -1,13 +1,4 @@
 interface TUserRole {
-  data: {
-    name: string
-    permissionIds: string[]
-  }[]
+  role: 'admin' | 'student' | 'teacher' | 'finance' | 'hubinmas' | 'copywritter'
 }
-
-interface UserRole {
-  name: string
-  permissionIds: string[]
-}
-
-export type { UserRole, TUserRole }
+export type { TUserRole }

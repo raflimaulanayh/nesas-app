@@ -1,9 +1,9 @@
 'use server'
 
+import { signIn } from 'auth'
 import { AuthError } from 'next-auth'
 import { DEFAULT_LOGIN_REDIRECT } from 'route'
 import { LoginSchema } from 'schemas'
-import { signIn } from 'src/auth'
 import * as z from 'zod'
 
 import { sendVerificationEmail } from '../mail'

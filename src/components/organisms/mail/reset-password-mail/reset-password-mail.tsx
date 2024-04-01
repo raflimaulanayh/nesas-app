@@ -15,7 +15,7 @@ export const ResetPasswordEmail = ({ userFirstname, resetPasswordLink }: ResetPa
       <Preview>Nesas Smart School reset password</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={`${baseUrl}/nss.png`} width="40" height="33" alt="Nesas Smart School" />
+          <Img src={`${baseUrl}/nss.png`} width="120" height="39.65" alt="NSS" />
           <Section>
             <Text style={text}>Halo {userFirstname},</Text>
             <Text style={text}>

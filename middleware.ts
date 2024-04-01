@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import authConfig from 'auth.config'
 import NextAuth from 'next-auth'
 import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from 'route'
-
-import authConfig from './auth.config'
 
 const { auth } = NextAuth(authConfig)
 
 export default auth((req: any) => {
   const { nextUrl } = req
   const isLoggedIn = !!req.auth
+
+  console.log('IsLogin', isLoggedIn)
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
@@ -41,10 +42,6 @@ export default auth((req: any) => {
 })
 
 // Optionally, don't invoke Middleware on some paths
-// export const config = {
-//   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)']
-// }
-
 export const config = {
-  matcher: ['/student/:path*', '/teacher/:path*']
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/dashboard', '/(api|trpc)(.*)']
 }

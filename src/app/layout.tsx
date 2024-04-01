@@ -2,9 +2,9 @@ import '@/shared/styles/app.css'
 
 import { siteConfig } from '@/constants/config'
 import { Analytics } from '@vercel/analytics/react'
+import { auth } from 'auth'
 import { Rubik as FontSans } from 'next/font/google'
 import React from 'react'
-import { auth } from 'src/auth'
 
 import { ClientProvider } from '@/components/providers/client-provider'
 import { ThemeProvider } from '@/components/providers/theme-provider'

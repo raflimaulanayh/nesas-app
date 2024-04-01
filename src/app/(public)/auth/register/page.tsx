@@ -6,7 +6,7 @@ export default function RegisterPage() {
   return (
     <SiteLayout>
       <Container>
-        <div className="flex flex-col justify-center min-h-screen">
+        <div className="flex flex-col min-h-screen py-14 lg:py-20">
           <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
             <RegisterForm />
           </div>

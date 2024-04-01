@@ -1,11 +1,10 @@
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import authConfig from 'auth.config'
 import NextAuth from 'next-auth'
+import { getAccountByUserId } from 'src/lib/utils/prisma/account'
+import { getUserById } from 'src/lib/utils/prisma/user'
 
 import prisma from '@/lib/utils/prisma'
-
-import authConfig from './auth.config'
-import { getAccountByUserId } from './lib/utils/prisma/account'
-import { getUserById } from './lib/utils/prisma/user'
 
 export const {
   handlers: { GET, POST },
@@ -43,7 +42,11 @@ export const {
       }
 
       if (token.role && session.user) {
-        session.user.role = token.role as 'admin' | 'student' | 'teacher'
+        session.user.role = token.role as 'admin' | 'student' | 'teacher' | 'finance' | 'hubinmas' | 'copywritter'
+      }
+
+      if (token.active) {
+        session.user.active = token.active as boolean
       }
 
       if (session.user) {
@@ -63,9 +66,12 @@ export const {
       const existingAccount = await getAccountByUserId(existingUser.id)
 
       token.isOAuth = !!existingAccount
-      token.name = existingUser.username
+      token.username = existingUser.username
       token.email = existingUser.email
       token.role = existingUser.role
+      token.active = existingUser.active
+      token.accountComplete = existingUser.accountComplete
+      token.photo = existingUser.photo
 
       return token
     }
