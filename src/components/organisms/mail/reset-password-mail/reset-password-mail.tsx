@@ -6,7 +6,7 @@ interface ResetPasswordEmailProps {
   resetPasswordLink?: string
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL ? `https://${process.env.NEXT_PUBLIC_APP_URL}` : 'http://localhost:3000'
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL ? process.env.NEXT_PUBLIC_APP_URL : 'http://localhost:3000'
 
 export const ResetPasswordEmail = ({ userFirstname, resetPasswordLink }: ResetPasswordEmailProps) => {
   return (
