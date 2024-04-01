@@ -58,5 +58,5 @@
 // )
 
 // export const config = {
-//   matcher: ['/dashboard/:path*', '/student/:path*', '/teacher/:path*']
+//   matcher: ['/cdashboard/:path*', '/student/:path*', '/teacher/:path*']
 // }

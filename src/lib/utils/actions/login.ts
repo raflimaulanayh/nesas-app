@@ -34,10 +34,24 @@ export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: s
   }
 
   try {
+    const { role } = existingUser
+
+    let redirectTo: string
+
+    if (role === 'admin') {
+      redirectTo = '/dashboard'
+    } else if (role === 'student') {
+      redirectTo = '/student'
+    } else if (role === 'teacher') {
+      redirectTo = '/teacher'
+    } else {
+      redirectTo = callbackUrl || DEFAULT_LOGIN_REDIRECT
+    }
+
     await signIn('credentials', {
       email,
       password,
-      redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT
+      redirectTo: redirectTo
     })
   } catch (error) {
     if (error instanceof AuthError) {

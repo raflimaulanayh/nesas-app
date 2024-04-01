@@ -23,7 +23,7 @@ export default function LoginPage() {
   return (
     <SiteLayout>
       <Container>
-        <div className="flex flex-col justify-center min-h-screen sm:mx-auto sm:w-full sm:max-w-[480px]">
+        <div className="flex flex-col py-10 sm:py-20 min-h-screen sm:mx-auto sm:w-full sm:max-w-[480px]">
           <Suspense fallback={<Skeleton className="w-full h-96" />}>
             <LoginForm />
           </Suspense>

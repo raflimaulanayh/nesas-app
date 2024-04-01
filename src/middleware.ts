@@ -46,5 +46,5 @@ export default auth((req: any) => {
 // }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/student/:path*', '/teacher/:path*']
+  matcher: ['/student/:path*', '/teacher/:path*']
 }

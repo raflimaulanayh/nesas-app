@@ -24,3 +24,9 @@ export const apiAuthPrefix = '/api/auth'
  * @type {string}
  */
 export const DEFAULT_LOGIN_REDIRECT = '/dashboard'
+
+export const allowedRoutes = {
+  admin: ['/teacher/:path*'],
+  student: ['/teacher/:path*'],
+  teacher: ['/teacher/:path*']
+}

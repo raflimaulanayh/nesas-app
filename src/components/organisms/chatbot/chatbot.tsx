@@ -142,7 +142,7 @@ export function Chat() {
                     <li
                       key={index}
                       onClick={() => handleRecommendationQuestion(question)}
-                      className="flex items-center gap-2 p-3 text-sm transition-all bg-white rounded shadow cursor-pointer text-slate-900 sm:text-base sm:p-4 hover:bg-primary hover:text-white"
+                      className="flex items-center gap-2 p-3 text-sm transition-all bg-white border rounded shadow cursor-pointer text-slate-900 sm:text-base sm:p-4 hover:bg-primary hover:text-white"
                     >
                       <span className="w-11/12">{question}</span>
                       <MdChevronRight size={35} className="size-5 sm:size-9" />

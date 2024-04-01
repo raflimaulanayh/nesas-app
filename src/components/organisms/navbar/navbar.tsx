@@ -8,12 +8,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
 import { IoChevronDownSharp } from 'react-icons/io5'
-import { signOut } from 'src/auth'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/ui/popover'
 import Container from '@/components/templates/container/container'
 
 import { cn } from '@/lib/utils'
+import { logout } from '@/lib/utils/actions/logout'
 
 const userNavigation = [{ name: 'Your profile', href: '/dashboard' }]
 
@@ -147,7 +147,7 @@ export const Navbar = () => {
                     </li>
                     <li>
                       <button
-                        onClick={() => signOut()}
+                        onClick={() => logout()}
                         className={cn('flex w-full px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
                       >
                         Logout
@@ -159,7 +159,7 @@ export const Navbar = () => {
             ) : (
               pathname !== '/login' && (
                 <Link
-                  href="/login"
+                  href="/auth/login"
                   className="px-6 py-2 font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   Login
