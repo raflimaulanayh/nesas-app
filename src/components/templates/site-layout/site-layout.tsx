@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 
 import { Footer } from '@/components/organisms/footer'
-import { Navbar } from '@/components/organisms/navbar'
+import { Navbar } from '@/components/organisms/navbar/navbar-main'
 
 import { cn } from '@/lib/utils'
 

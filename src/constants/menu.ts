@@ -1,3 +1,4 @@
+import { MenuIcon } from 'lucide-react'
 import { AiFillHome, AiOutlineReconciliation } from 'react-icons/ai'
 import { BiSolidCctv } from 'react-icons/bi'
 import { BsPersonWorkspace } from 'react-icons/bs'
@@ -10,7 +11,6 @@ import { LuUserCircle2 } from 'react-icons/lu'
 import { MdOutlineArticle } from 'react-icons/md'
 import { PiExam } from 'react-icons/pi'
 import { RiArticleFill, RiCustomerService2Fill, RiMoneyDollarBoxLine } from 'react-icons/ri'
-import { TbCalendarCheck } from 'react-icons/tb'
 import { TbLayoutDashboard } from 'react-icons/tb'
 
 export const navigationMore = [
@@ -108,17 +108,38 @@ export const navigationGeneral = [
 
 export const navigationAdmin = [
   { label: 'Dashboard', url: '/dashboard', icon: TbLayoutDashboard },
-  { label: 'Artikel', url: '/dashboard/article', icon: MdOutlineArticle },
+  { label: 'Berita', url: '/dashboard/news', icon: MdOutlineArticle },
   { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
-  { label: 'Absen', url: '/dashboard/absent', icon: TbCalendarCheck },
   { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
   { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
   { label: 'Pembayaran', url: '/dashboard/payment', icon: RiMoneyDollarBoxLine },
   {
     label: 'Lainnya',
     url: '#!',
-    icon: RiMoneyDollarBoxLine,
+    icon: MenuIcon,
     childs: [
+      { label: 'User', url: '/dashboard/user', icon: LuUserCircle2 },
+      { label: 'Guru', url: '/dashboard/teacher', icon: BsPersonWorkspace },
+      { label: 'Siswa', url: '/dashboard/student', icon: GrUserManager },
+      { label: 'Jurusan', url: '/dashboard/major', icon: HiOutlineWrenchScrewdriver },
+      { label: 'Kelas', url: '/dashboard/class', icon: FaHouseUser },
+      { label: 'K. Pembayaran', url: '/dashboard/payment-categories', icon: RiMoneyDollarBoxLine }
+    ]
+  }
+]
+
+export const navigationAdminMobile = [
+  { label: 'Dashboard', url: '/dashboard', icon: TbLayoutDashboard },
+  { label: 'Berita', url: '/dashboard/news', icon: MdOutlineArticle },
+  { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
+  {
+    label: 'Lainnya',
+    url: '#!',
+    icon: MenuIcon,
+    childs: [
+      { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
+      { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
+      { label: 'Pembayaran', url: '/dashboard/payment', icon: RiMoneyDollarBoxLine },
       { label: 'User', url: '/dashboard/user', icon: LuUserCircle2 },
       { label: 'Guru', url: '/dashboard/teacher', icon: BsPersonWorkspace },
       { label: 'Siswa', url: '/dashboard/student', icon: GrUserManager },
