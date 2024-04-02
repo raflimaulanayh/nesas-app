@@ -41,7 +41,7 @@ export const RichText: React.FC<RichTextProps> = ({
         <FormItem className="space-y-3">
           <div className={cn('flex justify-between w-full', className)}>
             <Label className="text-sm font-semibold text-primary-blue">
-              {label} {required && <span className="text-primary-blue"> *</span>}
+              {label} {required && <span className="text-red-600"> *</span>}
             </Label>
           </div>
           <Tiptap defaultValue={defaultValue || ''} onChange={field.onChange} />

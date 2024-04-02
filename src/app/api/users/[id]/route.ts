@@ -26,7 +26,7 @@ export async function PUT(request: Request, { params }: Params) {
     const data = await request.json()
     const id = params.id
 
-    const { username, email, role, photo, active } = data
+    const { username, email, role, photo, active, accountComplete } = data
 
     const existingUser = await prisma.users.findUnique({
       where: { id }
@@ -53,7 +53,8 @@ export async function PUT(request: Request, { params }: Params) {
         email,
         role,
         photo,
-        active
+        active,
+        accountComplete
       },
       include: {
         teachers: true,

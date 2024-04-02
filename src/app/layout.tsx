@@ -4,8 +4,10 @@ import { siteConfig } from '@/constants/config'
 import { Analytics } from '@vercel/analytics/react'
 import { auth } from 'auth'
 import { Rubik as FontSans } from 'next/font/google'
+import NextTopLoader from 'nextjs-toploader'
 import React from 'react'
 
+import { Toaster } from '@/components/atoms/ui/toaster'
 import { ClientProvider } from '@/components/providers/client-provider'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 
@@ -43,9 +45,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <body className={cn('antialiased min-h-screen', fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <React.Fragment>
+            <NextTopLoader color="#4338CA" showSpinner={false} />
             <ClientProvider session={session}>{children}</ClientProvider>
             <Analytics />
           </React.Fragment>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

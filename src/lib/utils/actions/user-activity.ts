@@ -11,7 +11,7 @@ export async function TrackUserActivity(
       type_activity: type_activity,
       activity_detail: activity_detail
     }
-    const response = await api.post('/api/user-activities', body)
+    const response = await api.post('/user-activities', body)
     if (response.status === 200) {
       console.log('User activity tracked successfully')
     }

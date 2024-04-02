@@ -4,6 +4,7 @@ interface TUser {
     email: string
     password: string
     role: string
+    accountComplete?: boolean
     active?: boolean
     photo?: string
     createdAt?: string
@@ -15,6 +16,7 @@ interface User {
   email: string
   password: string
   role: string
+  accountComplete?: boolean
   active?: boolean
   photo?: string
   createdAt?: string

@@ -121,10 +121,10 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<
       <p
         ref={ref}
         id={formMessageId}
-        className={cn('text-sm flex space-x-1 items-center font-medium text-destructive', className)}
+        className={cn('text-xs flex space-x-1 items-center font-medium text-destructive', className)}
         {...props}
       >
-        <TiWarning size={20} />
+        <TiWarning size={16} />
         <span>{body}</span>
       </p>
     )

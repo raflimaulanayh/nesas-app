@@ -5,20 +5,42 @@ enum Genders {
   female = 'female'
 }
 
+export interface OptionProps {
+  label: string
+  value: string
+  checked?: boolean
+  other?: string
+}
+
 export const formSchema = z.object({
   nis: z.string().nonempty({
     message: 'NIS harus diisi'
   }),
-  nisn: z.string().nonempty({
-    message: 'NISN harus diisi'
-  }),
+  nisn: z
+    .string()
+    .nonempty({ message: 'NISN harus diisi' })
+    .regex(/^[0-9]+$/)
+    .min(10),
   name: z.string().nonempty({
-    message: 'Nama Harus diisi'
+    message: 'Nama harus diisi'
   }),
-  gender: z.optional(z.nativeEnum(Genders)),
-  phone_number: z.optional(z.string()),
-  address: z.optional(z.string()),
-  birth_date: z.optional(z.string()),
+  class_id: z.string().nonempty({
+    message: 'Kelas harus diisi'
+  }),
+  gender: z.nativeEnum(Genders),
+  birth_date: z.string().nonempty({ message: 'Tanggal lahir harus diisi' }),
+  phone_number: z
+    .string()
+    .nonempty({ message: 'No. HP harus diisi' })
+    .regex(/^[0-9]+$/)
+    .min(10),
+  phone_number_parent: z
+    .string()
+    .nonempty({ message: 'No. HP orang tua/wali harus diisi' })
+    .regex(/^[0-9]+$/)
+    .min(10),
+  address: z.string().nonempty({ message: 'Alamat harus diisi' }),
   join_date: z.optional(z.string()),
-  end_date: z.optional(z.string())
+  end_date: z.optional(z.string()),
+  user_id: z.optional(z.string())
 })

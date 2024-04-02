@@ -14,8 +14,20 @@ export const createStudent = async (data: Student) => {
         where: { nisn: data.nisn }
       })
 
+      const existingUserStudent = await prisma.students.findUnique({
+        where: { user_id: data.user_id }
+      })
+
+      const existingUserTeacher = await prisma.teachers.findUnique({
+        where: { user_id: data.user_id }
+      })
+
       if (existingNis || existingNisn) {
         throw new Error('NIS or NISN is already taken.')
+      }
+
+      if (existingUserStudent || existingUserTeacher) {
+        throw new Error('User is already taken.')
       }
     }
 

@@ -52,7 +52,7 @@ export const Select: React.FC<SelectProps> = ({
         <FormItem>
           <div className={cn('border-2  pt-2 rounded-md', className, isFocus ? 'border-primary-blue' : 'border-gray-200')}>
             <Label className="px-3 text-sm text-primary-blue">
-              {label} {required && <span> *</span>}
+              {label} {required && <span className="text-red-600"> *</span>}
             </Label>
             {searchAble ? (
               <div className="relative w-full">

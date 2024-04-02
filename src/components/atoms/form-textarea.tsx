@@ -40,7 +40,7 @@ export const Textarea: React.FC<Input> = ({
           <div className={cn('border-2  pt-2 rounded-md', className, isFocus ? 'border-primary' : 'border-gray-200')}>
             {label && (
               <Label className="px-3 text-sm text-primary">
-                {label} {required && <span> &nbsp;*</span>}
+                {label} {required && <span className="text-red-600">*</span>}
               </Label>
             )}
             <FormControl>

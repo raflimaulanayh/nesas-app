@@ -41,7 +41,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         <FormItem className="space-y-3">
           <div className={cn('flex justify-between w-full', className)}>
             <Label className="text-sm font-semibold text-primary-blue">
-              {label} {required && !isTOR && <span className="text-primary-blue"> *</span>}
+              {label} {required && !isTOR && <span className="text-red-600"> *</span>}
             </Label>
           </div>
           {options?.map((item) => (

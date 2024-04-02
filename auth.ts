@@ -29,7 +29,7 @@ export const {
       // Allow OAuth without email verification
       if (account?.provider !== 'credentials') return true
 
-      const existingUser = await getUserById(user.id || '')
+      const existingUser = await getUserById(user?.id || '')
 
       // Prevent sign in without email verification
       if (!existingUser?.emailVerified) return false
@@ -41,17 +41,14 @@ export const {
         session.user.id = token.sub
       }
 
-      if (token.role && session.user) {
-        session.user.role = token.role as 'admin' | 'student' | 'teacher' | 'finance' | 'hubinmas' | 'copywritter'
-      }
-
-      if (token.active) {
-        session.user.active = token.active as boolean
-      }
-
       if (session.user) {
-        session.user.name = token.name
-        session.user.email = token.email || ''
+        session.user.username = token.username as string
+        session.user.email = token.email as string
+        session.user.role = token.role as 'admin' | 'student' | 'teacher' | 'finance' | 'hubinmas' | 'copywritter'
+        session.user.emailVerified = token.emailVerified as Date
+        session.user.photo = token.photo as string
+        session.user.active = token.active as boolean
+        session.user.accountComplete = token.accountComplete as boolean
       }
 
       return session

@@ -51,7 +51,7 @@ export const Input: React.FC<Input> = ({
             )}
           >
             <Label className="px-3 text-sm text-primary">
-              {label} {required && <span> *</span>}
+              {label} {required && <span className="text-red-600"> *</span>}
             </Label>
             <FormControl>
               <FormInput

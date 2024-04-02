@@ -51,7 +51,7 @@ export const PhoneInput: React.FC<PhoneInput> = ({
             )}
           >
             <Label className="px-3 text-sm text-primary-blue">
-              {label} {required && <span> *</span>}
+              {label} {required && <span className="text-red-600"> *</span>}
             </Label>
             <FormControl className="m-1">
               <Phone

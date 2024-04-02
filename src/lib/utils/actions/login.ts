@@ -38,14 +38,18 @@ export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: s
 
     let redirectTo: string
 
-    if (role === 'admin') {
-      redirectTo = '/dashboard'
-    } else if (role === 'student') {
-      redirectTo = '/student'
-    } else if (role === 'teacher') {
-      redirectTo = '/teacher'
+    if (existingUser.accountComplete !== null || existingUser.accountComplete !== false) {
+      if (role === 'admin') {
+        redirectTo = '/dashboard'
+      } else if (role === 'student') {
+        redirectTo = '/student'
+      } else if (role === 'teacher') {
+        redirectTo = '/teacher'
+      } else {
+        redirectTo = callbackUrl || DEFAULT_LOGIN_REDIRECT
+      }
     } else {
-      redirectTo = callbackUrl || DEFAULT_LOGIN_REDIRECT
+      redirectTo = '/auth/register/complete'
     }
 
     await signIn('credentials', {

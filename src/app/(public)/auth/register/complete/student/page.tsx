@@ -1,40 +1,54 @@
 'use client'
 
 import { useCurrentUser } from '@/hooks/use-current-user'
-import { useToast } from '@/hooks/use-toast'
 import api from '@/services/api'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import useSWR from 'swr'
 import { z } from 'zod'
 
+import { Alert } from '@/components/atoms/alert'
 import { Input } from '@/components/atoms/form-input'
 import { Select } from '@/components/atoms/form-select'
 import { Textarea } from '@/components/atoms/form-textarea'
 import { Loading } from '@/components/atoms/icons'
 import { Button } from '@/components/atoms/ui/button'
 import { Form } from '@/components/atoms/ui/form'
+import { toast } from '@/components/atoms/ui/use-toast'
+import { HeaderForm } from '@/components/molecules/header-form'
 import Container from '@/components/templates/container/container'
 import { SiteLayout } from '@/components/templates/site-layout'
 
+import { handleUpdateStatusComplete } from '@/lib/utils/actions/update-status-complete'
 import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
-import { formSchema } from './schema'
+import { formSchema, OptionProps } from './schema'
 
 export default function RegisterPage() {
   const user = useCurrentUser()
 
-  const { toast } = useToast()
+  const CLASS_OPTIONS: OptionProps[] = []
+  const { data: classes, isLoading: loadClass } = useSWR('/classes')
+  if (!loadClass && classes) {
+    classes.data.map((item: { name: string; id: string }) => {
+      return CLASS_OPTIONS.push({ label: item?.name, value: item?.id })
+    })
+  }
+
   const [loading, setLoading] = useState(false)
-  const router = useRouter()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       nis: '',
       nisn: '',
-      name: ''
+      name: '',
+      class_id: '',
+      phone_number: '',
+      phone_number_parent: '',
+      birth_date: '',
+      address: ''
     }
   })
 
@@ -45,28 +59,27 @@ export default function RegisterPage() {
       nis: values.nis,
       nisn: values.nisn,
       name: values.name,
+      class_id: values.class_id,
       gender: values.gender,
       birth_date: values.birth_date,
       phone_number: values.phone_number,
+      phone_number_parent: values.phone_number_parent,
       address: values.address,
       join_date: values.join_date,
-      end_date: values.end_date
+      end_date: values.end_date,
+      user_id: user?.id
     }
 
     await api
-      .post('/api/students', body)
+      .post('/students', body)
       .then(({ status }) => {
         if (status == 200) {
           toast({
             title: 'Berhasil!',
-            description: 'Selamat, siswa telah berhasil ditambahkan.'
+            description: 'Selamat, data siswa telah berhasil dilengkapi.'
           })
-          TrackUserActivity(user?.id ?? '', 'create', 'Tambah data siswa : ' + body.name)
-
-          setTimeout(() => {
-            setLoading(false)
-            router.push('/dashboard/student')
-          }, 1000)
+          handleUpdateStatusComplete(user?.id || '', 'student' || '')
+          TrackUserActivity(user?.id ?? '', 'create', 'Melengkapi data siswa : ' + body.name)
         }
       })
       .catch((e) => {
@@ -74,7 +87,13 @@ export default function RegisterPage() {
         if (e.error == 'NIS or NISN is already taken.') {
           toast({
             title: 'Gagal ditambahkan!',
-            description: 'NIP sudah ada!.',
+            description: 'NIS or NISN sudah ada!.',
+            variant: 'destructive'
+          })
+        } else if (e.error == 'User is already taken.') {
+          toast({
+            title: 'Gagal ditambahkan!',
+            description: 'Tidak bisa membuat data siswa lebih dari 1 kali.',
             variant: 'destructive'
           })
         } else {
@@ -85,20 +104,40 @@ export default function RegisterPage() {
           })
         }
       })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   return (
     <SiteLayout>
       <Container>
         <div className="flex flex-col justify-center min-h-screen">
-          <div className="sm:mx-auto py-10 sm:w-full sm:max-w-[480px]">
-            <h1 className="pb-4 text-2xl font-semibold text-primary">Data lengkap siswa</h1>
+          <div className="max-w-4xl py-10 sm:mx-auto sm:w-full">
+            <HeaderForm title="Data lengkap siswa" url="/auth/register/complete" />
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Input name="nis" label="NIS" required placeholder="Masukan nis" {...form} />
-                  <Input placeholder="Masukan nisn" name="nisn" label="NISN" required {...form} />
+                <div className="space-y-4">
+                  <Alert
+                    type="info"
+                    message={
+                      <p>
+                        Tanda <span className="text-red-600">*</span> mendandakan data input yang harus diisi
+                      </p>
+                    }
+                  />
+                  <Input name="nis" label="NIS" required placeholder="Masukan NIS" {...form} />
+                  <Input placeholder="Masukan NISN" name="nisn" label="NISN" required {...form} />
                   <Input placeholder="Masukan nama" name="name" label="Nama" required {...form} />
+                  <Select
+                    name="class_id"
+                    label="Kelas"
+                    required
+                    searchAble
+                    placeholder="Pilih kelas"
+                    option={CLASS_OPTIONS}
+                    {...form}
+                  />
                   <Select
                     name="gender"
                     label="Jenis Kelamin"
@@ -118,6 +157,13 @@ export default function RegisterPage() {
                   />
                   <Input name="phone_number" label="No. HP" required placeholder="Masukan nomor HP" {...form} />
                   <Input
+                    name="phone_number_parent"
+                    label="No. HP orang tua/wali"
+                    required
+                    placeholder="Masukan nomor HP orang tua/wali"
+                    {...form}
+                  />
+                  <Input
                     name="birth_date"
                     label="Tanggal lahir"
                     required
@@ -130,7 +176,7 @@ export default function RegisterPage() {
 
                   <Input name="end_date" label="Tanggal Keluar" type="date" placeholder="Masukan tanggal keluar" {...form} />
 
-                  <Textarea name="address" label="Alamat" placeholder="Masukan alamat" {...form} />
+                  <Textarea name="address" label="Alamat" placeholder="Masukan alamat" required {...form} />
                 </div>
                 <Button disabled={loading} className="ml-auto" type="submit">
                   {loading ? <Loading /> : 'Submit'}

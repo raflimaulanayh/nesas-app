@@ -67,7 +67,7 @@ model PasswordResetToken {
 
 model Teachers {
   id               String                 @id @default(cuid())
-  user_id          String?
+  user_id          String?                @unique
   nip              String?                @unique
   name             String?
   gender           GenderType?
@@ -88,36 +88,39 @@ model Teachers {
 model EducationalPositions {
   id        String     @id @default(cuid())
   name      String
+  major     Majors[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   teachers  Teachers[]
 }
 
 model Majors {
-  id                 String               @id @default(cuid())
-  name               String
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @updatedAt
-  classes            Classes[]
-  companyInternships CompanyInternships[]
+  id                   String                 @id @default(cuid())
+  name                 String
+  description          String?                @db.Text
+  image                String?
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  educationalPositions EducationalPositions[]
+  classes              Classes[]
+  companyInternships   CompanyInternships[]
 }
 
 model Classes {
-  id           String     @id @default(cuid())
-  grade        Int
-  class_number Int
-  major_id     String
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  major        Majors     @relation(fields: [major_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  students     Students[]
+  id        String     @id @default(cuid())
+  name      String
+  major_id  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  major     Majors     @relation(fields: [major_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  students  Students[]
 
   @@index([major_id])
 }
 
 model Students {
   id                  String          @id @default(cuid())
-  user_id             String?
+  user_id             String?         @unique
   nis                 String?         @unique
   nisn                String?         @unique
   name                String

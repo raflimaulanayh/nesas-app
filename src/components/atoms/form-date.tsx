@@ -51,7 +51,7 @@ export const DateInput: React.FC<DateInputProps> = ({
               data-attribute="date-input"
             >
               <Label className="px-3 text-sm text-primary-blue">
-                {label} {required && <span> *</span>}
+                {label} {required && <span className="text-red-600"> *</span>}
               </Label>
               <Popover>
                 <PopoverTrigger asChild onFocus={() => setIsFocus(true)} onBlur={() => setIsFocus(false)}>
