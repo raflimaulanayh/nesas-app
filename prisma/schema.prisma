@@ -22,7 +22,6 @@ model Users {
   active          Boolean?         @default(false)
   teachers        Teachers[]
   students        Students[]
-  userActivities  UserActivities[]
   news            News[]
   comments        Comments[]
   Account         Account[]
@@ -141,8 +140,6 @@ model Students {
   class               Classes?        @relation(fields: [class_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
   internship          Internships?    @relation(fields: [internship_id], references: [id])
   ujikom              Ujikoms?        @relation(fields: [ujikom_id], references: [id])
-  payments            Payments[]
-  absents             Absents[]
 
   @@index([class_id])
   @@index([user_id])
@@ -193,53 +190,13 @@ model Ujikoms {
   students       Students[]
 }
 
-model Payments {
-  id             String              @id @default(cuid())
-  student_id     String
-  total_price    Float
-  payment_date   String?
-  payment_status PaymentStatus       @default(unpaid)
-  notes          String?
-  createdAt      DateTime            @default(now())
-  updatedAt      DateTime            @updatedAt
-  student        Students            @relation(fields: [student_id], references: [id])
-  categories     PaymentCategories[]
-
-  @@index([student_id])
-}
-
-model PaymentCategories {
-  id        String     @id @default(cuid())
-  name      String
-  price     Float
-  year      Int
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  payments  Payments[]
-}
-
-model Absents {
-  id          String       @id @default(cuid())
-  student_id  String
-  absent_date DateTime     @default(now())
-  status      AbsentStatus @default(absent)
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  student     Students     @relation(fields: [student_id], references: [id])
-
-  @@index([student_id])
-}
-
 model UserActivities {
   id              String           @id @default(cuid())
-  user_id         String
+  identifier      String?
   type_activity   TypeUserActivity
   activity_detail String?
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
-  user            Users?           @relation(fields: [user_id], references: [id])
-
-  @@index([user_id])
 }
 
 model News {
@@ -320,42 +277,6 @@ model PollVotes {
   @@index([option_id])
 }
 
-model CompanyInternshipsToMajors {
-  A String
-  B String
-
-  @@unique([A, B], map: "_CompanyInternshipsToMajors_AB_unique")
-  @@index([B], map: "_CompanyInternshipsToMajors_B_index")
-  @@map("_CompanyInternshipsToMajors")
-}
-
-model EducationalPositionsToTeachers {
-  A String
-  B String
-
-  @@unique([A, B], map: "_EducationalPositionsToTeachers_AB_unique")
-  @@index([B], map: "_EducationalPositionsToTeachers_B_index")
-  @@map("_EducationalPositionsToTeachers")
-}
-
-model PaymentCategoriesToPayments {
-  A String
-  B String
-
-  @@unique([A, B], map: "_PaymentCategoriesToPayments_AB_unique")
-  @@index([B], map: "_PaymentCategoriesToPayments_B_index")
-  @@map("_PaymentCategoriesToPayments")
-}
-
-model TeachersToUjikoms {
-  A String
-  B String
-
-  @@unique([A, B], map: "_TeachersToUjikoms_AB_unique")
-  @@index([B], map: "_TeachersToUjikoms_B_index")
-  @@map("_TeachersToUjikoms")
-}
-
 enum CompanyStatus {
   active
   not_active
@@ -394,23 +315,6 @@ enum UjikomStatus {
   canceled
   ongoing
   completed
-}
-
-enum PaymentStatus {
-  paid
-  unpaid
-  installments
-  refunded
-  canceled
-  pending
-  failed
-}
-
-enum AbsentStatus {
-  present
-  absent
-  sick
-  permission
 }
 
 enum TypeUserActivity {

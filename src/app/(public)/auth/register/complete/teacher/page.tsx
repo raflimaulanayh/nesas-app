@@ -60,7 +60,7 @@ export default function RegisterPage() {
       .then(({ status }) => {
         if (status == 200) {
           handleUpdateStatusComplete(user?.id || '', 'teacher' || '')
-          TrackUserActivity(user?.id ?? '', 'create', 'Melengkapi data guru : ' + body.name)
+          TrackUserActivity(user?.email ?? '', 'create', 'Melengkapi data guru : ' + body.name)
           toast({
             title: 'Berhasil!',
             description: 'Selamat, data guru telah berhasil dilengkapi.'

@@ -79,7 +79,7 @@ export default function RegisterPage() {
             description: 'Selamat, data siswa telah berhasil dilengkapi.'
           })
           handleUpdateStatusComplete(user?.id || '', 'student' || '')
-          TrackUserActivity(user?.id ?? '', 'create', 'Melengkapi data siswa : ' + body.name)
+          TrackUserActivity(user?.email ?? '', 'create', 'Melengkapi data siswa : ' + body.name)
         }
       })
       .catch((e) => {

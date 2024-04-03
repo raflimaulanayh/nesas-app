@@ -25,8 +25,6 @@ interface TStudent {
     internship_id?: string
     ujikom_id?: string
     user_id?: string
-    paymentIds?: string[]
-    absentIds?: string[]
   }[]
 }
 
@@ -47,8 +45,6 @@ interface Student {
   internship_id?: string
   ujikom_id?: string
   user_id?: string
-  paymentIds?: string[]
-  absentIds?: string[]
 }
 
 export type { Student, TStudent }

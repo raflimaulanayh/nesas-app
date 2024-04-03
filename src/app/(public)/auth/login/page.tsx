@@ -1,3 +1,7 @@
+'use client'
+
+import { useCurrentUser } from '@/hooks/use-current-user'
+import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { Skeleton } from '@/components/atoms/ui/skeleton'
@@ -6,19 +10,19 @@ import Container from '@/components/templates/container/container'
 import { SiteLayout } from '@/components/templates/site-layout'
 
 export default function LoginPage() {
-  // const session = await getServerSession(authOptions)
+  const user = useCurrentUser()
 
-  // if (session) {
-  //   switch (session?.user?.role) {
-  //     case 'admin':
-  //       return (window.location.href = '/admin')
-  //     case 'student':
-  //       return (window.location.href = '/student')
-  //     case 'teacher':
-  //       return (window.location.href = '/teacher')
-  //     default:
-  //   }
-  // }
+  if (user) {
+    switch (user?.role) {
+      case 'admin':
+        return redirect('/dashboard')
+      case 'student':
+        return redirect('/student')
+      case 'teacher':
+        return redirect('/teacher')
+      default:
+    }
+  }
 
   return (
     <SiteLayout>

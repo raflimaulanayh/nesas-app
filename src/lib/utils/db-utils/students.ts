@@ -48,10 +48,6 @@ export const createStudent = async (data: Student) => {
         end_date: data.end_date,
         internship_id: data.internship_id,
         ujikom_id: data.ujikom_id
-      },
-      include: {
-        payments: true,
-        absents: true
       }
     })
 

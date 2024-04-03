@@ -80,12 +80,7 @@ export const POST = async (request: Request) => {
 
 export async function GET() {
   try {
-    const students = await prisma.students.findMany({
-      include: {
-        absents: true,
-        payments: true
-      }
-    })
+    const students = await prisma.students.findMany()
 
     return NextResponse.json({ data: students }, { status: 200 })
   } catch (error) {

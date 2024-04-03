@@ -23,12 +23,12 @@ export async function PUT(request: Request, { params }: Params) {
     const data = await request.json()
     const id = params.id
 
-    const { user_id, type_activity, activity_detail } = data
+    const { identifier, type_activity, activity_detail } = data
 
     const updateActivity = await prisma.userActivities.update({
       where: { id },
       data: {
-        user_id,
+        identifier,
         type_activity,
         activity_detail
       }

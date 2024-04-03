@@ -9,6 +9,7 @@ import * as z from 'zod'
 import { sendVerificationEmail } from '../mail'
 import { getUserByEmail } from '../prisma/user'
 import { generateVerificationToken } from '../token'
+import { TrackUserActivity } from './user-activity'
 
 export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: string | null) => {
   const validatedFields = LoginSchema.safeParse(values)
@@ -51,6 +52,8 @@ export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: s
     } else {
       redirectTo = '/auth/register/complete'
     }
+
+    TrackUserActivity(email, 'signin', 'Melakukan login')
 
     await signIn('credentials', {
       email,

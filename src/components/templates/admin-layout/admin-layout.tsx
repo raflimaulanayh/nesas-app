@@ -7,9 +7,11 @@ interface AdminLayoutProps {
 }
 
 export const AdminLayout = ({ children }: AdminLayoutProps) => (
-  <div>
-    <NavbarDashboard />
-    <div className="w-full bg-white pl-[73px] pr-[97px] py-16 flex flex-col space-y-6 flex-1">{children}</div>
+  <main>
+    <div className="flex flex-col flex-1 w-full bg-white lg:pl-52">
+      <NavbarDashboard />
+      <div className="px-4 py-5 lg:py-8 sm:px-6 lg:px-8">{children}</div>
+    </div>
     <Sidebar />
-  </div>
+  </main>
 )

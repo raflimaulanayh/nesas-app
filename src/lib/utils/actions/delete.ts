@@ -20,7 +20,7 @@ export const handleDelete = async (idsToDelete: string[], apiEndpoint: string): 
               description: `Data berhasil dihapus.`,
               variant: 'default'
             })
-            TrackUserActivity(session?.user?.id ?? '', 'delete', 'Melakukan delete beberapa atau semua data')
+            TrackUserActivity(session?.user?.email ?? '', 'delete', 'Melakukan delete beberapa atau semua data')
           } else {
             throw new Error(`Gagal menghapus data.`)
           }

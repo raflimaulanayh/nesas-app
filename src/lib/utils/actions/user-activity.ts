@@ -1,13 +1,13 @@
 import api from '@/services/api'
 
 export async function TrackUserActivity(
-  user_id: string,
+  identifier: string,
   type_activity: 'signin' | 'signout' | 'create' | 'update' | 'delete' | 'others',
   activity_detail?: string
 ) {
   try {
     const body = {
-      user_id: user_id,
+      identifier: identifier,
       type_activity: type_activity,
       activity_detail: activity_detail
     }

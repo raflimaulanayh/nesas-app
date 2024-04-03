@@ -9,16 +9,18 @@ export enum TypeUserActivity {
 
 interface TUserActivity {
   data: {
-    user_id: string
+    identifier: string
     type_activity: TypeUserActivity
     activity_detail?: string
+    createdAt?: string
   }[]
 }
 
 interface UserActivity {
-  user_id: string
+  identifier: string
   type_activity: TypeUserActivity
   activity_detail?: string
+  createdAt?: string
 }
 
 export type { UserActivity, TUserActivity }
