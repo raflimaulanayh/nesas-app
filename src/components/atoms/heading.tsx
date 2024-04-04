@@ -10,10 +10,10 @@ interface HeadingProps {
   url?: string
 }
 
-export const Heading = ({ text, className, url = '#!' }: HeadingProps) => (
-  <Link href={url}>
+export const Heading = ({ text, className, url }: HeadingProps) => (
+  <Link href={url || '#!'}>
     <h1 className={cn('text-2xl font-semibold text-primary flex items-center gap-2', className)}>
-      <ArrowLeftIcon size={24} />
+      {url && <ArrowLeftIcon size={24} />}
       {typeof text === 'string' ? <span>{text}</span> : text}
     </h1>
   </Link>
