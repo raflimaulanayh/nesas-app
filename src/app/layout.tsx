@@ -2,6 +2,7 @@ import '@/shared/styles/app.css'
 
 import { siteConfig } from '@/constants/config'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { auth } from 'auth'
 import { Rubik as FontSans } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
@@ -47,6 +48,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <React.Fragment>
             <NextTopLoader color="#4338CA" showSpinner={false} />
             <ClientProvider session={session}>{children}</ClientProvider>
+            <SpeedInsights />
             <Analytics />
           </React.Fragment>
           <Toaster />
