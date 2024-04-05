@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface TUser {
   data: {
     username?: string
@@ -5,8 +6,8 @@ interface TUser {
     password: string
     role: string
     accountComplete?: boolean
-    active?: boolean
-    photo?: string
+    active?: any
+    photo?: any
     createdAt?: string
   }[]
 }
@@ -17,8 +18,8 @@ interface User {
   password: string
   role: string
   accountComplete?: boolean
-  active?: boolean
-  photo?: string
+  active?: any
+  photo?: any
   createdAt?: string
 }
 

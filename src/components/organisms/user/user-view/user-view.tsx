@@ -11,12 +11,12 @@ import { SkeletonDataTable } from '@/components/atoms/skeleton-data-table'
 import { columns } from './data-table/columns'
 import { DataTable } from './data-table/table'
 
-export const UserOverview = () => {
+export const UserView = () => {
   const isHydrated = useHydration()
   const { data: users, mutate: mutateUser, isLoading: userLoading } = useSWR('/users')
   const dataUser = users?.data === undefined ? [{}] : users.data
 
-  const items = [{ href: '/dashboard', label: 'Dashboard' }, { label: 'Kelola Siswa' }]
+  const items = [{ href: '/dashboard', label: 'Dashboard' }, { label: 'Kelola User' }]
 
   return (
     <Fragment>
@@ -25,7 +25,7 @@ export const UserOverview = () => {
         <div className="space-y-7">
           <div className="flex flex-col space-y-2">
             <BreadcrumbResponsive items={items} />
-            <Heading text="Kelola Siswa" />
+            <Heading text="Kelola User" />
           </div>
           <DataTable data={dataUser} columns={columns} mutate={mutateUser} isLoading={userLoading} />
         </div>

@@ -1,12 +1,12 @@
 'use client'
 
-import { UserOverview } from '@/components/organisms/user'
+import { UserView } from '@/components/organisms/user/user-view'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
 const UserPage = () => {
   return (
     <AdminLayout>
-      <UserOverview />
+      <UserView />
     </AdminLayout>
   )
 }
