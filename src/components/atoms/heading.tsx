@@ -11,10 +11,10 @@ interface HeadingProps {
 }
 
 export const Heading = ({ text, className, url }: HeadingProps) => (
-  <Link href={url || '#!'}>
-    <h1 className={cn('text-2xl font-semibold text-primary flex items-center gap-2', className)}>
+  <h1>
+    <Link href={url || '#!'} className={cn('text-2xl font-semibold text-primary inline-flex items-center gap-2', className)}>
       {url && <ArrowLeftIcon size={24} />}
       {typeof text === 'string' ? <span>{text}</span> : text}
-    </h1>
-  </Link>
+    </Link>
+  </h1>
 )

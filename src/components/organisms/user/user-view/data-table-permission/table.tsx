@@ -3,7 +3,6 @@
 'use client'
 
 import useDelete from '@/hooks/use-delete'
-import { toast } from '@/hooks/use-toast'
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -26,6 +25,7 @@ import { Loading } from '@/components/atoms/icons'
 import { Button } from '@/components/atoms/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/atoms/ui/table'
 import { ToastAction } from '@/components/atoms/ui/toast'
+import { toast } from '@/components/atoms/ui/use-toast'
 import { DataTableFacetedFilter } from '@/components/molecules/data-table/data-table-faceted-filter'
 import { DataTablePagination } from '@/components/molecules/data-table/data-table-pagination'
 import { DataTableToolbar } from '@/components/molecules/data-table/data-table-toolbar'
@@ -39,7 +39,7 @@ interface DataTableProps<TData, TValue> {
   mutate: any
 }
 
-export function DataTable<TData extends { id: string }, TValue>({
+export function DataTablePermission<TData extends { id: string }, TValue>({
   columns,
   data,
   isLoading = false,
@@ -95,8 +95,6 @@ export function DataTable<TData extends { id: string }, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getRowId: (row) => row.id
   })
-
-  console.log(table.getRowModel())
 
   return (
     <div className="space-y-4">
@@ -158,7 +156,11 @@ export function DataTable<TData extends { id: string }, TValue>({
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    <TableCell key={cell.id}>
+                      {/* <Link href={`/dashboard/user/${row.id}`}> */}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {/* </Link> */}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))

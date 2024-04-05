@@ -1,5 +1,4 @@
 import useDelete from '@/hooks/use-delete'
-import { toast } from '@/hooks/use-toast'
 import { Row } from '@tanstack/react-table'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
@@ -16,6 +15,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/atoms/ui/dropdown-menu'
 import { ToastAction } from '@/components/atoms/ui/toast'
+import { toast } from '@/components/atoms/ui/use-toast'
 
 import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
@@ -23,12 +23,18 @@ interface DataTableRowActionsProps<TData> {
   row: Row<TData>
   endpoint: string
   children?: ReactNode
+  editAble?: boolean
+  detailAble?: boolean
+  deleteAble?: boolean
 }
 
 export function DataTableRowActions<TData extends { id: string }>({
   row,
   endpoint,
-  children
+  children,
+  detailAble,
+  editAble = true,
+  deleteAble = true
 }: DataTableRowActionsProps<TData>) {
   const data = row.original
   const router = usePathname()
@@ -71,12 +77,21 @@ export function DataTableRowActions<TData extends { id: string }>({
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
           {children && <DropdownMenuItem>{children}</DropdownMenuItem>}
-          <DropdownMenuItem>
-            <Link className="w-full" href={`${router}/update/${data.id}`}>
-              Edit
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={handleModalDelete}>Delete</DropdownMenuItem>
+          {detailAble && (
+            <DropdownMenuItem>
+              <Link className="w-full" href={`${router}/${data.id}`}>
+                Detail
+              </Link>
+            </DropdownMenuItem>
+          )}
+          {editAble && (
+            <DropdownMenuItem>
+              <Link className="w-full" href={`${router}/update/${data.id}`}>
+                Edit
+              </Link>
+            </DropdownMenuItem>
+          )}
+          {deleteAble && <DropdownMenuItem onClick={handleModalDelete}>Delete</DropdownMenuItem>}
         </DropdownMenuContent>
       </DropdownMenu>
     </Fragment>

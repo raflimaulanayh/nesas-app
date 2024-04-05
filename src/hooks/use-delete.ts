@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { toast } from '@/hooks/use-toast' // Mengimpor langsung toast dari use-toast
 import api from '@/services/api'
+
+import { toast } from '@/components/atoms/ui/use-toast'
 
 const useDelete = async (endpoint: string, rowSelection: { [key: string]: boolean }) => {
   const selectedIds = Object.keys(rowSelection).filter((id) => rowSelection[id])

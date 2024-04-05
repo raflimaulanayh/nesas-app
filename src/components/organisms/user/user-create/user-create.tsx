@@ -21,7 +21,7 @@ export const UserCreate = () => {
         <div className="space-y-7">
           <div className="flex flex-col space-y-2">
             <BreadcrumbResponsive items={items} />
-            <Heading text="Tambah User" />
+            <Heading url="/dashboard/user" text="Tambah User" />
           </div>
           <UserCreateForm />
         </div>

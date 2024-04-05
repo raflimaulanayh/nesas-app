@@ -53,7 +53,7 @@ export const columns: ColumnDef<Users>[] = [
       return value.includes(row.getValue(role))
     },
     header: 'Role',
-    cell: ({ row }) => <div>{row.getValue('role')}</div>
+    cell: ({ row }) => <div className="uppercase">{row.getValue('role')}</div>
   },
   {
     accessorKey: 'photo',
@@ -71,6 +71,6 @@ export const columns: ColumnDef<Users>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row }) => <DataTableRowActions endpoint="/users" row={row} />
+    cell: ({ row }) => <DataTableRowActions detailAble endpoint="/users" row={row} />
   }
 ]

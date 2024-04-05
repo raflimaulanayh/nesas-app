@@ -22,7 +22,7 @@ export const UserUpdate = ({ params }: Params) => {
         <div className="space-y-7">
           <div className="flex flex-col space-y-2">
             <BreadcrumbResponsive items={items} />
-            <Heading text="Update User" />
+            <Heading url="/dashboard/user" text="Update User" />
           </div>
           <UserUpdateForm params={params} />
         </div>
