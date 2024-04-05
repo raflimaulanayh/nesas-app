@@ -112,7 +112,7 @@ export const navigationAdmin = [
   { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
   { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
   { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
-  { label: 'Pembayaran', url: '/dashboard/payment', icon: RiMoneyDollarBoxLine },
+  // { label: 'Pembayaran', url: '/dashboard/payment', icon: RiMoneyDollarBoxLine },
   {
     label: 'Lainnya',
     url: '#!',
@@ -139,7 +139,6 @@ export const navigationAdminMobile = [
     childs: [
       { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
       { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
-      { label: 'Pembayaran', url: '/dashboard/payment', icon: RiMoneyDollarBoxLine },
       { label: 'User', url: '/dashboard/user', icon: LuUserCircle2 },
       { label: 'Guru', url: '/dashboard/teacher', icon: BsPersonWorkspace },
       { label: 'Siswa', url: '/dashboard/student', icon: GrUserManager },

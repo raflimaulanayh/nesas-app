@@ -12,7 +12,7 @@ import { DataTableViewOptions } from './data-table-view-options'
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
   filter?: string
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export function DataTableToolbar<TData>({ table, filter = '', children }: DataTableToolbarProps<TData>) {

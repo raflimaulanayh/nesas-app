@@ -45,7 +45,7 @@ export function DataTableRowActions<TData extends { id: string }>({
       // eslint-disable-next-line react-hooks/rules-of-hooks
       await useDelete(endpoint, { [data.id]: true })
 
-      TrackUserActivity(session?.user?.id ?? '', 'delete', 'Hapus data user : ' + data.id)
+      TrackUserActivity(session?.user?.email ?? '', 'delete', 'Hapus data user : ' + data.id)
 
       mutate(endpoint)
     } catch (error) {

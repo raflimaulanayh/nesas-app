@@ -17,6 +17,7 @@ import { toast } from '@/components/atoms/ui/use-toast'
 import { UserDetailCardSubmissionDetailCard } from '@/components/molecules/card/user-detail-card'
 
 import { cn } from '@/lib/utils'
+import { formatDate } from '@/lib/utils/format-date'
 
 export const UserViewDetail = ({ params }: Params) => {
   const [openModal, setOpenModal] = useState(false)
@@ -139,7 +140,10 @@ export const UserViewDetail = ({ params }: Params) => {
                       value={student?.gender == 'male' ? 'Laki-laki' : 'Perempuan' ?? '-'}
                     />
                     <UserDetailCardSubmissionDetailCard label="Kelas" value={dataClass?.name ?? '-'} />
-                    <UserDetailCardSubmissionDetailCard label="Tanggal Lahir" value={student?.birth_date ?? '-'} />
+                    <UserDetailCardSubmissionDetailCard
+                      label="Tanggal Lahir"
+                      value={student?.birth_date ? formatDate(student?.birth_date) : '-'}
+                    />
                     <UserDetailCardSubmissionDetailCard label="No. HP" value={student?.phone_number ?? '-'} />
                     <UserDetailCardSubmissionDetailCard
                       label="No. HP (Orang tua / wali)"
@@ -153,11 +157,11 @@ export const UserViewDetail = ({ params }: Params) => {
                     <UserDetailCardSubmissionDetailCard label="Alamat" value={student?.address ?? '-'} />
                     <UserDetailCardSubmissionDetailCard
                       label="Tanggal bergabung"
-                      value={student?.join_date ? moment(student?.join_date).format('LL') : '-'}
+                      value={student?.join_date ? formatDate(student?.join_date) : '-'}
                     />
                     <UserDetailCardSubmissionDetailCard
                       label="Tanggal keluar"
-                      value={student?.end_date ? moment(student?.end_date).format('LL') : '-'}
+                      value={student?.end_date ? formatDate(student?.end_date) : '-'}
                     />
                   </div>
                 </div>
@@ -178,11 +182,11 @@ export const UserViewDetail = ({ params }: Params) => {
                     <UserDetailCardSubmissionDetailCard label="Alamat" value={teacher?.address ?? '-'} />
                     <UserDetailCardSubmissionDetailCard
                       label="Tanggal bergabung"
-                      value={teacher?.join_date ? moment(teacher?.join_date).format('LL') : '-'}
+                      value={teacher?.join_date ? formatDate(teacher?.join_date) : '-'}
                     />
                     <UserDetailCardSubmissionDetailCard
                       label="Tanggal keluar"
-                      value={teacher?.end_date ? moment(teacher?.end_date).format('LL') : '-'}
+                      value={teacher?.end_date ? formatDate(teacher?.end_date) : '-'}
                     />
                   </div>
                 </div>
