@@ -5,7 +5,7 @@ import { Params } from 'types/data/params'
 import { UserViewDetail } from '@/components/organisms/user/user-view-detail'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
-const UpdateUserPage = ({ params }: Params) => {
+const UpdateTeacherPage = ({ params }: Params) => {
   return (
     <AdminLayout>
       <UserViewDetail params={params} />
@@ -13,4 +13,4 @@ const UpdateUserPage = ({ params }: Params) => {
   )
 }
 
-export default UpdateUserPage
+export default UpdateTeacherPage

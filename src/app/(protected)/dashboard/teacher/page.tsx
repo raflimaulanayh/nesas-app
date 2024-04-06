@@ -3,7 +3,7 @@
 import { TeacherView } from '@/components/organisms/teacher/teacher-view'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
-const UserPage = () => {
+const TeacherPage = () => {
   return (
     <AdminLayout>
       <TeacherView />
@@ -11,4 +11,4 @@ const UserPage = () => {
   )
 }
 
-export default UserPage
+export default TeacherPage

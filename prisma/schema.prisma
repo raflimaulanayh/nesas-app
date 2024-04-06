@@ -75,6 +75,7 @@ model Teachers {
   address          String?
   join_date        String?
   end_date         String?
+  proof            String?
   createdAt        DateTime               @default(now())
   updatedAt        DateTime               @updatedAt
   user             Users?                 @relation(fields: [user_id], references: [id])
@@ -108,10 +109,10 @@ model Majors {
 model Classes {
   id        String     @id @default(cuid())
   name      String
-  major_id  String
+  major_id  String?
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  major     Majors     @relation(fields: [major_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  major     Majors?     @relation(fields: [major_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
   students  Students[]
 
   @@index([major_id])
@@ -134,6 +135,7 @@ model Students {
   graduate_status     GraduateStatus? @default(ongoing)
   internship_id       String?
   ujikom_id           String?
+  proof               String?
   createdAt           DateTime        @default(now())
   updatedAt           DateTime        @updatedAt
   user                Users?          @relation(fields: [user_id], references: [id])

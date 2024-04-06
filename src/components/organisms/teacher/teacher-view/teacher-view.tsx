@@ -13,8 +13,8 @@ import { DataTableView } from './data-table-view/table'
 
 export const TeacherView = () => {
   const isHydrated = useHydration()
-  const { data: users, mutate: mutateTeachers, isLoading: teachersLoading } = useSWR('/teachers')
-  const dataTeachers = users?.data === undefined ? [{}] : users.data
+  const { data: teachers, mutate: mutateTeachers, isLoading: teachersLoading } = useSWR('/teachers')
+  const dataTeachers = teachers?.data === undefined ? [{}] : teachers.data
 
   const items = [{ href: '/dashboard', label: 'Dashboard' }, { label: 'Kelola Guru' }]
 

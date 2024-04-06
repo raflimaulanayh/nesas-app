@@ -10,7 +10,7 @@ import { IoInformationCircleSharp } from 'react-icons/io5'
 import { LuUserCircle2 } from 'react-icons/lu'
 import { MdOutlineArticle } from 'react-icons/md'
 import { PiExam } from 'react-icons/pi'
-import { RiArticleFill, RiCustomerService2Fill, RiMoneyDollarBoxLine } from 'react-icons/ri'
+import { RiArticleFill, RiCustomerService2Fill } from 'react-icons/ri'
 import { TbLayoutDashboard } from 'react-icons/tb'
 
 export const navigationMore = [
@@ -122,8 +122,7 @@ export const navigationAdmin = [
       { label: 'Guru', url: '/dashboard/teacher', icon: BsPersonWorkspace },
       { label: 'Siswa', url: '/dashboard/student', icon: GrUserManager },
       { label: 'Jurusan', url: '/dashboard/major', icon: HiOutlineWrenchScrewdriver },
-      { label: 'Kelas', url: '/dashboard/class', icon: FaHouseUser },
-      { label: 'K. Pembayaran', url: '/dashboard/payment-categories', icon: RiMoneyDollarBoxLine }
+      { label: 'Kelas', url: '/dashboard/class', icon: FaHouseUser }
     ]
   }
 ]
@@ -143,8 +142,7 @@ export const navigationAdminMobile = [
       { label: 'Guru', url: '/dashboard/teacher', icon: BsPersonWorkspace },
       { label: 'Siswa', url: '/dashboard/student', icon: GrUserManager },
       { label: 'Jurusan', url: '/dashboard/major', icon: HiOutlineWrenchScrewdriver },
-      { label: 'Kelas', url: '/dashboard/class', icon: FaHouseUser },
-      { label: 'K. Pembayaran', url: '/dashboard/payment-categories', icon: RiMoneyDollarBoxLine }
+      { label: 'Kelas', url: '/dashboard/class', icon: FaHouseUser }
     ]
   }
 ]

@@ -146,7 +146,7 @@ export function DataTableView<TData extends { id: string }, TValue>({
           <TableBody>
             {isLoading ? (
               <TableRow>
-                <TableCell colSpan={columns.length + 1} className="h-10">
+                <TableCell colSpan={columns.length - 2} className="h-10">
                   <div className="flex items-center justify-center text-primary">
                     <Loading />
                   </div>
