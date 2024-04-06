@@ -17,7 +17,7 @@ import { toast } from '@/components/atoms/ui/use-toast'
 
 import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
-import { defaultValues, formSchema } from './schema'
+import { defaultValues, formSchema } from '../schema'
 
 export const TeacherCreateForm = () => {
   const user = useCurrentUser()

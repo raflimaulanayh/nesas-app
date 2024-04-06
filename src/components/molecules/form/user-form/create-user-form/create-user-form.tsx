@@ -17,8 +17,8 @@ import { toast } from '@/components/atoms/ui/use-toast'
 
 import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
-import { ROLES_OPTIONS, STATUS_USER_OPTIONS } from './data-options'
-import { defaultValues, formSchema } from './schema'
+import { ROLES_OPTIONS, STATUS_USER_OPTIONS } from '../data-options'
+import { defaultValues, formSchema } from '../schema'
 
 export const UserCreateForm = () => {
   const user = useCurrentUser()

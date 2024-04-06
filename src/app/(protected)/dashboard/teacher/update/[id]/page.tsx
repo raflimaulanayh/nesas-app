@@ -2,15 +2,15 @@
 
 import { Params } from 'types/data/params'
 
-import { UserUpdate } from '@/components/organisms/user/user-update'
+import { TeacherUpdate } from '@/components/organisms/teacher/teacher-update'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
-const UpdateUserPage = ({ params }: Params) => {
+const UpdateTeacherPage = ({ params }: Params) => {
   return (
     <AdminLayout>
-      <UserUpdate params={params} />
+      <TeacherUpdate params={params} />
     </AdminLayout>
   )
 }
 
-export default UpdateUserPage
+export default UpdateTeacherPage
