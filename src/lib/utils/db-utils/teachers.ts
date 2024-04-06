@@ -38,16 +38,18 @@ export const createTeacher = async (data: Teacher) => {
       }
     }
 
-    const existingUserStudent = await prisma.students.findUnique({
-      where: { user_id: data.user_id }
-    })
+    if (data.user_id) {
+      const existingUserStudent = await prisma.students.findUnique({
+        where: { user_id: data.user_id }
+      })
 
-    const existingUserTeacher = await prisma.teachers.findUnique({
-      where: { user_id: data.user_id }
-    })
+      const existingUserTeacher = await prisma.teachers.findUnique({
+        where: { user_id: data.user_id }
+      })
 
-    if (existingUserStudent || existingUserTeacher) {
-      throw new Error('User is already taken.')
+      if (existingUserStudent || existingUserTeacher) {
+        throw new Error('User is already taken.')
+      }
     }
 
     const result = await prisma.teachers.create({

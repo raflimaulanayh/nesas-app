@@ -1,14 +1,14 @@
 'use client'
 
-import { UserCreate } from '@/components/organisms/user/user-create'
+import { TeacherCreate } from '@/components/organisms/teacher/teacher-create'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
-const CreateUserPage = () => {
+const CreateTeacherPage = () => {
   return (
     <AdminLayout>
-      <UserCreate />
+      <TeacherCreate />
     </AdminLayout>
   )
 }
 
-export default CreateUserPage
+export default CreateTeacherPage
