@@ -2,7 +2,7 @@
 
 import { Params } from 'types/data/params'
 
-import { UserUpdate } from '@/components/organisms/user/user-update'
+import { UserUpdate } from '@/components/organisms/dashboard/user/user-update'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
 const UpdateUserPage = ({ params }: Params) => {

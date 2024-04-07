@@ -1,6 +1,6 @@
 'use client'
 
-import { UserView } from '@/components/organisms/user/user-view'
+import { UserView } from '@/components/organisms/dashboard/user/user-view'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
 const UserPage = () => {

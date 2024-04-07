@@ -146,3 +146,41 @@ export const navigationAdminMobile = [
     ]
   }
 ]
+
+export const navigationStudent = [
+  { label: 'Overview', url: '/student', icon: TbLayoutDashboard },
+  { label: 'Forum', url: '/student/forum', icon: MdOutlineArticle },
+  { label: 'PKL', url: '/student/internship', icon: HiAnnotation },
+  {
+    label: 'Lainnya',
+    url: '#!',
+    icon: MenuIcon,
+    childs: [
+      {
+        url: '/',
+        icon: AiFillHome,
+        label: 'Home'
+      },
+      {
+        url: '/chatbot',
+        icon: RiCustomerService2Fill,
+        label: 'Chatbot'
+      },
+      {
+        url: '/news',
+        icon: RiArticleFill,
+        label: 'Berita'
+      },
+      {
+        url: '/contact',
+        icon: HiAnnotation,
+        label: 'Kontak'
+      },
+      {
+        url: '/student/settings',
+        icon: HiAnnotation,
+        label: 'Pengaturan'
+      }
+    ]
+  }
+]

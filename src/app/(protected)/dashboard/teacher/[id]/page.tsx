@@ -2,7 +2,7 @@
 
 import { Params } from 'types/data/params'
 
-import { UserViewDetail } from '@/components/organisms/user/user-view-detail'
+import { UserViewDetail } from '@/components/organisms/dashboard/user/user-view-detail'
 import { AdminLayout } from '@/components/templates/admin-layout'
 
 const UpdateTeacherPage = ({ params }: Params) => {
