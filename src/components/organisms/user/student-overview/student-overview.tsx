@@ -1,3 +1,7 @@
+'use client'
+
+/* eslint-disable import-helpers/order-imports */
+import { useCurrentUser } from '@/hooks/use-current-user'
 import Link from 'next/link'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import { HiAnnotation } from 'react-icons/hi'
@@ -6,10 +10,42 @@ import { SiOnlyoffice } from 'react-icons/si'
 import { TbSquareChevronRightFilled } from 'react-icons/tb'
 
 import 'react-circular-progressbar/dist/styles.css'
+import useSWR from 'swr'
+import { Student } from 'types/data/student'
+
 import Container from '@/components/templates/container/container'
 
 export const StudentOverView = () => {
-  const percentage = 66
+  const user = useCurrentUser()
+  const { data: users } = useSWR(`/users/${user?.id}`)
+
+  let completenessPercentage = 0
+  if (users?.data) {
+    const { accountComplete, students } = users.data
+    let totalDataCount = accountComplete ? 1 : 0
+    let completeDataCount = 0
+
+    if (students) {
+      totalDataCount += students.length
+
+      completeDataCount = students.filter(
+        (student: Student) =>
+          student.address &&
+          student.birth_date &&
+          student.class_id &&
+          student.gender &&
+          student.graduate_status &&
+          student.join_date &&
+          student.name &&
+          student.nis &&
+          student.nisn &&
+          student.phone_number &&
+          student.phone_number_parent
+      ).length
+    }
+
+    completenessPercentage = Math.round((completeDataCount / totalDataCount) * 100)
+  }
 
   return (
     <div className="rounded-3xl py-10 relative -mt-20 bg-white h-[70vh]">
@@ -20,13 +56,13 @@ export const StudentOverView = () => {
               <div className="flex items-center gap-x-3">
                 <div className="text-primary h-14 w-14">
                   <CircularProgressbar
-                    value={percentage}
-                    text={`${percentage}%`}
+                    value={completenessPercentage}
+                    text={`${completenessPercentage}%`}
                     strokeWidth={12}
                     styles={buildStyles({
-                      textColor: '#4338ca',
+                      textColor: 'rgb(67 56 202 / 1)',
                       textSize: '24px',
-                      pathColor: `rgba(67, 56, 202, ${percentage / 100})`
+                      pathColor: `rgba(67, 56, 202, ${completenessPercentage / 100})`
                     })}
                   />
                 </div>
