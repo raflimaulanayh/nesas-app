@@ -47,8 +47,6 @@ export const columns: ColumnDef<Users>[] = [
     cell: ({ row }) => {
       const value: { name: string } = row.getValue('companyInternships')
 
-      console.log('company', value)
-
       return <div>{value?.name ?? '-'}</div>
     },
     enableHiding: false

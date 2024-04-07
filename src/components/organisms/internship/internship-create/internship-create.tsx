@@ -4,14 +4,14 @@ import { Fragment } from 'react'
 import { BreadcrumbResponsive } from '@/components/atoms/breadcrumb-responsive'
 import { Heading } from '@/components/atoms/heading'
 import { SkeletonAction } from '@/components/atoms/skeleton-action'
-import { UserCreateForm } from '@/components/molecules/form/user-form/create-user-form'
+import { InternshipCreateForm } from '@/components/molecules/form/internship-form/create-internship-form'
 
-export const UserCreate = () => {
+export const InternshipCreate = () => {
   const isHydrated = useHydration()
   const items = [
     { href: '/dashboard', label: 'Dashboard' },
-    { href: '/dashboard/user', label: 'Kelola User' },
-    { label: 'Tambah User' }
+    { href: '/dashboard/internship', label: 'Kelola PKL' },
+    { label: 'Tambah PKL' }
   ]
 
   return (
@@ -21,9 +21,9 @@ export const UserCreate = () => {
         <div className="space-y-7">
           <div className="flex flex-col space-y-2">
             <BreadcrumbResponsive items={items} />
-            <Heading url="/dashboard/user" text="Tambah User" />
+            <Heading url="/dashboard/internship" text="Tambah PKL" />
           </div>
-          <UserCreateForm />
+          <InternshipCreateForm />
         </div>
       )}
     </Fragment>
