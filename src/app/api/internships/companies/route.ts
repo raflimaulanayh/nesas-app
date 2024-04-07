@@ -42,7 +42,8 @@ export async function GET() {
     const companyInternships = await prisma.companyInternships.findMany({
       include: {
         majors: true,
-        internships: true
+        internships: true,
+        _count: true
       }
     })
 

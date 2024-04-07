@@ -26,6 +26,7 @@ interface DataTableRowActionsProps<TData> {
   editAble?: boolean
   detailAble?: boolean
   deleteAble?: boolean
+  urlDetail?: string
 }
 
 export function DataTableRowActions<TData extends { id: string }>({
@@ -34,11 +35,14 @@ export function DataTableRowActions<TData extends { id: string }>({
   children,
   detailAble,
   editAble = true,
-  deleteAble = true
+  deleteAble = true,
+  urlDetail
 }: DataTableRowActionsProps<TData>) {
   const data = row.original
-  const router = usePathname()
   const { data: session } = useSession()
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const urlDetails = urlDetail || usePathname()
 
   const handleDelete = async () => {
     try {
@@ -79,14 +83,14 @@ export function DataTableRowActions<TData extends { id: string }>({
           {children && <DropdownMenuItem>{children}</DropdownMenuItem>}
           {detailAble && (
             <DropdownMenuItem>
-              <Link className="w-full" href={`${router}/${data.id}`}>
+              <Link className="w-full" href={`${urlDetails}/${data.id}`}>
                 Detail
               </Link>
             </DropdownMenuItem>
           )}
           {editAble && (
             <DropdownMenuItem>
-              <Link className="w-full" href={`${router}/update/${data.id}`}>
+              <Link className="w-full" href={`${urlDetails}/update/${data.id}`}>
                 Edit
               </Link>
             </DropdownMenuItem>

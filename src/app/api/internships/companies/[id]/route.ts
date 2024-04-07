@@ -11,7 +11,8 @@ export async function GET(request: Request, { params }: Params) {
       where: { id },
       include: {
         majors: true,
-        internships: true
+        internships: true,
+        _count: true
       }
     })
 

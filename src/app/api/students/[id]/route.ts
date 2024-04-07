@@ -8,7 +8,13 @@ export async function GET(request: Request, { params }: Params) {
     const id = params.id
 
     const student = await prisma.students.findUnique({
-      where: { id }
+      where: { id },
+      include: {
+        class: true,
+        internship: true,
+        ujikom: true,
+        user: true
+      }
     })
 
     return NextResponse.json({ data: student, message: 200 })

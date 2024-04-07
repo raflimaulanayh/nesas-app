@@ -80,7 +80,14 @@ export const POST = async (request: Request) => {
 
 export async function GET() {
   try {
-    const students = await prisma.students.findMany()
+    const students = await prisma.students.findMany({
+      include: {
+        class: true,
+        internship: true,
+        ujikom: true,
+        user: true
+      }
+    })
 
     return NextResponse.json({ data: students }, { status: 200 })
   } catch (error) {

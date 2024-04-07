@@ -119,7 +119,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix",
@@ -128,7 +128,8 @@
     "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
     "prettier:format": "prettier --write --ignore-path .gitignore .",
     "generate": "pnpm plop --plopfile ./.plop/plopfile.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "src/**/*": [

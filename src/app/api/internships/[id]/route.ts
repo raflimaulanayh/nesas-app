@@ -8,7 +8,12 @@ export async function GET(request: Request, { params }: Params) {
     const id = params.id
 
     const internship = await prisma.internships.findUnique({
-      where: { id }
+      where: { id },
+      include: {
+        students: true,
+        companyInternships: true,
+        _count: true
+      }
     })
 
     return NextResponse.json({ data: internship, message: 200 })
@@ -34,7 +39,8 @@ export async function PUT(request: Request, { params }: Params) {
       },
       include: {
         students: true,
-        companyInternships: true
+        companyInternships: true,
+        _count: true
       }
     })
 

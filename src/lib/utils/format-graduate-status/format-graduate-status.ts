@@ -5,22 +5,22 @@ export const formatGraduateStatus = (status: 'ongoing' | 'graduated' | 'dropout'
   switch (status) {
     case 'ongoing':
       statusShow = 'Proses'
-      customCSS = 'bg-blue-50 text-blue-600'
+      customCSS = 'bg-blue-100 text-blue-700'
       break
 
     case 'graduated':
       statusShow = 'Lulus'
-      customCSS = 'bg-green-50 text-green-600'
+      customCSS = 'bg-green-100 text-green-700'
       break
 
     case 'dropout':
       statusShow = 'Dropout'
-      customCSS = 'bg-red-50 text-red-600'
+      customCSS = 'bg-red-100 text-red-700'
       break
 
     case 'transferred':
       statusShow = 'Pindah'
-      customCSS = 'bg-yellow-50 text-yellow-600'
+      customCSS = 'bg-yellow-100 text-yellow-700'
       break
 
     default:

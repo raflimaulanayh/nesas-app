@@ -1,6 +1,8 @@
 enum CompanyStatus {
   active = 'active',
-  not_active = 'not_active'
+  not_active = 'not_active',
+  pending = 'pending',
+  filled = 'filled'
 }
 
 interface TCompanyInternship {
