@@ -38,7 +38,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const session = await auth()
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <HeadMetaData />
       </head>

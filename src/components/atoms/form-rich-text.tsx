@@ -1,20 +1,14 @@
-import Placeholder from '@tiptap/extension-placeholder'
-import Underline from '@tiptap/extension-underline'
-import { useEditor, EditorContent } from '@tiptap/react'
-import { StarterKit } from '@tiptap/starter-kit'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Editor } from '@tinymce/tinymce-react'
 import { useState } from 'react'
 import { Control } from 'react-hook-form'
-import { RxFontBold, RxFontItalic, RxUnderline } from 'react-icons/rx'
 
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/atoms/ui/form'
 import { Label } from '@/components/atoms/ui/label'
 
 import { cn } from '@/lib/utils'
 
-import { Toggle } from './ui/toggle'
-
 interface RichTextProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control?: Control<any, unknown>
   name: string
   label?: string
@@ -44,7 +38,7 @@ export const RichText: React.FC<RichTextProps> = ({
               {label} {required && <span className="text-red-600"> *</span>}
             </Label>
           </div>
-          <Tiptap defaultValue={defaultValue || ''} onChange={field.onChange} />
+          <TinyEditor defaultValue={defaultValue || ''} onChange={field.onChange} />
           <FormMessage />
         </FormItem>
       )}
@@ -52,63 +46,35 @@ export const RichText: React.FC<RichTextProps> = ({
   )
 }
 
-export const Tiptap = ({ onChange, defaultValue }: { onChange: (richText: string) => void; defaultValue: string }) => {
+export const TinyEditor = ({ onChange, defaultValue }: { onChange: (data: string) => void; defaultValue: string }) => {
   const [isFocus, setIsFocus] = useState(false)
 
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Underline,
-      Placeholder.configure({
-        emptyEditorClass: 'is-editor-empty',
-        placeholder:
-          'Use concise and clear language, avoid jargon and complicated terms and make sure the abstract is easy to understand.'
-      })
-    ],
-    content: defaultValue,
-    editorProps: {
-      attributes: {
-        class: 'p-5 font-gotham text-base focus:outline-none min-h-[150px]'
-      }
-    },
-    onUpdate({ editor }) {
-      const richText = editor.getHTML()
-      onChange(richText)
-    }
-  })
+  const handleEditorChange = (content: string) => {
+    onChange(content)
+  }
 
   return (
     <div className={cn('border-2 rounded-md', isFocus ? 'border-primary-blue' : 'border-gray-200')}>
-      <div
-        className={cn(
-          'flex items-center gap-1 p-2 border-b-2 border-gray-200',
-          isFocus ? 'border-primary-blue' : 'border-gray-200'
-        )}
-      >
-        <Toggle
-          pressed={editor?.isActive('bold')}
-          onPressedChange={() => editor?.chain().focus().toggleBold().run()}
-          aria-label="Toggle Bold"
-        >
-          <RxFontBold className="w-6 h-6" />
-        </Toggle>
-        <Toggle
-          pressed={editor?.isActive('italic')}
-          onPressedChange={() => editor?.chain().focus().toggleItalic().run()}
-          aria-label="Toggle italic"
-        >
-          <RxFontItalic className="w-6 h-6" />
-        </Toggle>
-        <Toggle
-          pressed={editor?.isActive('underline')}
-          onPressedChange={() => editor?.chain().focus().toggleUnderline().run()}
-          aria-label="Toggle underline"
-        >
-          <RxUnderline className="w-6 h-6" />
-        </Toggle>
-      </div>
       <FormControl>
-        <EditorContent onBlur={() => setIsFocus(false)} onFocus={() => setIsFocus(true)} editor={editor} />
+        <Editor
+          onBlur={() => setIsFocus(false)}
+          onFocus={() => setIsFocus(true)}
+          apiKey="oy9aih0lyzqgbbpjz6zj1fen4o28hf31tppl9i8fxnoy5tsl"
+          init={{
+            plugins:
+              'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+            toolbar:
+              'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+              { value: 'First.Name', title: 'First Name' },
+              { value: 'Email', title: 'Email' }
+            ]
+          }}
+          onEditorChange={handleEditorChange}
+          initialValue={defaultValue}
+        />
       </FormControl>
     </div>
   )

@@ -16,7 +16,7 @@ interface ImageUploadProps {
   value: any[]
 }
 
-const IMG_MAX_LIMIT = 3
+const IMG_MAX_LIMIT = 1
 
 export const FileUpload: React.FC<ImageUploadProps> = ({ onChange, onRemove, value = [] }) => {
   const onDeleteFile = async (key: string) => {

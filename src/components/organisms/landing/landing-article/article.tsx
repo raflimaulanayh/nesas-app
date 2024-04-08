@@ -4,14 +4,14 @@ import Link from 'next/link'
 
 import Container from '@/components/templates/container/container'
 
-export const LandingNews = () => {
+export const LandingArticle = () => {
   return (
     <section className="py-10">
       <Container className="space-y-4">
         <header className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-slate-900">Berita Utama</h2>
+          <h2 className="text-2xl font-bold text-slate-900">Artikel Utama</h2>
           <Link href="#!" className="inline-flex items-center text-sm font-semibold hover:text-primary text-slate-900">
-            <span>Lihat berita lainnya</span>
+            <span>Lihat artikel lainnya</span>
             <ChevronRight size={20} />
           </Link>
         </header>

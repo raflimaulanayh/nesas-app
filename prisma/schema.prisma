@@ -22,8 +22,7 @@ model Users {
   active          Boolean?         @default(false)
   teachers        Teachers[]
   students        Students[]
-  news            News[]
-  comments        Comments[]
+  Articles        Articles[]
   Account         Account[]
 }
 
@@ -201,11 +200,12 @@ model UserActivities {
   updatedAt       DateTime         @updatedAt
 }
 
-model News {
+model Articles {
   id            String     @id @default(cuid())
   user_id       String
   title         String
-  content       String
+  description String?
+  content       String      @db.Text
   keyword       String?
   category      String?
   picture       String?
@@ -214,30 +214,12 @@ model News {
   dislike_count Int?
   view_count    Int?
   slug          String?    @unique
+  writer_name String?
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
   user          Users?     @relation(fields: [user_id], references: [id])
-  comments      Comments[]
-
+  
   @@index([user_id])
-}
-
-model Comments {
-  id                  String   @id @default(cuid())
-  user_id             String
-  news_id             String
-  message             String
-  picture             String?
-  like_count          Int?
-  parent_comment_id   String?
-  reply_to_comment_id String?
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
-  user                Users?   @relation(fields: [user_id], references: [id])
-  news                News?    @relation(fields: [news_id], references: [id])
-
-  @@index([user_id])
-  @@index([news_id])
 }
 
 model Polls {
@@ -332,4 +314,5 @@ enum PostStatus {
   public
   private
   draft
+  pending
 }

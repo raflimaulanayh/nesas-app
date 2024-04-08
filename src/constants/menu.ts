@@ -35,9 +35,9 @@ export const navigationMore = [
     label: 'CCTV'
   },
   {
-    url: '/news',
+    url: '/article',
     icon: RiArticleFill,
-    label: 'Berita'
+    label: 'Artikel'
   },
   {
     url: '/',
@@ -68,9 +68,9 @@ export const navigationGeneral = [
     label: 'Chatbot'
   },
   {
-    url: '/news',
+    url: '/article',
     icon: RiArticleFill,
-    label: 'Berita'
+    label: 'Artikel'
   },
   {
     url: '/contact',
@@ -108,7 +108,7 @@ export const navigationGeneral = [
 
 export const navigationAdmin = [
   { label: 'Dashboard', url: '/dashboard', icon: TbLayoutDashboard },
-  { label: 'Berita', url: '/dashboard/news', icon: MdOutlineArticle },
+  { label: 'Artikel', url: '/dashboard/article', icon: MdOutlineArticle },
   { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
   { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
   { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
@@ -129,7 +129,7 @@ export const navigationAdmin = [
 
 export const navigationAdminMobile = [
   { label: 'Dashboard', url: '/dashboard', icon: TbLayoutDashboard },
-  { label: 'Berita', url: '/dashboard/news', icon: MdOutlineArticle },
+  { label: 'Artikel', url: '/dashboard/article', icon: MdOutlineArticle },
   { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
   {
     label: 'Lainnya',
@@ -167,9 +167,9 @@ export const navigationStudent = [
         label: 'Chatbot'
       },
       {
-        url: '/news',
+        url: '/article',
         icon: RiArticleFill,
-        label: 'Berita'
+        label: 'Artikel'
       },
       {
         url: '/contact',
