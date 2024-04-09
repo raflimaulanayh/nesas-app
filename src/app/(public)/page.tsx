@@ -4,6 +4,10 @@ import { LandingHero } from '@/components/organisms/landing/landing-hero'
 import { LandingMajor } from '@/components/organisms/landing/landing-major'
 import { SiteLayout } from '@/components/templates/site-layout'
 
+export const metadata = {
+  title: 'Home'
+}
+
 const LandingPage = () => {
   return (
     <SiteLayout>
