@@ -32,7 +32,7 @@ export const LandingArticle = () => {
 
         {!loadArticles && (
           <article className="grid gap-x-5 sm:grid-cols-2 lg:grid-cols-3">
-            {sortedArticles?.slice(0, 3).map((item: any) => (
+            {sortedArticles?.slice(0, 6).map((item: any) => (
               <Link key={item.id} href={`/article/${item.slug}`} className="hover:bg-slate-100 group">
                 <figure className="flex items-center gap-3 py-5 border-b rounded lg:px-5 border-b-slate-300">
                   <Image
