@@ -12,7 +12,7 @@ const NewPasswordPage = () => {
         <Container>
           <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div className="px-6 py-10 bg-white shadow sm:rounded-lg sm:px-12">
-              <h1 className="mb-5 text-3xl font-bold leading-9 tracking-tight text-center text-primary">
+              <h1 className="mb-5 text-3xl font-medium leading-9 tracking-tight text-center text-primary">
                 Enter a new password
               </h1>
               <Suspense fallback={<Skeleton className="w-full h-96" />}>

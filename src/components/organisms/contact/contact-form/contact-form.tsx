@@ -65,6 +65,7 @@ export const ContactForm = () => {
               name="phoneNumber"
               label="No. HP / Whatsapp"
               placeholder="Masukkan nomor hp/whatsapp"
+              hint="Contoh : 081xxxxxxxxx"
               required
               {...form}
             />

@@ -197,7 +197,7 @@ export const UserViewDetail = ({ params }: Params) => {
       )}
       <Modal open={openModal} setOpen={setOpenModal} className="flex flex-col">
         <InfoIcon />
-        <p className="text-xl font-bold">Konfirmasi</p>
+        <p className="text-xl font-semibold">Konfirmasi</p>
         <p>Kamu yakin ingin menyetujui?</p>
         <Button className="w-full h-auto py-3 rounded-full bg-primary hover:bg-secondary-blue" onClick={handleSubmit}>
           Ya, Konfirmasi

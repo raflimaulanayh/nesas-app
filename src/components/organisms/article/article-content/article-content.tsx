@@ -53,14 +53,14 @@ export const ArticleContent = () => {
         <div className="space-y-7">
           <Skeleton className="h-10 w-52" />
           <article className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Skeleton className="w-full h-40" />
-            <Skeleton className="w-full h-40" />
-            <Skeleton className="w-full h-40" />
-            <Skeleton className="w-full h-40" />
-            <Skeleton className="w-full h-40" />
-            <Skeleton className="w-full h-40" />
-            <Skeleton className="w-full h-40" />
-            <Skeleton className="w-full h-40" />
+            <Skeleton className="w-full h-72" />
+            <Skeleton className="w-full h-72" />
+            <Skeleton className="w-full h-72" />
+            <Skeleton className="w-full h-72" />
+            <Skeleton className="w-full h-72" />
+            <Skeleton className="w-full h-72" />
+            <Skeleton className="w-full h-72" />
+            <Skeleton className="w-full h-72" />
           </article>
         </div>
       )}

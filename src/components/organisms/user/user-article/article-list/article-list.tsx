@@ -109,7 +109,7 @@ export const ArticleList = () => {
         </article>
         <Modal open={openModal} setOpen={setOpenModal} className="flex flex-col">
           <InfoIcon />
-          <p className="text-xl font-bold">Konfirmasi</p>
+          <p className="text-xl font-semibold">Konfirmasi</p>
           <p>Kamu yakin ingin menghapus?</p>
           <Button className="w-full h-auto py-3 rounded-full bg-primary hover:bg-secondary-blue" onClick={onSubmit}>
             Ya, Hapus

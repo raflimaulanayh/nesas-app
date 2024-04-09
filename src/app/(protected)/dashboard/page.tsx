@@ -70,7 +70,7 @@ const DashboardPage = () => {
                     <LuUsers size={24} />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{dataUsers?.length ?? '0'}</div>
+                    <div className="text-2xl font-semibold">{dataUsers?.length ?? '0'}</div>
                     <p className="text-xs text-muted-foreground">+15% from last month</p>
                   </CardContent>
                 </Card>
@@ -80,7 +80,7 @@ const DashboardPage = () => {
                     <PiChalkboardTeacherLight size={30} />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{dataTeachers?.length ?? '0'}</div>
+                    <div className="text-2xl font-semibold">{dataTeachers?.length ?? '0'}</div>
                     <p className="text-xs text-muted-foreground">+10% from last month</p>
                   </CardContent>
                 </Card>
@@ -90,7 +90,7 @@ const DashboardPage = () => {
                     <PiStudent size={27} />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{dataStudents?.length ?? '0'}</div>
+                    <div className="text-2xl font-semibold">{dataStudents?.length ?? '0'}</div>
                     <p className="text-xs text-muted-foreground">+85% from last month</p>
                   </CardContent>
                 </Card>
@@ -100,7 +100,7 @@ const DashboardPage = () => {
                     <SiGoogleclassroom size={24} />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">{dataClasses?.length ?? '0'}</div>
+                    <div className="text-2xl font-semibold">{dataClasses?.length ?? '0'}</div>
                     <p className="text-xs text-muted-foreground">+50% from last month</p>
                   </CardContent>
                 </Card>

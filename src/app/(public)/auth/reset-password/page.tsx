@@ -49,7 +49,7 @@ export default function ResetPasswordPage() {
         <div className="flex flex-col justify-center min-h-screen">
           <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div className="px-6 py-10 bg-white shadow sm:rounded-lg sm:px-12">
-              <h1 className="mb-5 text-3xl font-bold leading-9 tracking-tight text-center text-primary">Lupa password?</h1>
+              <h1 className="mb-5 text-3xl font-medium leading-9 tracking-tight text-center text-primary">Lupa password?</h1>
               {!isHydrated && (
                 <div className="flex items-center justify-center min-h-[18rem]">
                   <Loading />

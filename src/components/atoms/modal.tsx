@@ -17,7 +17,7 @@ export const Modal = ({ open, setOpen, children, className, title }: ModalProps)
       <DialogContent className={cn('w-10/12 mx-auto sm:max-w-[425px] rounded', className)} withOutClose>
         {title && (
           <DialogHeader className="text-left">
-            <DialogTitle className="mb-3 font-bold text-primary">{title}</DialogTitle>
+            <DialogTitle className="mb-3 font-medium text-primary">{title}</DialogTitle>
           </DialogHeader>
         )}
         {children}

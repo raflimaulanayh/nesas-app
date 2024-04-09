@@ -1,4 +1,4 @@
-import { MenuIcon } from 'lucide-react'
+import { Contact2Icon, MenuIcon } from 'lucide-react'
 import { AiFillHome, AiOutlineReconciliation } from 'react-icons/ai'
 import { BiSolidCctv } from 'react-icons/bi'
 import { BsPersonWorkspace } from 'react-icons/bs'
@@ -108,6 +108,7 @@ export const navigationGeneral = [
 
 export const navigationAdmin = [
   { label: 'Dashboard', url: '/dashboard', icon: TbLayoutDashboard },
+  { label: 'Kontak', url: '/dashboard/contact', icon: Contact2Icon },
   { label: 'Artikel', url: '/dashboard/article', icon: MdOutlineArticle },
   { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
   { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
@@ -129,13 +130,14 @@ export const navigationAdmin = [
 
 export const navigationAdminMobile = [
   { label: 'Dashboard', url: '/dashboard', icon: TbLayoutDashboard },
+  { label: 'Kontak', url: '/dashboard/contact', icon: Contact2Icon },
   { label: 'Artikel', url: '/dashboard/article', icon: MdOutlineArticle },
-  { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
   {
     label: 'Lainnya',
     url: '#!',
     icon: MenuIcon,
     childs: [
+      { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
       { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
       { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
       { label: 'User', url: '/dashboard/user', icon: LuUserCircle2 },
