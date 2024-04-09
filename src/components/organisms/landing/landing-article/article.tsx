@@ -24,7 +24,7 @@ export const LandingArticle = () => {
       <Container className="space-y-4">
         <header className="flex items-center justify-between">
           <h2 className="text-2xl font-medium sm:text-3xl text-slate-900">Artikel Utama</h2>
-          <Link href="/article" className="inline-flex items-center text-sm font-medium hover:text-primary text-slate-900">
+          <Link href="/article" className="inline-flex items-center text-sm font-medium text-primary hover:underline">
             <span>Lihat artikel lainnya</span>
             <ChevronRight size={20} />
           </Link>

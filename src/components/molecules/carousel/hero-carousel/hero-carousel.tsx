@@ -7,7 +7,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@/components/atoms/ui/button'
 import {
   Carousel,
   CarouselApi,
@@ -63,15 +62,15 @@ export const HeroCarousel = ({ data }: any) => {
             )}
           >
             <div className="absolute bottom-0 z-20 w-9/12 h-full bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
-            <Container className="relative z-30 space-y-3">
+            <Container className="relative z-30 py-10 space-y-1 sm:space-y-3">
               <article className="w-full max-w-3xl space-y-4 text-start">
-                <h2 className="text-2xl font-medium text-white lg:text-4xl line-clamp-2">{item.title}</h2>
-                <p className="text-slate-200 line-clamp-3">{item.description}</p>
+                <h2 className="text-xl font-medium text-white sm:text-2xl lg:text-4xl line-clamp-2">{item.title}</h2>
+                <p className="text-sm text-slate-200 lg:text-base line-clamp-3">{item.description}</p>
                 <div>
                   <Link href={`/article/${item.slug}`}>
-                    <Button className="flex items-center gap-1 font-medium bg-white hover:bg-white/80 text-primary">
+                    <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium bg-white rounded-md sm:text-base hover:bg-white/80 text-primary">
                       Baca selengkapnya <ChevronRightIcon size={20} />
-                    </Button>
+                    </button>
                   </Link>
                 </div>
               </article>
@@ -99,14 +98,16 @@ export const HeroCarousel = ({ data }: any) => {
           ))}
         </div>
       </div>
-      <CarouselPrevious
-        className="absolute z-40 flex items-center justify-center bg-transparent hover:bg-transparent border-0 rounded-full w-9 h-9 top-20 md:top-1/2 -left-0.5 sm:left-0.5 lg:left-10 group"
-        customArrow={<ChevronLeftIcon className="w-8 h-8 text-white disabled:text-primary-blue/60" />}
-      />
-      <CarouselNext
-        className="absolute z-40 flex items-center justify-center bg-transparent hover:bg-transparent border-0 rounded-full w-9 h-9 top-20 md:top-1/2 -right-0.5 sm:right-0.5 lg:right-10 group"
-        customArrow={<ChevronRightIcon className="w-8 h-8 text-white disabled:text-primary-blue/600" />}
-      />
+      <div className="hidden sm:block">
+        <CarouselPrevious
+          className="absolute z-40 flex items-center justify-center bg-transparent hover:bg-transparent border-0 rounded-full w-9 h-9 top-20 md:top-1/2 -left-0.5 sm:left-0.5 lg:left-10 group"
+          customArrow={<ChevronLeftIcon className="w-8 h-8 text-white disabled:text-primary-blue/60" />}
+        />
+        <CarouselNext
+          className="absolute z-40 flex items-center justify-center bg-transparent hover:bg-transparent border-0 rounded-full w-9 h-9 top-20 md:top-1/2 -right-0.5 sm:right-0.5 lg:right-10 group"
+          customArrow={<ChevronRightIcon className="w-8 h-8 text-white disabled:text-primary-blue/600" />}
+        />
+      </div>
     </Carousel>
   )
 }

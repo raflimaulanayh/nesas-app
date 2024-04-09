@@ -33,7 +33,7 @@ export const LandingAbout = () => {
               Dengan fokus utama pada kenyamanan dan kemudahan, aplikasi ini memberikan akses cepat dan terpadu ke berbagai
               fitur yang mendukung kegiatan akademis dan kehidupan sekolah sehari-hari.
             </p>
-            <Link href="#!" className="inline-flex items-center font-medium hover:text-primary text-slate-900">
+            <Link href="#!" className="inline-flex items-center font-medium text-primary hover:underline">
               <span>Selengkapnya</span>
               <ChevronRight size={20} />
             </Link>
