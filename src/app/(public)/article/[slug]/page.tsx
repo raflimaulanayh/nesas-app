@@ -57,19 +57,21 @@ const ArticlePage = ({ params }: Params) => {
                   />
                 </div>
 
-                <div className="mb-5 space-y-3">
-                  <h2 className="font-medium text-slate-900">Keywords :</h2>
-                  <ul className="flex items-center gap-2">
-                    {data?.keyword.split(',').map((key: any) => (
-                      <li
-                        className="p-2 text-sm font-medium border rounded-md hover:bg-opacity-80 bg-slate-200"
-                        key={Math.random() + 1}
-                      >
-                        {key}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {data?.keyword && (
+                  <div className="mb-5 space-y-3">
+                    <h2 className="font-medium text-slate-900">Keywords :</h2>
+                    <ul className="flex items-center gap-2">
+                      {data?.keyword.split(',').map((key: any) => (
+                        <li
+                          className="p-2 text-sm font-medium border rounded-md hover:bg-opacity-80 bg-slate-200"
+                          key={Math.random() + 1}
+                        >
+                          {key}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <SocialShare title={data?.title} />
               </article>

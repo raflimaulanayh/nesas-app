@@ -14,6 +14,7 @@ import useSWR from 'swr'
 import { Student } from 'types/data/student'
 
 import Container from '@/components/templates/container/container'
+import { MdArticle } from 'react-icons/md'
 
 export const StudentOverView = () => {
   const user = useCurrentUser()
@@ -90,10 +91,23 @@ export const StudentOverView = () => {
           <li className="col-span-2 p-4 bg-white border shadow lg:p-6 rounded-xl">
             <Link href="/student/forum" className="flex items-center justify-between gap-x-4">
               <div className="flex items-center gap-x-3">
-                <HiAnnotation size={50} className="text-primary" />
-                <div className="flex flex-col">
+                <HiAnnotation size={50} className="w-12 h-12 text-primary" />
+                <div className="flex flex-col w-9/12">
                   <span>Forum</span>
                   <span className="text-sm font-light">Mari kita diskusi bersama.</span>
+                </div>
+              </div>
+              <TbSquareChevronRightFilled size={24} className="text-primary" />
+            </Link>
+          </li>
+
+          <li className="col-span-2 p-4 bg-white border shadow lg:p-6 rounded-xl">
+            <Link href="/student/article" className="flex items-center justify-between gap-x-4">
+              <div className="flex items-center gap-x-3">
+                <MdArticle size={50} className="w-12 h-12 text-primary" />
+                <div className="flex flex-col w-9/12">
+                  <span>Artikel</span>
+                  <span className="text-sm font-light">Mari berkreasi, buat cerita Anda jadi nyata!</span>
                 </div>
               </div>
               <TbSquareChevronRightFilled size={24} className="text-primary" />

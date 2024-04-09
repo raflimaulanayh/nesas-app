@@ -19,6 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/forum`,
       lastModified: new Date()
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date()
     }
   ]
 }

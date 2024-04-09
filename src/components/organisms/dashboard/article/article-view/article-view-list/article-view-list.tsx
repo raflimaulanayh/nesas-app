@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import api from '@/services/api'
-import { Trash2Icon, EditIcon, InfoIcon, EyeIcon } from 'lucide-react'
-import Image from 'next/image'
+import { InfoIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -9,10 +8,7 @@ import { Modal } from '@/components/atoms/modal'
 import { Button } from '@/components/atoms/ui/button'
 import { Input } from '@/components/atoms/ui/input'
 import { toast } from '@/components/atoms/ui/use-toast'
-
-import { cn } from '@/lib/utils'
-import { formatArticleStatus } from '@/lib/utils/format-article-status'
-import { formatDate } from '@/lib/utils/format-date'
+import { ArticleManageCard } from '@/components/molecules/card/article-manage-card'
 
 export const ArticleViewList = ({ dataArticles, mutateArticles }: any) => {
   const [openModal, setOpenModal] = useState(false)
@@ -72,53 +68,20 @@ export const ArticleViewList = ({ dataArticles, mutateArticles }: any) => {
         {filteredArticles?.length !== 0 && (
           <article className="grid gap-4 py-5 sm:grid-cols-2">
             {filteredArticles?.map((item: any) => (
-              <figure
+              <ArticleManageCard
                 key={item.id}
-                className={cn(
-                  loading && 'opacity-50',
-                  'relative flex items-center w-full gap-5 p-3 transition-all border rounded-md shadow-sm group hover:shadow-md'
-                )}
-              >
-                <Image
-                  src={item.picture ?? '/static/images/article-dummy.jpg'}
-                  alt={'Picture' + (item.title ?? 'Artikel')}
-                  width={200}
-                  height={200}
-                  className="object-cover transition-all rounded-sm w-28 h-28 group-hover:scale-105"
-                />
-                <figcaption>
-                  <h2 className="text-lg font-semibold line-clamp-2 group-hover:text-primary text-slate-900">
-                    {item.title}
-                  </h2>
-                  <span className="text-sm text-slate-700">{formatDate(item.updatedAt)}</span>
-                </figcaption>
-                <span
-                  className={cn(
-                    'absolute p-1.5 text-xs font-medium rounded-sm left-3 top-3',
-                    formatArticleStatus(item.status).customCSS
-                  )}
-                >
-                  {formatArticleStatus(item.status).statusShow}
-                </span>
-                <div className="absolute flex items-center gap-2 right-3 bottom-3">
-                  <Link aria-label="Button See Detail" href={`/dashboard/article/${item.id}`} className="text-primary">
-                    <EyeIcon size={23} />
-                  </Link>
-                  <Link aria-label="Button Edit" href={`/dashboard/article/update/${item.id}`} className="text-primary">
-                    <EditIcon size={20} />
-                  </Link>
-                  <button
-                    onClick={() => {
-                      setOpenModal(true)
-                      setArticleId(item.id)
-                    }}
-                    aria-label="Button Delete"
-                    className="text-red-600"
-                  >
-                    <Trash2Icon size={20} />
-                  </button>
-                </div>
-              </figure>
+                title={item.title}
+                picture={item.picture}
+                status={item.status}
+                updatedAt={item.updatedAt}
+                urlDetail={`/dashboard/article/${item.id}`}
+                urlEdit={`/dashboard/article/update/${item.id}`}
+                loading={loading}
+                handleDelete={() => {
+                  setOpenModal(true)
+                  setArticleId(item.id)
+                }}
+              />
             ))}
           </article>
         )}

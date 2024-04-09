@@ -12,7 +12,7 @@ export const formSchema = z.object({
   }),
   category: z.string().nonempty({ message: 'Kategori harus diisi' }),
   writer_name: z.optional(z.string().nonempty({ message: 'Nama penulis harus diisi' })),
-  status: z.string().nonempty({ message: 'Status harus diisi' }),
+  status: z.optional(z.string().nonempty({ message: 'Status harus diisi' })),
   keyword: z.optional(
     z.string().nonempty({
       message: 'Keyword harus diisi'
@@ -34,6 +34,5 @@ export const defaultValues = {
   category: '',
   keyword: '',
   writer_name: '',
-  picture: [],
-  status: ''
+  picture: []
 }

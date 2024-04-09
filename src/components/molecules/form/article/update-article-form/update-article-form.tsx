@@ -118,7 +118,7 @@ export const ArticleUpdateForm = ({ params }: Params) => {
             <Input name="writer_name" label="Nama penulis" placeholder="Masukan nama penulis" {...form} />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
-            {loading ? <Loading /> : 'Tambah'}
+            {loading ? <Loading /> : 'Update'}
           </Button>
         </form>
       )}

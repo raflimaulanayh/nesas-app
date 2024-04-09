@@ -50,7 +50,13 @@ export const HeaderUser = () => {
                 <div className="flex flex-col">
                   <span className="text-xl font-medium">Hi, {student?.name ?? user?.username}</span>
                   <span className="text-sm text-slate-300">
-                    Kelas {getClassByStudent(student?.class_id || '').name} | NIS: {student?.nis ?? '-'}
+                    {student ? (
+                      <span>
+                        Kelas {getClassByStudent(student?.class_id || '').name} | NIS: {student?.nis ?? '-'}
+                      </span>
+                    ) : (
+                      <span>{user?.email}</span>
+                    )}
                   </span>
                   <span className="text-xs mt-2 w-[81px] bg-white rounded-full py-1 px-2 inline font-medium text-primary">
                     2021-2024
