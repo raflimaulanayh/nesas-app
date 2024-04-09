@@ -37,7 +37,7 @@ export const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link target="_blank" href="https://wa.me/685162522881">
+              <Link target="_blank" href="tel:0261202056">
                 <PhoneIcon size={20} />
               </Link>
             </li>
