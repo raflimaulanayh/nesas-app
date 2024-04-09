@@ -82,7 +82,7 @@ export const columns: ColumnDef<UserActivies>[] = [
     cell: ({ row }) => {
       const value: string = row.getValue('activity_detail')
 
-      return <div className="capitalize max-w-40">{value ?? '-'}</div>
+      return <div className="max-w-xs capitalize">{value ?? '-'}</div>
     }
   },
   {

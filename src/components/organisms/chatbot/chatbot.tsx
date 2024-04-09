@@ -60,7 +60,7 @@ export function Chat() {
           {messages.length === 0 && (
             <div className="fixed flex flex-col items-center w-full gap-2 transform -translate-x-1/2 lg:w-auto left-1/2 top-32 sm:flex-row lg:top-40">
               <Image src="/bot.png" width={50} height={50} alt="Chat Bot" />
-              <h2 className="w-full font-semibold text-center sm:text-lg sm:text-start lg:w-96 text-slate-900">
+              <h2 className="w-full font-medium text-center sm:text-lg sm:text-start lg:w-96 text-slate-900">
                 <Typewriter
                   options={{
                     strings: [
@@ -138,7 +138,7 @@ export function Chat() {
             <div className="px-2 py-4">
               <Container>
                 <ul className="grid gap-4 lg:grid-cols-3">
-                  {QUESTIONS.slice(0, !isDesktop ? 2 : 6).map((question, index) => (
+                  {QUESTIONS.slice(0, !isDesktop ? 3 : 6).map((question, index) => (
                     <li
                       key={index}
                       onClick={() => handleRecommendationQuestion(question)}

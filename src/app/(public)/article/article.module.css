@@ -1,0 +1,63 @@
+.containerMarkdown {
+  @apply max-w-full text-gray-900;
+}
+
+.containerMarkdown img {
+  @apply object-contain max-w-full mx-auto my-4 rounded-md;
+}
+
+.containerMarkdown strong {
+  @apply font-extrabold;
+}
+
+.containerMarkdown u {
+  @apply underline;
+}
+
+.containerMarkdown p {
+  @apply mb-3 text-sm text-justify text-gray-900;
+}
+
+.containerMarkdown a {
+  @apply text-blue-600 underline;
+}
+
+.containerMarkdown ul {
+  @apply mb-3 ml-4 list-disc;
+}
+
+.containerMarkdown ol {
+  @apply mb-3 ml-4 list-decimal;
+}
+
+.containerMarkdown pre {
+  @apply px-5 mb-3 whitespace-pre-wrap rounded-md;
+}
+
+.containerMarkdown code {
+  @apply px-5 mb-3 whitespace-pre-wrap rounded-md;
+}
+
+.containerMarkdown h1 {
+  @apply mb-2 text-3xl font-semibold mt-7;
+}
+
+.containerMarkdown h2 {
+  @apply mb-2 text-2xl font-semibold mt-7;
+}
+
+.containerMarkdown h3 {
+  @apply mb-2 text-xl font-semibold mt-7;
+}
+
+.containerMarkdown h4 {
+  @apply mb-2 text-lg font-semibold mt-7;
+}
+
+.containerMarkdown h5 {
+  @apply mb-2 text-base font-semibold mt-7;
+}
+
+.containerMarkdown h6 {
+  @apply my-2 text-sm font-semibold;
+}

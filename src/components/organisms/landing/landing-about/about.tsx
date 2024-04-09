@@ -13,7 +13,7 @@ export const LandingAbout = () => {
           <Container className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
             {overview.map((item, index) => (
               <div key={index} className="space-y-1">
-                <h2 className="text-xl font-bold text-white">{item.title}</h2>
+                <h2 className="text-xl font-medium text-white">{item.title}</h2>
                 <p className="text-sm text-slate-200 lg:text-base">{item.description}</p>
               </div>
             ))}
@@ -24,7 +24,7 @@ export const LandingAbout = () => {
       <article className="py-10">
         <Container className="flex flex-col sm:items-center sm:flex-row gap-7 lg:gap-10">
           <div className="space-y-4 sm:w-8/12">
-            <h2 className="text-2xl font-bold text-slate-900">Nesas Smart School</h2>
+            <h2 className="text-2xl font-medium sm:text-3xl text-slate-900">Nesas Smart School</h2>
             <p className="text-sm text-justify text-slate-800 lg:text-base">
               Nesas Smart School (NSS) adalah sebuah aplikasi inovatif yang dirancang khusus untuk memperkaya pengalaman
               belajar di SMK Negeri 1 Sumedang.
@@ -33,7 +33,7 @@ export const LandingAbout = () => {
               Dengan fokus utama pada kenyamanan dan kemudahan, aplikasi ini memberikan akses cepat dan terpadu ke berbagai
               fitur yang mendukung kegiatan akademis dan kehidupan sekolah sehari-hari.
             </p>
-            <Link href="#!" className="inline-flex items-center font-semibold hover:text-primary text-slate-900">
+            <Link href="#!" className="inline-flex items-center font-medium hover:text-primary text-slate-900">
               <span>Selengkapnya</span>
               <ChevronRight size={20} />
             </Link>

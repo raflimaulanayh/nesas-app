@@ -120,7 +120,7 @@ export const UserViewDetail = ({ params }: Params) => {
               </div>
 
               <div className="flex flex-col w-full p-8 space-y-3 bg-white border border-gray-200 rounded">
-                <h2 className="text-lg font-medium font-gotham">Informasi Akun</h2>
+                <h2 className="text-lg font-medium">Informasi Akun</h2>
                 <div className="grid grid-cols-2 gap-3">
                   <UserDetailCardSubmissionDetailCard label="Username" value={data?.username ?? '-'} />
                   <UserDetailCardSubmissionDetailCard label="Email" value={data?.email ?? '-'} />
@@ -130,7 +130,7 @@ export const UserViewDetail = ({ params }: Params) => {
 
               {student && (
                 <div className="flex flex-col w-full p-8 space-y-3 bg-white border border-gray-200 rounded">
-                  <h2 className="text-lg font-medium font-gotham">Informasi Siswa</h2>
+                  <h2 className="text-lg font-medium">Informasi Siswa</h2>
                   <div className="grid grid-cols-2 gap-3">
                     <UserDetailCardSubmissionDetailCard label="NIS" value={student?.nis ?? '-'} />
                     <UserDetailCardSubmissionDetailCard label="NISN" value={student?.nisn ?? '-'} />
@@ -169,7 +169,7 @@ export const UserViewDetail = ({ params }: Params) => {
 
               {teacher && (
                 <div className="flex flex-col w-full p-8 space-y-3 bg-white border border-gray-200 rounded">
-                  <h2 className="text-lg font-medium font-gotham">Informasi Guru</h2>
+                  <h2 className="text-lg font-medium">Informasi Guru</h2>
                   <div className="grid grid-cols-2 gap-3">
                     <UserDetailCardSubmissionDetailCard label="NIP" value={teacher?.nip ?? '-'} />
                     <UserDetailCardSubmissionDetailCard label="Nama Lengkap" value={teacher?.name ?? '-'} />

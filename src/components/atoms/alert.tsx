@@ -39,7 +39,7 @@ export const Alert = ({ allignment = 'center', title, message, type = 'default',
     >
       <div>{Icons}</div>
       <div>
-        {title && <AlertTitle className="font-semibold font-gotham">{title}</AlertTitle>}
+        {title && <AlertTitle className="font-semibold">{title}</AlertTitle>}
         {typeof message === 'string' ? <AlertDescription className={className}>{message}</AlertDescription> : message}
       </div>
     </DefaultAlert>

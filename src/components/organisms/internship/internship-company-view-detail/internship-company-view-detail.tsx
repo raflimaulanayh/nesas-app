@@ -117,7 +117,7 @@ export const InternshipCompanyViewDetail = ({ params }: Params) => {
               </div>
 
               <div className="flex flex-col w-full p-8 space-y-3 bg-white border border-gray-200 rounded">
-                <h2 className="text-lg font-medium font-gotham">Informasi Perusahaan</h2>
+                <h2 className="text-lg font-medium">Informasi Perusahaan</h2>
                 <div className="grid grid-cols-2 gap-3">
                   <UserDetailCardSubmissionDetailCard label="Nama perusahaan" value={data?.name ?? '-'} />
                   <UserDetailCardSubmissionDetailCard label="Kuota" value={data?.quota ?? '-'} />

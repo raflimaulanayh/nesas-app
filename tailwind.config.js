@@ -12,7 +12,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        'primary-blue': '#425DAA',
         'secondary-yellow': '#F8CA0F',
         tosca: '#47C1B4',
         'secondary-blue': '#05213E',
@@ -78,9 +77,8 @@ module.exports = {
       }
     },
     fontFamily: {
-      gotham: ['Gotham', 'sans-serif'],
-      inter: ['Inter', 'sans-serif'],
-      barlow: ['Barlow', 'sans-serif']
+      clash: ['Clash Display', 'sans-serif'],
+      rubik: ['Rubik', 'sans-serif']
     }
   },
   plugins: [require('tailwindcss-animate')]

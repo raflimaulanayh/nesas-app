@@ -20,7 +20,7 @@ export const Heading = ({ text, className, url }: HeadingProps) => {
     <h1>
       <Link
         href={urls || '#!'}
-        className={cn('text-2xl font-semibold text-primary inline-flex items-center gap-2', className)}
+        className={cn('text-lg lg:text-2xl font-semibold text-primary inline-flex items-center gap-2', className)}
       >
         {url && <ArrowLeftIcon size={24} />}
         {typeof text === 'string' ? <span>{text}</span> : text}

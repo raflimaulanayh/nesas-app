@@ -4,7 +4,6 @@ import { siteConfig } from '@/constants/config'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { auth } from 'auth'
-import { Rubik as FontSans } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
 import React from 'react'
 
@@ -12,14 +11,7 @@ import { Toaster } from '@/components/atoms/ui/toaster'
 import { ClientProvider } from '@/components/providers/client-provider'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 
-import { cn } from '@/lib/utils/cn'
-
 import { HeadMetaData } from './seo'
-
-const fontSans = FontSans({
-  subsets: ['latin'],
-  variable: '--font-sans'
-})
 
 export const metadata = {
   title: {
@@ -38,12 +30,12 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const session = await auth()
 
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadMetaData />
       </head>
 
-      <body className={cn('antialiased min-h-screen', fontSans.variable)}>
+      <body className="min-h-screen antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <React.Fragment>
             <NextTopLoader color="#4338CA" showSpinner={true} />
