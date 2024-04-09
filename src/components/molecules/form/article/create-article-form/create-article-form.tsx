@@ -40,6 +40,7 @@ export const ArticleCreateForm = () => {
 
     const body = {
       title: values.title,
+      description: values.description,
       content: values.content,
       category: values.category,
       keyword: values.keyword,
@@ -81,6 +82,7 @@ export const ArticleCreateForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
         <div className="space-y-4">
           <Input name="title" label="Judul" placeholder="Masukan judul" {...form} required />
+          <Input name="description" label="Deskripsi" placeholder="Masukan deskripsi" {...form} required />
           <FileUploads name="picture" label="Thumbnail" {...form} required />
           <RichText name="content" label="Konten" required />
           <Select name="category" label="Kategori" placeholder="Pilih kategori" option={CATEGORY_OPTIONS} {...form} />

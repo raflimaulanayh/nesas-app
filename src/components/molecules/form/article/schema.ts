@@ -4,6 +4,9 @@ export const formSchema = z.object({
   title: z.string().nonempty({
     message: 'Judul harus diisi'
   }),
+  description: z.string().nonempty({
+    message: 'Deskripsi harus diisi'
+  }),
   content: z.string().nonempty({
     message: 'Konten harus diisi'
   }),
@@ -26,6 +29,7 @@ export const formSchema = z.object({
 
 export const defaultValues = {
   title: '',
+  description: '',
   content: '',
   category: '',
   keyword: '',

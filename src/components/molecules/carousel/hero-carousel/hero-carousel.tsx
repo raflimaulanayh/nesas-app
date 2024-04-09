@@ -1,11 +1,13 @@
 'use client'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import data from '@/shared/jsons/landing-slider.json'
 import Autoplay from 'embla-carousel-autoplay'
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+import { Button } from '@/components/atoms/ui/button'
 import {
   Carousel,
   CarouselApi,
@@ -14,10 +16,11 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/atoms/ui/carousel'
+import Container from '@/components/templates/container/container'
 
 import { cn } from '@/lib/utils'
 
-export const HeroCarousel = () => {
+export const HeroCarousel = ({ data }: any) => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
@@ -51,16 +54,30 @@ export const HeroCarousel = () => {
       className="relative w-full h-full"
     >
       <CarouselContent>
-        {data.map((item, index) => (
+        {data.map((item: any, index: number) => (
           <CarouselItem
             key={index}
             className={cn(
               isLoading && 'bg-primary blur',
-              'duration-300 transition-all lg:w-full min-h-[30vh] lg:min-h-[80vh] relative'
+              'duration-300 transition-all flex items-center lg:w-full min-h-[30vh] lg:min-h-[80vh] relative'
             )}
           >
+            <div className="absolute bottom-0 z-20 w-9/12 h-full bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
+            <Container className="relative z-30 space-y-3">
+              <article className="w-full max-w-3xl space-y-4 text-start">
+                <h2 className="text-2xl font-medium text-white lg:text-4xl line-clamp-2">{item.title}</h2>
+                <p className="text-slate-200 line-clamp-3">{item.description}</p>
+                <div>
+                  <Link href={`/article/${item.slug}`}>
+                    <Button className="flex items-center gap-1 font-medium bg-white hover:bg-white/80 text-primary">
+                      Baca selengkapnya <ChevronRightIcon size={20} />
+                    </Button>
+                  </Link>
+                </div>
+              </article>
+            </Container>
             <Image
-              src={item.image}
+              src={item.picture}
               alt={`slide-${index}`}
               onLoadingComplete={() => setLoading(false)}
               fill
@@ -71,7 +88,7 @@ export const HeroCarousel = () => {
       </CarouselContent>
       <div className="absolute z-30 hidden lg:block left-10 bottom-7">
         <div className="grid w-full gap-2 " style={{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }}>
-          {data.map((_, index) => (
+          {data.map((_: any, index: number) => (
             <div
               className={cn(
                 ' h-3 w-3 rounded-full transition-all ease-in-out duration-500',

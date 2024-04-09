@@ -8,13 +8,14 @@ export const POST = async (request: Request) => {
   try {
     const json = await request.json()
 
-    const { title, content, category, keyword, writer_name, picture, status, user_id } = json
+    const { title, description, content, category, keyword, writer_name, picture, status, user_id } = json
 
     const slug = await generateSlug(title)
 
     const createArticle = await prisma.articles.create({
       data: {
         title,
+        description,
         content,
         category,
         keyword,

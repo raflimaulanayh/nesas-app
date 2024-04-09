@@ -3,7 +3,7 @@
 }
 
 .containerMarkdown img {
-  @apply object-contain max-w-full mx-auto my-4 rounded-md;
+  @apply object-contain w-full max-w-full mx-auto my-4 rounded-md;
 }
 
 .containerMarkdown strong {
