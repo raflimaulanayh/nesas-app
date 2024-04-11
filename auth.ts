@@ -1,4 +1,4 @@
-import { PrismaAdapter } from '@auth/prisma-adapter'
+// import { PrismaAdapter } from '@auth/prisma-adapter'
 import authConfig from 'auth.config'
 import NextAuth from 'next-auth'
 import { getAccountByUserId } from 'src/lib/utils/prisma/account'
@@ -73,7 +73,7 @@ export const {
       return token
     }
   },
-  adapter: PrismaAdapter(prisma),
+  // adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
   ...authConfig
 })
