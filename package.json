@@ -4,6 +4,9 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.1",
+    "@capacitor/android": "^5.7.4",
+    "@capacitor/core": "^5.7.4",
+    "@capacitor/ios": "^5.7.4",
     "@ckeditor/ckeditor5-build-classic": "^41.2.1",
     "@ckeditor/ckeditor5-react": "^6.2.0",
     "@hookform/resolvers": "^3.3.2",
@@ -89,6 +92,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@capacitor/cli": "^5.7.4",
     "@prisma/client": "^5.12.1",
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
@@ -134,14 +138,14 @@
     "typecheck": "tsc --noEmit --incremental false",
     "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
     "prettier:format": "prettier --write --ignore-path .gitignore .",
-    "generate": "pnpm plop --plopfile ./.plop/plopfile.js",
+    "generate": "bun plop --plopfile ./.plop/plopfile.js",
     "prepare": "husky install",
     "postinstall": "prisma generate"
   },
   "lint-staged": {
     "src/**/*": [
-      "pnpm lint:fix",
-      "pnpm prettier:format"
+      "bun lint:fix",
+      "bun prettier:format"
     ]
   },
   "version": "0.0.1"

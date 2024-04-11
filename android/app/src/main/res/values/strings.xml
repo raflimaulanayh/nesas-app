@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">nesas-smart-school</string>
+    <string name="title_activity_main">nesas-smart-school</string>
+    <string name="package_name">nss.nesas.tech</string>
+    <string name="custom_url_scheme">nss.nesas.tech</string>
+</resources>

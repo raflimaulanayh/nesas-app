@@ -52,7 +52,7 @@ export const LandingArticle = () => {
           </article>
         )}
         {loadArticles && (
-          <div className="grid space-y-4 hover:bg-slate-100 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 hover:bg-slate-100 sm:grid-cols-2 lg:grid-cols-3">
             <Skeleton className="w-full h-36" />
             <Skeleton className="w-full h-36" />
             <Skeleton className="w-full h-36" />
