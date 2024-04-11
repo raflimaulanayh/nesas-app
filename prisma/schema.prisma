@@ -9,21 +9,23 @@ datasource db {
 }
 
 model Users {
-  id              String     @id @default(cuid())
+  id              String          @id @default(cuid())
   username        String?
-  email           String?    @unique
+  email           String?         @unique
   emailVerified   DateTime?
   password        String
-  role            String     @default("student")
+  role            String          @default("student")
   photo           String?
   accountComplete Boolean?
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @updatedAt
-  active          Boolean?   @default(false)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  active          Boolean?        @default(false)
   teachers        Teachers[]
   students        Students[]
   Articles        Articles[]
   Account         Account[]
+  Forums          Forums[]
+  ForumComments   ForumComments[]
 }
 
 model Account {
@@ -326,4 +328,35 @@ model Contacts {
   message     String   @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Forums {
+  id            String   @id @default(cuid())
+  user_id       String
+  title         String
+  content       String?  @db.Text
+  like_count    Int?
+  dislike_count Int?
+  view_count    Int?
+  status        PostStatus   @default(public)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  users         Users?          @relation(fields: [user_id], references: [id])
+  ForumComments ForumComments[]
+}
+
+model ForumComments {
+  id            String   @id @default(cuid())
+  forum_id      String
+  user_id       String
+  content       String?  @db.Text
+  like_count    Int?
+  dislike_count Int?
+  view_count    Int?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  forums Forums? @relation(fields: [forum_id], references: [id])
+  users  Users?  @relation(fields: [user_id], references: [id])
 }
