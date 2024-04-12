@@ -53,7 +53,7 @@ export const HeroCarousel = ({ data }: any) => {
       className="relative w-full h-full"
     >
       <CarouselContent>
-        {data.map((item: any, index: number) => (
+        {data?.map((item: any, index: number) => (
           <CarouselItem
             key={index}
             className={cn(
