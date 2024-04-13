@@ -1,20 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
-// import useSWR from 'swr'
+import useSWR from 'swr'
 
+import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { ForumCard } from '@/components/molecules/card/forum-card'
 import Container from '@/components/templates/container/container'
 
 export const LandingForum = () => {
-  //   const { data: articles, isLoading: loadArticles } = useSWR('/articles')
+  const { data: forums, isLoading: loadForums } = useSWR('/forums')
 
-  //   const filtered = articles?.data?.filter((item: any) => item.status == 'public')
-  //   const sortedArticles = filtered?.sort((a: any, b: any) => {
-  //     return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  //   })
+  const filtered = forums?.data?.filter((item: any) => item.status == 'public')
+  const sortedForums = filtered?.sort((a: any, b: any) => {
+    return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+  })
 
   return (
     <section className="py-10">
@@ -27,47 +28,30 @@ export const LandingForum = () => {
           </Link>
         </header>
 
-        <article className="grid gap-x-5 sm:grid-cols-2">
-          <ForumCard
-            url="/forum/bagaimana-mehadirkan-forum"
-            title="Bagaimana Menghadirkan Forum Format yang Efektif dalam Konteks Pendidikan?"
-            content="Forum format telah menjadi sarana yang tak tergantikan dalam memperkaya pengalaman belajar di lingkungan pendidikan. Dalam upaya meningkatkan keterlibatan siswa dan membangun komunitas pembelajaran yang kuat, menyelenggarakan forum yang efektif sangatlah penting. Bagaimana kita bisa menciptakan forum yang produktif, interaktif, dan memotivasi? Bagikan ide, pengalaman, dan praktik terbaik Anda di sini!"
-            user={{ username: 'raflimaulana', picture: '/static/icons/user.svg' }}
-            updatedAt="2024-04-09T05:30:48.192Z"
-            commentCount={0}
-          />
-          <ForumCard
-            url="/forum/bagaimana-mehadirkan-forum"
-            title="Bagaimana Menghadirkan Forum Format yang Efektif dalam Konteks Pendidikan?"
-            content="Forum format telah menjadi sarana yang tak tergantikan dalam memperkaya pengalaman belajar di lingkungan pendidikan. Dalam upaya meningkatkan keterlibatan siswa dan membangun komunitas pembelajaran yang kuat, menyelenggarakan forum yang efektif sangatlah penting. Bagaimana kita bisa menciptakan forum yang produktif, interaktif, dan memotivasi? Bagikan ide, pengalaman, dan praktik terbaik Anda di sini!"
-            user={{ username: 'raflimaulana', picture: '/static/icons/user.svg' }}
-            updatedAt="2024-04-09T05:30:48.192Z"
-            commentCount={0}
-          />
-          <ForumCard
-            url="/forum/bagaimana-mehadirkan-forum"
-            title="Bagaimana Menghadirkan Forum Format yang Efektif dalam Konteks Pendidikan?"
-            content="Forum format telah menjadi sarana yang tak tergantikan dalam memperkaya pengalaman belajar di lingkungan pendidikan. Dalam upaya meningkatkan keterlibatan siswa dan membangun komunitas pembelajaran yang kuat, menyelenggarakan forum yang efektif sangatlah penting. Bagaimana kita bisa menciptakan forum yang produktif, interaktif, dan memotivasi? Bagikan ide, pengalaman, dan praktik terbaik Anda di sini!"
-            user={{ username: 'raflimaulana', picture: '/static/icons/user.svg' }}
-            updatedAt="2024-04-09T05:30:48.192Z"
-            commentCount={0}
-          />
-          <ForumCard
-            url="/forum/bagaimana-mehadirkan-forum"
-            title="Bagaimana Menghadirkan Forum Format yang Efektif dalam Konteks Pendidikan?"
-            content="Forum format telah menjadi sarana yang tak tergantikan dalam memperkaya pengalaman belajar di lingkungan pendidikan. Dalam upaya meningkatkan keterlibatan siswa dan membangun komunitas pembelajaran yang kuat, menyelenggarakan forum yang efektif sangatlah penting. Bagaimana kita bisa menciptakan forum yang produktif, interaktif, dan memotivasi? Bagikan ide, pengalaman, dan praktik terbaik Anda di sini!"
-            user={{ username: 'raflimaulana', picture: '/static/icons/user.svg' }}
-            updatedAt="2024-04-09T05:30:48.192Z"
-            commentCount={0}
-          />
-        </article>
-        {/* {loadForums && (
+        {!loadForums && (
+          <article className="grid gap-x-5 sm:grid-cols-2">
+            {sortedForums
+              ?.slice(0, 4)
+              .map((item: any) => (
+                <ForumCard
+                  key={item.id}
+                  url={`/forum/${item.slug}`}
+                  title={item.title}
+                  content={item.content}
+                  user={{ username: item.users.username, picture: item.users.photo }}
+                  updatedAt={item.updatedAt}
+                  commentCount={item.ForumComments.length || 0}
+                />
+              ))}
+          </article>
+        )}
+        {loadForums && (
           <div className="grid gap-4 hover:bg-slate-100 lg:grid-cols-2">
             <Skeleton className="w-full h-36" />
             <Skeleton className="w-full h-36" />
             <Skeleton className="w-full h-36" />
           </div>
-        )} */}
+        )}
       </Container>
     </section>
   )

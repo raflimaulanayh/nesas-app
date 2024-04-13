@@ -339,6 +339,9 @@ model Forums {
   dislike_count Int?
   view_count    Int?
   status        PostStatus   @default(public)
+  slug          String    @db.Text    @unique
+  keyword       String?   @db.Text
+  solved        Boolean   @default(false)
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
 

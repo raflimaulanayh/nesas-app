@@ -1,3 +1,4 @@
+import { ForumContent } from '@/components/organisms/forum/forum-content'
 import { SiteLayout } from '@/components/templates/site-layout'
 
 export const metadata = {
@@ -7,7 +8,7 @@ export const metadata = {
 const ForumPage = () => {
   return (
     <SiteLayout>
-      <h1>Forum Page</h1>
+      <ForumContent />
     </SiteLayout>
   )
 }

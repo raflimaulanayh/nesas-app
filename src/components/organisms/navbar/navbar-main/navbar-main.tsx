@@ -175,7 +175,28 @@ export const Navbar = () => {
           <ul className="flex items-center justify-around text-center">
             {navigationGeneral.map((item) => {
               if (item?.childs) {
-                return null
+                return (
+                  <li key={item.label}>
+                    <Popover>
+                      <PopoverTrigger className="flex flex-col items-center gap-1 text-sm text-white group">
+                        <item.icon size={23} />
+                        <span>{item.label}</span>
+                      </PopoverTrigger>
+                      <PopoverContent className="mb-3">
+                        <ul className="space-y-2 text-sm font-medium text-end">
+                          {item.childs.map((item) => (
+                            <li
+                              key={item.label}
+                              className={cn(pathname === item.url ? 'text-primary' : 'hover:text-primary')}
+                            >
+                              <Link href={item.url}>{item.label}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </PopoverContent>
+                    </Popover>
+                  </li>
+                )
               } else {
                 return (
                   <li key={item.label}>

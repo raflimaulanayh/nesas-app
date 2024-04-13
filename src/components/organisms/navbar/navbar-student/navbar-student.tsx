@@ -30,9 +30,7 @@ export const NavbarStudent = () => {
                           {item.childs.map((item) => (
                             <li
                               key={item.label}
-                              className={cn(
-                                pathname === item.url ? 'underline text-primary' : 'hover:text-primary hover:underline'
-                              )}
+                              className={cn(pathname === item.url ? 'text-primary' : 'hover:text-primary')}
                             >
                               <Link href={item.url}>{item.label}</Link>
                             </li>

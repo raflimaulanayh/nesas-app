@@ -68,34 +68,29 @@ export const navigationGeneral = [
     label: 'Chatbot'
   },
   {
-    url: '/article',
-    icon: RiArticleFill,
-    label: 'Artikel'
-  },
-  {
     url: '/contact',
     icon: HiAnnotation,
     label: 'Kontak'
   },
   {
     url: '#!',
-    icon: RiArticleFill,
+    icon: MenuIcon,
     label: 'Lainnya',
     childs: [
       {
-        url: 'https://ppdb.jabarprov.go.id/',
+        url: '/article',
         icon: RiArticleFill,
-        label: 'PPDB'
+        label: 'Artikel'
       },
       {
-        url: 'https://chat.whatsapp.com/IJ4wPOf14ZiLQjG7toalC5',
+        url: '/forum',
         icon: RiArticleFill,
         label: 'Forum'
       },
       {
-        url: '#!',
+        url: 'https://ppdb.jabarprov.go.id/',
         icon: RiArticleFill,
-        label: 'Polling'
+        label: 'PPDB'
       },
       {
         url: '#!',
