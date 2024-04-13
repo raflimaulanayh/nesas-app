@@ -16,8 +16,6 @@ import Container from '@/components/templates/container/container'
 
 import { formatTime } from '@/lib/utils/format-time'
 
-import styles from './article.module.css'
-
 export const ArticlePreview = ({ params }: Params) => {
   const { data: article, isLoading: loadArticle } = useSWR(`/articles/${params.id}`)
   const data = article?.data
@@ -56,7 +54,7 @@ export const ArticlePreview = ({ params }: Params) => {
                     height={500}
                   />
 
-                  <div className={styles.containerMarkdown}>
+                  <div className="container-markdown">
                     <article
                       className="relative text-justify py-5 !max-w-full"
                       dangerouslySetInnerHTML={{ __html: data?.content }}

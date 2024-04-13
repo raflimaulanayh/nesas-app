@@ -1,4 +1,4 @@
-import { ContactForm } from '@/components/organisms/contact/contact-form/contact-form'
+import { ContactForm } from '@/components/organisms/contact/contact-form'
 import { ContactInfo } from '@/components/organisms/contact/contact-info'
 import Container from '@/components/templates/container/container'
 import { SiteLayout } from '@/components/templates/site-layout'

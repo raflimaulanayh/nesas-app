@@ -14,16 +14,18 @@ interface ForumCardProps {
   }
   updatedAt?: string
   commentCount: number
-  url: string
+  url?: string
 }
 
-export const ForumCard = ({ title, content, user, updatedAt, commentCount = 0, url }: ForumCardProps) => {
+export const ForumCard = ({ title, content, user, updatedAt, commentCount = 0, url = '#!' }: ForumCardProps) => {
   return (
     <Link href={url} className="hover:bg-slate-100 group">
-      <figure className="flex flex-col justify-between gap-3 py-5 border-b rounded sm:h-52 lg:px-5 border-b-slate-300">
+      <figure className="flex flex-col justify-between gap-3 py-5 border-b rounded sm:h-52 border-b-slate-300">
         <figcaption className="space-y-1">
-          <h3 className="text-lg font-medium line-clamp-2">{title}</h3>
-          <p className="text-sm line-clamp-2 text-slate-700" dangerouslySetInnerHTML={{ __html: content }} />
+          <h3 className="text-lg font-medium line-clamp-2 text-slate-900">{title}</h3>
+          <div className="container-markdown">
+            <p className="text-sm line-clamp-2 text-slate-700" dangerouslySetInnerHTML={{ __html: content }} />
+          </div>
         </figcaption>
         <div className="flex items-end justify-between">
           <div className="flex items-center gap-1">

@@ -1,6 +1,6 @@
 import { Params } from 'types/data/params'
 
-import { ArticleContentDetail } from '@/components/organisms/article/article-content-detail'
+import { ForumContentDetail } from '@/components/organisms/forum/forum-content-detail'
 import { SiteLayout } from '@/components/templates/site-layout'
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
 const ForumDetailPage = ({ params }: Params) => {
   return (
     <SiteLayout>
-      <ArticleContentDetail params={params} />
+      <ForumContentDetail params={params} />
     </SiteLayout>
   )
 }

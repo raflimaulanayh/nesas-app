@@ -68,6 +68,8 @@
   }
 }
 
+@import './markdown.css';
+
 @layer base {
   * {
     @apply border-border;

@@ -61,6 +61,7 @@ export const TinyEditor = ({ onChange, defaultValue }: { onChange: (data: string
           onFocus={() => setIsFocus(true)}
           apiKey="oy9aih0lyzqgbbpjz6zj1fen4o28hf31tppl9i8fxnoy5tsl"
           init={{
+            height: '300px',
             plugins:
               'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
             toolbar:
