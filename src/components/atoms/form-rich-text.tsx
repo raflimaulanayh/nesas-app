@@ -34,7 +34,7 @@ export const RichText: React.FC<RichTextProps> = ({
       render={({ field }) => (
         <FormItem className="space-y-3">
           <div className={cn('flex justify-between w-full', className)}>
-            <Label className="text-sm font-semibold text-primary-blue">
+            <Label className="text-sm font-semibold text-primary">
               {label} {required && <span className="text-red-600"> *</span>}
             </Label>
           </div>
@@ -54,7 +54,7 @@ export const TinyEditor = ({ onChange, defaultValue }: { onChange: (data: string
   }
 
   return (
-    <div className={cn('border-2 rounded-md', isFocus ? 'border-primary-blue' : 'border-gray-200')}>
+    <div className={cn('border-2 rounded-md', isFocus ? 'border-primary' : 'border-gray-200')}>
       <FormControl>
         <Editor
           onBlur={() => setIsFocus(false)}
@@ -62,16 +62,14 @@ export const TinyEditor = ({ onChange, defaultValue }: { onChange: (data: string
           apiKey="oy9aih0lyzqgbbpjz6zj1fen4o28hf31tppl9i8fxnoy5tsl"
           init={{
             height: '300px',
+            branding: false,
+            menubar: true,
             plugins:
-              'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+              'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags typography inlinecss markdown',
             toolbar:
-              'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+              'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | checklist numlist bullist indent outdent | emoticons charmap',
             tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-            mergetags_list: [
-              { value: 'First.Name', title: 'First Name' },
-              { value: 'Email', title: 'Email' }
-            ]
+            tinycomments_author: 'Author name'
           }}
           onEditorChange={handleEditorChange}
           initialValue={defaultValue}

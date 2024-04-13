@@ -10,7 +10,7 @@ interface UserDetailCardProps {
 
 export const UserDetailCardSubmissionDetailCard = ({ label, value = '', className }: UserDetailCardProps) => (
   <div className={cn(className, 'py-2 space-y-1 border-b border-slate-200')}>
-    <span className="text-sm font-medium text-primary-blue">{label}</span>
+    <span className="text-sm font-medium text-primary">{label}</span>
     <br />
     {typeof value === 'string' ? <p dangerouslySetInnerHTML={{ __html: value }} /> : value}
   </div>

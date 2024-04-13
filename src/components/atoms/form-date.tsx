@@ -46,11 +46,11 @@ export const DateInput: React.FC<DateInputProps> = ({
               className={cn(
                 'border-2  pt-2 rounded-md overflow-hidden',
                 className,
-                isFocus ? 'border-primary-blue' : 'border-gray-200'
+                isFocus ? 'border-primary' : 'border-gray-200'
               )}
               data-attribute="date-input"
             >
-              <Label className="px-3 text-sm text-primary-blue">
+              <Label className="px-3 text-sm text-primary">
                 {label} {required && <span className="text-red-600"> *</span>}
               </Label>
               <Popover>

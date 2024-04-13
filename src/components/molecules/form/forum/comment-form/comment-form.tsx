@@ -66,7 +66,7 @@ export const CommentForm = ({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="mt-10 space-y-6">
+        <div className="space-y-6">
           <RichText name="content" label="Jawaban" required {...form} />
           <div className="flex justify-end">
             <Button disabled={loading} className="ml-auto" type="submit">

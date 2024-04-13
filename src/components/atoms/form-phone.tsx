@@ -46,11 +46,11 @@ export const PhoneInput: React.FC<PhoneInput> = ({
             className={cn(
               'border-2  pt-2 rounded-md',
               className,
-              isFocus ? 'border-primary-blue' : 'border-gray-200',
+              isFocus ? 'border-primary' : 'border-gray-200',
               disabled ? 'bg-gray-100' : ''
             )}
           >
-            <Label className="px-3 text-sm text-primary-blue">
+            <Label className="px-3 text-sm text-primary">
               {label} {required && <span className="text-red-600"> *</span>}
             </Label>
             <FormControl className="m-1">

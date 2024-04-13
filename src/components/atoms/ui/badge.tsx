@@ -15,7 +15,7 @@ const badgeVariants = cva(
         pending: 'bg-gray-100 border-gray-300 text-gray-300',
         success: 'bg-green-100 border-green-300 text-green-300',
         failed: 'bg-red-100 border-red-300 text-red-300',
-        review: 'bg-blue-50 border-primary-blue text-primary-blue',
+        review: 'bg-blue-50 border-primary text-primary',
         accepted: 'bg-green-50 border-green-600 text-green-600',
         declined: 'bg-red-50 border-red-600 text-red-600'
       }

@@ -101,11 +101,11 @@ export const HeroCarousel = ({ data }: any) => {
       <div className="hidden sm:block">
         <CarouselPrevious
           className="absolute z-40 flex items-center justify-center bg-transparent hover:bg-transparent border-0 rounded-full w-9 h-9 top-20 md:top-1/2 -left-0.5 sm:left-0.5 lg:left-10 group"
-          customArrow={<ChevronLeftIcon className="w-8 h-8 text-white disabled:text-primary-blue/60" />}
+          customArrow={<ChevronLeftIcon className="w-8 h-8 text-white disabled:text-primary/60" />}
         />
         <CarouselNext
           className="absolute z-40 flex items-center justify-center bg-transparent hover:bg-transparent border-0 rounded-full w-9 h-9 top-20 md:top-1/2 -right-0.5 sm:right-0.5 lg:right-10 group"
-          customArrow={<ChevronRightIcon className="w-8 h-8 text-white disabled:text-primary-blue/600" />}
+          customArrow={<ChevronRightIcon className="w-8 h-8 text-white disabled:text-primary/600" />}
         />
       </div>
     </Carousel>

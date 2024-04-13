@@ -19,8 +19,8 @@ interface ForumCardProps {
 
 export const ForumCard = ({ title, content, user, updatedAt, commentCount = 0, url = '#!' }: ForumCardProps) => {
   return (
-    <Link href={url} className="hover:bg-slate-100 group">
-      <figure className="flex flex-col justify-between gap-3 py-5 border-b rounded sm:h-52 border-b-slate-300">
+    <Link href={url}>
+      <figure className="flex flex-col justify-between gap-3 p-5 bg-white border rounded shadow-md hover:bg-slate-100 sm:h-52 border-b-slate-300">
         <figcaption className="space-y-1">
           <h3 className="text-lg font-medium line-clamp-2 text-slate-900">{title}</h3>
           <div className="container-markdown">
@@ -32,8 +32,8 @@ export const ForumCard = ({ title, content, user, updatedAt, commentCount = 0, u
             <Image
               src={user.picture || '/static/icons/user.svg'}
               alt={'User Picture'}
-              height={50}
-              width={50}
+              height={40}
+              width={40}
               className="object-cover rounded-full"
             />
             <div className="flex flex-col text-sm">

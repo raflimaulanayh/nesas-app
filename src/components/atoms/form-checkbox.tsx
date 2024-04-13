@@ -40,7 +40,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       render={({ field }) => (
         <FormItem className="space-y-3">
           <div className={cn('flex justify-between w-full', className)}>
-            <Label className="text-sm font-semibold text-primary-blue">
+            <Label className="text-sm font-semibold text-primary">
               {label} {required && !isTOR && <span className="text-red-600"> *</span>}
             </Label>
           </div>
@@ -55,7 +55,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                       ? field.onChange([...field.value, item.value])
                       : field.onChange(field.value?.filter((value: unknown) => value !== item.value))
                   }}
-                  className="w-5 h-5 border-2 border-gray-300 data-[state=checked]:border-primary-blue"
+                  className="w-5 h-5 border-2 border-gray-300 data-[state=checked]:border-primary"
                 />
               </FormControl>
               <Label className="font-normal cursor-pointer" htmlFor={`${name}_${item.value}`}>

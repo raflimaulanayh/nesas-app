@@ -36,7 +36,7 @@ export const RadioInput: React.FC<RadioInputProps> = ({
       render={({ field }) => (
         <FormItem className="space-y-3">
           <div className={cn('flex justify-between w-full', className)}>
-            <Label className="text-sm font-semibold text-primary-blue">
+            <Label className="text-sm font-semibold text-primary">
               {label} {required && <span className="text-red-600"> *</span>}
             </Label>
           </div>

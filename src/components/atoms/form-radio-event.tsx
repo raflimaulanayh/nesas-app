@@ -37,7 +37,7 @@ export const RadioEventInput: React.FC<RadioEventInputProps> = ({
       render={({ field }) => (
         <FormItem className="space-y-3">
           <div className={cn('flex justify-between w-full', className)}>
-            <Label className="text-sm font-semibold text-primary-blue">
+            <Label className="text-sm font-semibold text-primary">
               {label} {required && <span className="text-red-600"> *</span>}
             </Label>
           </div>
@@ -54,7 +54,7 @@ export const RadioEventInput: React.FC<RadioEventInputProps> = ({
                   <FormItem
                     className={cn(
                       'flex items-start w-full p-4 space-x-3 space-y-0 rounded justify-between cursor-pointer',
-                      field.value == item.value ? 'border border-primary-blue' : 'border border-gray-300'
+                      field.value == item.value ? 'border border-primary' : 'border border-gray-300'
                     )}
                   >
                     <Label className="inline-flex flex-col w-auto">

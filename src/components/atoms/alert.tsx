@@ -23,7 +23,7 @@ export const Alert = ({ allignment = 'center', title, message, type = 'default',
       case 'warning':
         return <Icon.AlertCircle className="w-5 h-5 p-0.5 text-white bg-yellow-600 rounded-full" />
       case 'info':
-        return <Icon.Info className="w-5 h-5 p-0.5 text-primary-blue" />
+        return <Icon.Info className="w-5 h-5 p-0.5 text-primary" />
     }
   }, [type])
 
