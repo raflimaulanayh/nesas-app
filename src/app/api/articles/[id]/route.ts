@@ -2,7 +2,6 @@
 import { NextResponse } from 'next/server'
 import { Params } from 'types/data/params'
 
-import { generateSlug } from '@/lib/utils/generate-slug/generate-slug'
 import prisma from '@/lib/utils/prisma'
 
 export async function GET(request: Request, { params }: Params) {
@@ -29,8 +28,6 @@ export async function PUT(request: Request, { params }: Params) {
 
     const { title, description, content, category, keyword, writer_name, picture, status, user_id } = data
 
-    const slug = await generateSlug(title)
-
     const updateArticle = await prisma.articles.update({
       where: { id },
       data: {
@@ -42,7 +39,6 @@ export async function PUT(request: Request, { params }: Params) {
         writer_name,
         picture,
         status,
-        slug,
         user_id
       }
     })

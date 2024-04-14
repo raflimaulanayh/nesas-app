@@ -1,13 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { EditIcon, EyeIcon, Trash2Icon } from 'lucide-react'
+import { CheckSquare, EditIcon, EyeIcon, Trash2Icon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { Button } from '@/components/atoms/ui/button'
 
 import { cn } from '@/lib/utils'
 import { formatArticleStatus } from '@/lib/utils/format-article-status'
 import { formatDate } from '@/lib/utils/format-date'
 
-export const ArticleManageCard = ({ loading, title, updatedAt, status, picture, urlDetail, urlEdit, handleDelete }: any) => {
+export const ArticleManageCard = ({
+  loading,
+  title,
+  updatedAt,
+  status,
+  picture,
+  urlDetail,
+  urlEdit,
+  handleDelete,
+  permission,
+  handlePermission
+}: any) => {
   return (
     <figure
       className={cn(
@@ -15,6 +28,16 @@ export const ArticleManageCard = ({ loading, title, updatedAt, status, picture, 
         'relative flex items-center w-full gap-5 p-3 transition-all border rounded-md shadow-sm group hover:shadow-md'
       )}
     >
+      {permission && (
+        <Button
+          size="icon"
+          onClick={handlePermission}
+          disabled={loading}
+          className="absolute text-white right-3 top-3 bg-primary"
+        >
+          <CheckSquare size={16} />
+        </Button>
+      )}
       <Image
         src={picture ?? '/static/images/article-dummy.jpg'}
         alt={'Picture' + (title ?? 'Artikel')}
@@ -22,7 +45,7 @@ export const ArticleManageCard = ({ loading, title, updatedAt, status, picture, 
         height={200}
         className="object-cover transition-all rounded-sm w-28 h-28 group-hover:scale-105"
       />
-      <figcaption>
+      <figcaption className="py-5">
         <h3 className="font-semibold sm:text-lg line-clamp-2 group-hover:text-primary text-slate-900">{title}</h3>
         <span className="text-sm text-slate-700">{formatDate(updatedAt)}</span>
       </figcaption>

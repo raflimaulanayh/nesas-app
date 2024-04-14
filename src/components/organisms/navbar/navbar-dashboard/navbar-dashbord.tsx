@@ -61,13 +61,19 @@ export const NavbarDashboard = () => {
                   <ul className="space-y-2">
                     {userNavigation.map((item) => (
                       <li key={item.name}>
-                        <Link href={item.href} className={cn('block text-sm leading-6 text-gray-900')}>
+                        <Link
+                          href={item.href}
+                          className={cn('block px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
+                        >
                           {item.name}
                         </Link>
                       </li>
                     ))}
                     <li>
-                      <button onClick={() => logout()} className={cn('flex w-full text-sm leading-6 text-gray-900')}>
+                      <button
+                        onClick={() => logout()}
+                        className={cn('block px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
+                      >
                         Logout
                       </button>
                     </li>

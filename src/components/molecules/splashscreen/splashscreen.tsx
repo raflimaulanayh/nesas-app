@@ -30,10 +30,10 @@ export const SplashScreen = () => {
     setTimeout(() => {
       setIsLoading(false)
       showScroll()
-    }, 5000)
+    }, 4000)
     setTimeout(() => {
       setIsFinished(true)
-    }, 7000)
+    }, 4000)
   }, [])
 
   return (

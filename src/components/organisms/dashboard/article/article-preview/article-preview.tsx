@@ -2,22 +2,28 @@
 'use client'
 
 import { useHydration } from '@/hooks/use-hydration'
-import { CalendarRange } from 'lucide-react'
+import api from '@/services/api'
+import { CalendarRange, CheckSquare, InfoIcon } from 'lucide-react'
 import Image from 'next/image'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import useSWR from 'swr'
 import { Params } from 'types/data/params'
 
 import { BreadcrumbResponsive } from '@/components/atoms/breadcrumb-responsive'
 import { Heading } from '@/components/atoms/heading'
+import { Modal } from '@/components/atoms/modal'
 import { SkeletonAction } from '@/components/atoms/skeleton-action'
+import { Button } from '@/components/atoms/ui/button'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
+import { toast } from '@/components/atoms/ui/use-toast'
 import Container from '@/components/templates/container/container'
 
 import { formatTime } from '@/lib/utils/format-time'
 
 export const ArticlePreview = ({ params }: Params) => {
-  const { data: article, isLoading: loadArticle } = useSWR(`/articles/${params.id}`)
+  const [openModalStatus, setOpenModalStatus] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const { data: article, isLoading: loadArticle, mutate: mutateArticles } = useSWR(`/articles/${params.id}`)
   const data = article?.data
   const isHydrated = useHydration()
   const items = [
@@ -25,6 +31,26 @@ export const ArticlePreview = ({ params }: Params) => {
     { href: '/dashboard/article', label: 'Kelola Artikel' },
     { label: 'Preview Artikel' }
   ]
+
+  async function onSubmitStatus() {
+    setLoading(true)
+
+    const body = {
+      status: 'public'
+    }
+
+    try {
+      await api.put(`/articles/${params.id}`, body)
+      mutateArticles()
+      toast({ title: 'Atikel berhasil disetujui!' })
+    } catch (error) {
+      console.error('Error deleting news:', error)
+      toast({ title: 'Artikel gagal disetujui!', variant: 'destructive' })
+    } finally {
+      setLoading(false)
+      setOpenModalStatus(false)
+    }
+  }
 
   return (
     <Fragment>
@@ -37,12 +63,25 @@ export const ArticlePreview = ({ params }: Params) => {
           </div>
           {!loadArticle && (
             <Fragment>
-              <header className="mb-4 space-y-4 lg:w-9/12">
-                <h2 className="text-xl font-semibold lg:text-2xl">{data?.title}</h2>
-                <span className="flex items-center gap-2 text-sm text-slate-800">
-                  <CalendarRange size={20} />
-                  {formatTime(data?.publishAt)}
-                </span>
+              <header className="flex flex-wrap justify-between mb-4 space-y-4 gap-x-5 lg:items-center">
+                <div>
+                  <h2 className="text-xl font-semibold lg:text-2xl">{data?.title}</h2>
+                  <span className="flex items-center gap-2 text-sm text-slate-800">
+                    <CalendarRange size={20} />
+                    {formatTime(data?.publishAt)}
+                  </span>
+                </div>
+
+                {data?.status == 'pending' && (
+                  <Button
+                    onClick={() => setOpenModalStatus(true)}
+                    disabled={loading}
+                    className="space-x-1 text-white bg-primary"
+                  >
+                    <CheckSquare size={20} />
+                    <span>Setujui</span>
+                  </Button>
+                )}
               </header>
               <section className="relative flex flex-col items-start gap-10 lg:flex-row">
                 <article className="w-full">
@@ -92,6 +131,21 @@ export const ArticlePreview = ({ params }: Params) => {
           )}
         </Container>
       )}
+
+      <Modal open={openModalStatus} setOpen={setOpenModalStatus} className="flex flex-col">
+        <InfoIcon />
+        <p className="text-xl font-semibold">Konfirmasi</p>
+        <p>Kamu yakin ingin menyetujui?</p>
+        <Button className="w-full h-auto py-3 rounded-full bg-primary hover:bg-secondary-blue" onClick={onSubmitStatus}>
+          Ya, Setujui
+        </Button>
+        <Button
+          className="w-full h-auto py-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary"
+          onClick={() => setOpenModalStatus(false)}
+        >
+          Tidak, Cancel
+        </Button>
+      </Modal>
     </Fragment>
   )
 }

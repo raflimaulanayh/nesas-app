@@ -79,7 +79,7 @@ export const ContactList = () => {
                         key={item.id}
                         className={cn(
                           loading && 'opacity-70',
-                          'relative w-full p-4 border rounded-md shadow-md text-slate-600 hover:shadow-lg'
+                          'relative w-full p-4 pb-14 border rounded-md shadow-md text-slate-600 hover:shadow-lg'
                         )}
                       >
                         <ul>
@@ -90,7 +90,7 @@ export const ContactList = () => {
                             <span className="font-medium text-slate-900">Email :</span> {item?.email ?? '-'}
                           </li>
                           <li>
-                            <span className="font-medium text-slate-900">No. HP :</span> {item?.phoneNumber ?? '-'}
+                            <span className="font-medium text-slate-900">No. HP/Whatsapp :</span> {item?.phoneNumber ?? '-'}
                           </li>
                           <li>
                             <span className="font-medium text-slate-900">Subjek :</span> {item?.subject ?? '-'}
