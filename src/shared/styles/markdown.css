@@ -1,64 +1,63 @@
 .container-markdown {
-    @apply max-w-full text-gray-900;
-  }
-  
-  .container-markdown img {
-    @apply object-contain w-full max-w-full mx-auto my-4 rounded-md;
-  }
-  
-  .container-markdown strong {
-    @apply font-extrabold;
-  }
-  
-  .container-markdown u {
-    @apply underline;
-  }
-  
-  .container-markdown p {
-    @apply mb-3 text-sm text-justify text-gray-900;
-  }
-  
-  .container-markdown a {
-    @apply text-blue-600 underline;
-  }
-  
-  .container-markdown ul {
-    @apply mb-3 ml-4 list-disc;
-  }
-  
-  .container-markdown ol {
-    @apply mb-3 ml-4 list-decimal;
-  }
-  
-  .container-markdown pre {
-    @apply px-5 mb-3 whitespace-pre-wrap rounded-md;
-  }
-  
-  .container-markdown code {
-    @apply px-5 mb-3 whitespace-pre-wrap rounded-md;
-  }
-  
-  .container-markdown h1 {
-    @apply mb-2 text-3xl font-semibold mt-7;
-  }
-  
-  .container-markdown h2 {
-    @apply mb-2 text-2xl font-semibold mt-7;
-  }
-  
-  .container-markdown h3 {
-    @apply mb-2 text-xl font-semibold mt-7;
-  }
-  
-  .container-markdown h4 {
-    @apply mb-2 text-lg font-semibold mt-7;
-  }
-  
-  .container-markdown h5 {
-    @apply mb-2 text-base font-semibold mt-7;
-  }
-  
-  .container-markdown h6 {
-    @apply my-2 text-sm font-semibold;
-  }
-  
+  @apply max-w-full text-gray-900;
+}
+
+.container-markdown img {
+  @apply object-contain w-full max-w-full mx-auto my-4 rounded-md;
+}
+
+.container-markdown strong {
+  @apply font-extrabold;
+}
+
+.container-markdown u {
+  @apply underline;
+}
+
+.container-markdown p {
+  @apply mb-3 text-sm text-justify text-gray-900;
+}
+
+.container-markdown a {
+  @apply text-blue-600 underline;
+}
+
+.container-markdown ul {
+  @apply mb-3 ml-4 list-disc;
+}
+
+.container-markdown ol {
+  @apply mb-3 ml-4 list-decimal;
+}
+
+.container-markdown pre {
+  @apply px-5 mb-3 whitespace-pre-wrap rounded-md;
+}
+
+.container-markdown code {
+  @apply px-5 mb-3 whitespace-pre-wrap rounded-md;
+}
+
+.container-markdown h1 {
+  @apply mb-2 text-3xl font-semibold mt-7;
+}
+
+.container-markdown h2 {
+  @apply mb-2 text-2xl font-semibold mt-7;
+}
+
+.container-markdown h3 {
+  @apply mb-2 text-xl font-semibold mt-7;
+}
+
+.container-markdown h4 {
+  @apply mb-2 text-lg font-semibold mt-7;
+}
+
+.container-markdown h5 {
+  @apply mb-2 text-base font-semibold mt-7;
+}
+
+.container-markdown h6 {
+  @apply my-2 text-sm font-semibold;
+}

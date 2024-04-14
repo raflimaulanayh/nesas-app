@@ -8,6 +8,7 @@ import NextTopLoader from 'nextjs-toploader'
 import React from 'react'
 
 import { Toaster } from '@/components/atoms/ui/toaster'
+import { SplashScreen } from '@/components/molecules/splashscreen'
 import { ClientProvider } from '@/components/providers/client-provider'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 
@@ -43,6 +44,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             <SpeedInsights />
             <Analytics />
           </React.Fragment>
+          <SplashScreen />
           <Toaster />
         </ThemeProvider>
       </body>
