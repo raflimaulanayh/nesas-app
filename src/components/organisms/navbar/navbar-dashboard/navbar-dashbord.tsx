@@ -41,7 +41,7 @@ export const NavbarDashboard = () => {
               </button>
 
               <Popover>
-                <PopoverTrigger className="flex items-center gap-2">
+                <PopoverTrigger className="-m-1.5 flex gap-2 items-center p-1.5">
                   <span className="sr-only">Open user menu</span>
                   <Image
                     src={user?.photo || '/static/icons/user.svg'}
@@ -57,7 +57,7 @@ export const NavbarDashboard = () => {
                     <IoChevronDownSharp className="w-5 h-5 ml-2 text-gray-400" aria-hidden="true" />
                   </span>
                 </PopoverTrigger>
-                <PopoverContent align="end" className="min-w-[120px]">
+                <PopoverContent align="end" className="p-2 mt-2 mr-1 min-w-28">
                   <ul className="space-y-2">
                     {userNavigation.map((item) => (
                       <li key={item.name}>
@@ -69,10 +69,12 @@ export const NavbarDashboard = () => {
                         </Link>
                       </li>
                     ))}
-                    <li>
+                    <li className="flex">
                       <button
                         onClick={() => logout()}
-                        className={cn('block px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
+                        className={cn(
+                          'px-3 py-1 w-full flex justify-start text-sm leading-6 hover:bg-slate-100 rounded text-gray-900'
+                        )}
                       >
                         Logout
                       </button>

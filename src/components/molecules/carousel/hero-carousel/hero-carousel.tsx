@@ -1,4 +1,3 @@
-'use client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import Autoplay from 'embla-carousel-autoplay'
@@ -61,7 +60,7 @@ export const HeroCarousel = ({ data }: any) => {
               'duration-300 transition-all flex items-center lg:w-full min-h-[30vh] lg:min-h-[80vh] relative'
             )}
           >
-            <div className="absolute bottom-0 z-20 w-9/12 h-full bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
+            <div className="absolute bottom-0 z-20 w-10/12 h-full bg-gradient-to-r from-primary/90 via-primary/50 to-primary/0" />
             <Container className="relative z-30 py-10 space-y-1 sm:space-y-3">
               <article className="w-full max-w-3xl space-y-4 text-start">
                 <h2 className="text-xl font-medium text-white sm:text-2xl lg:text-4xl line-clamp-2">{item.title}</h2>
@@ -76,7 +75,7 @@ export const HeroCarousel = ({ data }: any) => {
               </article>
             </Container>
             <Image
-              src={item.picture}
+              src={item.picture || '/static/images/nesas-view.jpg'}
               alt={`slide-${index}`}
               onLoadingComplete={() => setLoading(false)}
               fill

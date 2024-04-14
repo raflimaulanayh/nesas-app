@@ -78,3 +78,5 @@ next-env.d.ts
 .env
 docker/mariadb/*
 dce-strapi
+
+.vercel
