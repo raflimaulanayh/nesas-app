@@ -28,7 +28,7 @@ export async function PUT(request: Request, { params }: Params) {
     const data = await request.json()
     const id = params.id
 
-    const { title, content, keyword, user_id } = data
+    const { title, content, status, keyword, user_id } = data
 
     const slug = await generateSlug(title)
 
@@ -37,6 +37,7 @@ export async function PUT(request: Request, { params }: Params) {
       data: {
         title,
         content,
+        status,
         keyword,
         user_id,
         slug

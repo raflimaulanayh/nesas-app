@@ -29,7 +29,7 @@ export const LandingForum = () => {
         </header>
 
         {!loadForums && (
-          <article className="grid gap-x-5 sm:grid-cols-2">
+          <article className="grid gap-5 sm:grid-cols-2">
             {sortedForums
               ?.slice(0, 4)
               .map((item: any) => (

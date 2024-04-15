@@ -31,7 +31,7 @@ export const UserView = () => {
     <Fragment>
       {!isHydrated && <SkeletonDataTable />}
       {isHydrated && (
-        <div className="space-y-7">
+        <div className="space-y-4">
           <div className="flex flex-col space-y-2">
             <BreadcrumbResponsive items={items} />
             <Tabs defaultValue="view" className="py-5 space-y-4">

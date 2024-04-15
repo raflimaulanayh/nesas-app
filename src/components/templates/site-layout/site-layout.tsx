@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 
-import { SplashScreen } from '@/components/molecules/splashscreen'
 import { Footer } from '@/components/organisms/footer'
 import { Navbar } from '@/components/organisms/navbar/navbar-main'
 
@@ -16,6 +15,5 @@ export const SiteLayout = ({ children, className }: SiteLayoutProps) => (
     <Navbar />
     <div className={cn('mt-[5.2rem] mb-10 lg:my-[5rem]', className)}>{children}</div>
     <Footer />
-    <SplashScreen />
   </Fragment>
 )

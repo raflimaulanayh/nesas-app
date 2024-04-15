@@ -7,6 +7,11 @@ export const formSchema = z.object({
   content: z.string().nonempty({
     message: 'Konten harus diisi'
   }),
+  status: z.optional(
+    z.string().nonempty({
+      message: 'Status harus diisi'
+    })
+  ),
   keyword: z.optional(
     z.string().nonempty({
       message: 'Keyword harus diisi'
@@ -16,5 +21,7 @@ export const formSchema = z.object({
 
 export const defaultValues = {
   title: '',
-  content: ''
+  content: '',
+  status: 'public',
+  keyword: ''
 }

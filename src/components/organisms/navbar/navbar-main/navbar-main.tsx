@@ -15,13 +15,34 @@ import Container from '@/components/templates/container/container'
 import { cn } from '@/lib/utils'
 import { logout } from '@/lib/utils/actions/logout'
 
-const userNavigation = [{ name: 'Your profile', href: '/dashboard' }]
-
 export const Navbar = () => {
   const user = useCurrentUser()
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [openStates, setOpenStates] = useState(new Array(navigationGeneral.length).fill(false))
+
+  let urlProfile = ''
+  let urlDashboard = ''
+
+  switch (user?.role) {
+    case 'teacher':
+      urlProfile = '/teacher/setting'
+      urlDashboard = '/teacher'
+      break
+    case 'student':
+      urlProfile = '/student/setting'
+      urlDashboard = '/student'
+      break
+    default:
+      urlProfile = '/dashboard/setting'
+      urlDashboard = '/dashboard'
+      break
+  }
+
+  const userNavigation = [
+    { name: 'Profil', href: urlProfile },
+    { name: 'Dashboard', href: urlDashboard }
+  ]
 
   const handleScroll = () => {
     const offset = window.scrollY
@@ -125,7 +146,7 @@ export const Navbar = () => {
                     <IoChevronDownSharp className="w-5 h-5 ml-2 text-gray-400" aria-hidden="true" />
                   </span>
                 </PopoverTrigger>
-                <PopoverContent className="p-2 mt-4 mr-1">
+                <PopoverContent className="p-2 mt-4 mr-1 min-w-32">
                   <ul>
                     {userNavigation.map((item) => (
                       <li key={item.name}>
@@ -137,14 +158,6 @@ export const Navbar = () => {
                         </Link>
                       </li>
                     ))}
-                    <li>
-                      <Link
-                        href="/dashboard"
-                        className={cn('block px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
-                      >
-                        Dashboard
-                      </Link>
-                    </li>
                     <li>
                       <button
                         onClick={() => logout()}

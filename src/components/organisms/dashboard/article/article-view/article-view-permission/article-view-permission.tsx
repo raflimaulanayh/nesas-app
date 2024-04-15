@@ -20,9 +20,11 @@ export const ArticleViewPermission = ({ dataArticles, mutateArticles }: any) => 
   async function onSubmit() {
     setLoading(true)
     try {
-      await api.delete(`/articles/${articleId}`)
-      mutateArticles()
-      toast({ title: 'Atikel berhasil dihapus!' })
+      const response = await api.delete(`/articles/${articleId}`)
+      if (response.status === 200) {
+        mutateArticles()
+        toast({ title: 'Atikel berhasil dihapus!' })
+      }
     } catch (error) {
       console.error('Error deleting news:', error)
       toast({ title: 'Artikel gagal dihapus!', variant: 'destructive' })

@@ -17,7 +17,7 @@ export const ArticleContent = () => {
   return (
     <Container className="py-14">
       {!loadArticles && (
-        <section className="space-y-7">
+        <section className="space-y-4">
           <h1 className="text-2xl font-medium sm:text-3xl">Artikel</h1>
           <article className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {filtered?.map((item: any) => (
@@ -50,7 +50,7 @@ export const ArticleContent = () => {
       )}
 
       {loadArticles && (
-        <div className="space-y-7">
+        <div className="space-y-4">
           <Skeleton className="h-10 w-52" />
           <article className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Skeleton className="w-full h-72" />

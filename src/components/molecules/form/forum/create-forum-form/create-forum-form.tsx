@@ -9,21 +9,25 @@ import { z } from 'zod'
 
 import { Input } from '@/components/atoms/form-input'
 import { RichText } from '@/components/atoms/form-rich-text'
+import { Select } from '@/components/atoms/form-select'
 import { Loading } from '@/components/atoms/icons'
 import { Button } from '@/components/atoms/ui/button'
 import { Form } from '@/components/atoms/ui/form'
 import { toast } from '@/components/atoms/ui/use-toast'
 
-import { defaultValues, formSchema } from './schema'
+import { STATUS_OPTIONS } from '../data-options'
+import { defaultValues, formSchema } from '../schema'
 
-export const ForumForm = ({
+export const ForumCreateForm = ({
   user_id,
-  mutate
+  mutate,
+  isAdmin = false
 }: {
   user_id: string
-  mutate: {
+  mutate?: {
     forum: any
   }
+  isAdmin?: boolean
 }) => {
   const [loading, setLoading] = useState(false)
 
@@ -38,6 +42,7 @@ export const ForumForm = ({
     const body = {
       title: values.title,
       content: values.content,
+      status: values.status,
       keyword: values.keyword,
       user_id: user_id
     }
@@ -46,11 +51,13 @@ export const ForumForm = ({
       const response = await api.post('/forums', body)
       if (response.status === 200) {
         setLoading(false)
-        mutate.forum()
+        mutate?.forum()
         form.reset()
         toast({
           title: 'Forum telah berhasil dibuat!'
         })
+
+        if (isAdmin) window.location.href = '/dashboard/forum'
       }
     } catch (error) {
       setLoading(false)
@@ -67,6 +74,7 @@ export const ForumForm = ({
         <div className="space-y-6">
           <Input name="title" label="Judul" placeholder="Masukan judul" required {...form} />
           <RichText name="content" label="Konten" required {...form} />
+          <Select name="status" label="Status" placeholder="Pilih status" option={STATUS_OPTIONS} />
           <Input
             name="keyword"
             label="Keyword"

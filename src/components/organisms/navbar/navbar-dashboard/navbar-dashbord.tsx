@@ -15,12 +15,15 @@ import Container from '@/components/templates/container/container'
 import { cn } from '@/lib/utils'
 import { logout } from '@/lib/utils/actions/logout'
 
-const userNavigation = [{ name: 'Profile', href: '/setting/profile' }]
-
 export const NavbarDashboard = () => {
   const isHydrated = useHydration()
   const user = useCurrentUser()
   const pathname = usePathname()
+
+  const userNavigation = [
+    { name: 'Profil', href: '/dashboard/setting' },
+    { name: 'Home', href: '/' }
+  ]
 
   return (
     <Fragment>
@@ -57,7 +60,7 @@ export const NavbarDashboard = () => {
                     <IoChevronDownSharp className="w-5 h-5 ml-2 text-gray-400" aria-hidden="true" />
                   </span>
                 </PopoverTrigger>
-                <PopoverContent align="end" className="p-2 mt-2 mr-1 min-w-28">
+                <PopoverContent align="end" className="p-2 mt-2 mr-1 min-w-32">
                   <ul className="space-y-2">
                     {userNavigation.map((item) => (
                       <li key={item.name}>

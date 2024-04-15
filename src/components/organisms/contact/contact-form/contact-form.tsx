@@ -38,19 +38,13 @@ export const ContactForm = () => {
       const response = await api.post('/contacts', body)
       if (response.status === 200) {
         setLoading(false)
+        toast({ title: 'Pesan berhasil dikirim!' })
         form.reset()
-        toast({
-          title: 'Berhasil!',
-          description: 'Selamat, pesan telah berhasil dikirim.'
-        })
       }
     } catch (error) {
+      toast({ title: 'Pesan gagal dikirim!', variant: 'destructive' })
+
       setLoading(false)
-      toast({
-        title: 'Gagal ditambahkan!',
-        description: 'Maaf, terjadi kesalahan!',
-        variant: 'destructive'
-      })
     }
   }
 

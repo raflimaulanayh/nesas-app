@@ -90,7 +90,7 @@ export const HeroCarousel = ({ data }: any) => {
             <div
               className={cn(
                 ' h-3 w-3 rounded-full transition-all ease-in-out duration-500',
-                index + 1 == current ? 'bg-primary' : 'bg-white'
+                index + 1 == current ? 'bg-white' : 'bg-white/50'
               )}
               key={index}
             />

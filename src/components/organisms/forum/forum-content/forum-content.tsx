@@ -8,7 +8,7 @@ import { Button } from '@/components/atoms/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/atoms/ui/dialog'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { ForumCard } from '@/components/molecules/card/forum-card'
-import { ForumForm } from '@/components/molecules/form/forum/forum-form'
+import { ForumCreateForm } from '@/components/molecules/form/forum/create-forum-form'
 import Container from '@/components/templates/container/container'
 
 export const ForumContent = () => {
@@ -23,7 +23,7 @@ export const ForumContent = () => {
   return (
     <Container className="py-14">
       {!loadAForums && (
-        <section className="space-y-7">
+        <section className="space-y-4">
           <header className="flex items-center justify-between">
             <h1 className="text-2xl font-medium sm:text-3xl">Forum</h1>
             {user && (
@@ -49,7 +49,7 @@ export const ForumContent = () => {
       )}
 
       {loadAForums && (
-        <div className="space-y-7">
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
             <Skeleton className="w-48 h-10" />
             <Skeleton className="w-32 h-10" />
@@ -70,7 +70,7 @@ export const ForumContent = () => {
           <DialogHeader className="text-left">
             <DialogTitle className="mb-3 text-2xl font-medium tracking-wider text-primary">Buat Forum</DialogTitle>
           </DialogHeader>
-          <ForumForm
+          <ForumCreateForm
             user_id={user?.id || '123'}
             mutate={{
               forum: mutateForums

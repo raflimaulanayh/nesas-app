@@ -23,7 +23,6 @@ import { formatTime } from '@/lib/utils/format-time'
 
 export const ForumContentDetail = ({ params }: Params) => {
   const user = useCurrentUser()
-  console.log(user)
   const { data: forum, isLoading: loadForum, mutate: mutateForum } = useSWR(`/forums/slug/${params.slug}`)
   const { data: comments, isLoading: loadComments, mutate: mutateComment } = useSWR(`/forums/forum-comments`)
   const data = forum?.data
@@ -41,9 +40,11 @@ export const ForumContentDetail = ({ params }: Params) => {
   async function onSubmit() {
     setLoading(true)
     try {
-      await api.delete(`/forums/forum-comments/${commentId}`)
-      mutateForum()
-      toast({ title: 'Atikel berhasil dihapus!' })
+      const response = await api.delete(`/forums/forum-comments/${commentId}`)
+      if (response.status == 200) {
+        mutateForum()
+        toast({ title: 'Atikel berhasil dihapus!' })
+      }
     } catch (error) {
       console.error('Error deleting news:', error)
       toast({ title: 'Artikel gagal dihapus!', variant: 'destructive' })

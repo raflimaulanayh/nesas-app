@@ -16,7 +16,6 @@ import { SkeletonAction } from '@/components/atoms/skeleton-action'
 import { Button } from '@/components/atoms/ui/button'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { toast } from '@/components/atoms/ui/use-toast'
-import Container from '@/components/templates/container/container'
 
 import { formatTime } from '@/lib/utils/format-time'
 
@@ -42,7 +41,7 @@ export const ArticlePreview = ({ params }: Params) => {
     try {
       await api.put(`/articles/${params.id}`, body)
       mutateArticles()
-      toast({ title: 'Atikel berhasil disetujui!' })
+      toast({ title: 'Artikel berhasil disetujui!' })
     } catch (error) {
       console.error('Error deleting news:', error)
       toast({ title: 'Artikel gagal disetujui!', variant: 'destructive' })
@@ -56,7 +55,7 @@ export const ArticlePreview = ({ params }: Params) => {
     <Fragment>
       {!isHydrated && <SkeletonAction />}
       {isHydrated && (
-        <Container className="space-y-7">
+        <div className="space-y-4">
           <div className="flex flex-col space-y-2">
             <BreadcrumbResponsive items={items} />
             <Heading url="/dashboard/article" text="Tambah Artikel" />
@@ -129,7 +128,7 @@ export const ArticlePreview = ({ params }: Params) => {
               <Skeleton className="w-full my-3 h-[50vh]" />
             </Fragment>
           )}
-        </Container>
+        </div>
       )}
 
       <Modal open={openModalStatus} setOpen={setOpenModalStatus} className="flex flex-col">

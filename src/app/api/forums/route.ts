@@ -8,7 +8,7 @@ export const POST = async (request: Request) => {
   try {
     const json = await request.json()
 
-    const { title, content, keyword, user_id } = json
+    const { title, content, status, keyword, user_id } = json
 
     const slug = await generateSlug(title)
 
@@ -16,6 +16,7 @@ export const POST = async (request: Request) => {
       data: {
         title,
         content,
+        status,
         user_id,
         keyword,
         slug

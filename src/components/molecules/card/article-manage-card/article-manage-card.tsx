@@ -45,8 +45,8 @@ export const ArticleManageCard = ({
         height={200}
         className="object-cover transition-all rounded-sm w-28 h-28 group-hover:scale-105"
       />
-      <figcaption className="py-5">
-        <h3 className="font-semibold sm:text-lg line-clamp-2 group-hover:text-primary text-slate-900">{title}</h3>
+      <figcaption>
+        <h3 className="pt-5 font-semibold sm:text-lg line-clamp-2 group-hover:text-primary text-slate-900">{title}</h3>
         <span className="text-sm text-slate-700">{formatDate(updatedAt)}</span>
       </figcaption>
       <span

@@ -1,5 +1,10 @@
-'use client'
+import { SplashScreen } from '@/components/molecules/splashscreen'
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
-  return <main>{children}</main>
+  return (
+    <main>
+      <SplashScreen />
+      {children}
+    </main>
+  )
 }

@@ -58,7 +58,7 @@ export function Chat() {
       <div className="flex flex-col w-full h-full overflow-x-hidden">
         <Container className="flex flex-col w-full h-full pb-40 overflow-x-hidden lg:pb-10">
           {messages.length === 0 && (
-            <div className="fixed flex flex-col items-center w-full gap-2 transform -translate-x-1/2 lg:w-auto left-1/2 top-32 sm:flex-row lg:top-40">
+            <div className="fixed flex flex-col items-center w-10/12 gap-2 transform -translate-x-1/2 sm:w-auto left-1/2 top-32 sm:flex-row lg:top-40">
               <Image src="/bot.png" width={50} height={50} alt="Chat Bot" />
               <h2 className="w-full font-medium text-center sm:text-lg sm:text-start lg:w-96 text-slate-900">
                 <Typewriter

@@ -18,7 +18,7 @@ export const ArticleCreate = () => {
     <Fragment>
       {!isHydrated && <SkeletonAction />}
       {isHydrated && (
-        <div className="space-y-7">
+        <div className="space-y-4">
           <div className="flex flex-col space-y-2">
             <BreadcrumbResponsive items={items} />
             <Heading url="/dashboard/article" text="Tambah Artikel" />

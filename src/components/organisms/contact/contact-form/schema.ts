@@ -21,5 +21,6 @@ export const defaultValues = {
   fullName: '',
   email: '',
   phoneNumber: '',
+  subject: '',
   message: ''
 }
