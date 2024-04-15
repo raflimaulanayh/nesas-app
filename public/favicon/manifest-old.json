@@ -1,0 +1,118 @@
+{
+  "name": "Nesas Smart School",
+  "short_name": "NSS",
+  "description": "Nesas Smart School (NSS) adalah sebuah aplikasi inovatif yang dirancang khusus untuk memperkaya pengalaman belajar di SMK Negeri 1 Sumedang. Dengan fokus utama pada kenyamanan dan kemudahan, aplikasi ini memberikan akses cepat dan terpadu ke berbagai fitur yang mendukung kegiatan akademis dan kehidupan sekolah sehari-hari.",
+  "lang": "id-ID",
+  "dir": "auto",
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://nss.nesas.tech/manifest.json"
+    }
+  ],
+  "prefer_related_applications": true,
+  "categories": ["social", "school", "technology", "sosial", "sekolah", "teknologi", "kejuruan", "smk", "negeri"],
+  "share_target": {
+    "action": "/",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "Nesas Smart School",
+      "text": "Nesas Smart School (NSS) adalah sebuah aplikasi inovatif yang dirancang khusus untuk memperkaya pengalaman belajar di SMK Negeri 1 Sumedang. Dengan fokus utama pada kenyamanan dan kemudahan, aplikasi ini memberikan akses cepat dan terpadu ke berbagai fitur yang mendukung kegiatan akademis dan kehidupan sekolah sehari-hari.",
+      "url": "https://nss.nesas.tech/"
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Home",
+      "short_name": "NSS",
+      "url": "/",
+      "icons": [{ "src": "/favicon/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Chatbot",
+      "short_name": "Chatbot NSS",
+      "url": "/chatbot",
+      "icons": [{ "src": "/favicon/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Kontak",
+      "short_name": "Kontak",
+      "url": "/contact",
+      "icons": [{ "src": "/favicon/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "display_override": ["window-controls-overlay"],
+  "edge_side_panel": {
+    "preferred_width": 496
+  },
+  "icons": [
+    {
+      "src": "/favicon/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon/icon-512.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "theme_color": "#4338ca",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "widgets": [
+    {
+      "name": "PWAmp mini player",
+      "short_name": "PWAmp",
+      "description": "Widget to control the PWAmp player",
+      "tag": "pwamp",
+      "ms_ac_template": "widgets/mini-player.json",
+      "data": "widgets/mini-player-data.json",
+      "screenshots": [
+        {
+          "src": "/static/images/nesas-view.jpg",
+          "sizes": "600x400",
+          "label": "The PWAmp mini-player widget"
+        }
+      ],
+      "icons": [
+        {
+          "src": "/favicon/icon-48.png",
+          "sizes": "48x48"
+        },
+        {
+          "src": "/favicon/icon-96.png",
+          "sizes": "96x96"
+        },
+        {
+          "src": "/favicon/icon-128.png",
+          "sizes": "128x128"
+        },
+        {
+          "src": "/favicon/icon-256.png",
+          "sizes": "256x256"
+        },
+        {
+          "src": "/favicon/icon-512.png",
+          "sizes": "512x512"
+        }
+      ],
+      "backgrounds": [
+        {
+          "src": "/static/images/nesas-view.jpg",
+          "sizes": "600x400"
+        }
+      ]
+    }
+  ]
+}
