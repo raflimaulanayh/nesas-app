@@ -30,15 +30,13 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const session = await auth()
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <HeadMetaData />
-      </head>
+    <html lang="id" suppressHydrationWarning>
+      <HeadMetaData />
 
       <body className="min-h-screen antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <React.Fragment>
-            <NextTopLoader color="#4338CA" showSpinner={true} />
+            <NextTopLoader color="#4338CA" shadow="0 0 10px #ffffff,0 0 5px #ffffff" showSpinner={true} />
             <ClientProvider session={session}>{children}</ClientProvider>
             <SpeedInsights />
             <Analytics />

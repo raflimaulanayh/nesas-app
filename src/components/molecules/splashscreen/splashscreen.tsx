@@ -39,7 +39,7 @@ export const SplashScreen = () => {
   return (
     <div
       className={cn(
-        'fixed top-0 z-50 flex items-center justify-center w-screen h-screen bg-white transition-all duration-700 ease-in-out flex-col',
+        'fixed top-0 z-[100] flex items-center justify-center w-screen h-screen bg-white transition-all duration-700 ease-in-out flex-col',
         !isLoading && 'opacity-0',
         isFinished && 'hidden'
       )}

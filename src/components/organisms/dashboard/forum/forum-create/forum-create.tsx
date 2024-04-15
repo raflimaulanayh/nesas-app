@@ -12,7 +12,7 @@ export const ForumCreate = () => {
   const user = useCurrentUser()
   const items = [
     { href: '/dashboard', label: 'Dashboard' },
-    { href: '/dashboard/article', label: 'Kelola Forum' },
+    { href: '/dashboard/forum', label: 'Kelola Forum' },
     { label: 'Tambah Forum' }
   ]
 

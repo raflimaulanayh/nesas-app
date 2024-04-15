@@ -91,12 +91,12 @@ export const navigationGeneral = [
         url: 'https://ppdb.jabarprov.go.id/',
         icon: RiArticleFill,
         label: 'PPDB'
-      },
-      {
-        url: '#!',
-        icon: RiArticleFill,
-        label: 'Ekstrakurikuler'
       }
+      // {
+      //   url: '#!',
+      //   icon: RiArticleFill,
+      //   label: 'Ekstrakurikuler'
+      // }
     ]
   }
 ]
