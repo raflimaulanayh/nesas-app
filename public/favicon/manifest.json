@@ -11,55 +11,125 @@
     }
   ],
   "prefer_related_applications": true,
-  "categories": ["social", "school", "technology", "sosial", "sekolah", "teknologi", "kejuruan", "smk", "negeri"],
+  "categories": [
+    "education",
+    "social"
+  ],
   "share_target": {
-    "action": "/",
+    "action": "/users",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {
       "title": "Nesas Smart School",
       "text": "Nesas Smart School (NSS) adalah sebuah aplikasi inovatif yang dirancang khusus untuk memperkaya pengalaman belajar di SMK Negeri 1 Sumedang. Dengan fokus utama pada kenyamanan dan kemudahan, aplikasi ini memberikan akses cepat dan terpadu ke berbagai fitur yang mendukung kegiatan akademis dan kehidupan sekolah sehari-hari.",
-      "url": "https://nss.nesas.tech/"
+      "url": "https://nss.nesas.tech/auth/register"
     }
   },
   "shortcuts": [
     {
       "name": "Home",
-      "short_name": "NSS",
+      "short_name": "Home",
       "url": "/",
-      "icons": [{ "src": "/favicon/Icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "/favicon/Icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Chatbot",
-      "short_name": "Chatbot NSS",
+      "short_name": "Chatbot",
       "url": "/chatbot",
-      "icons": [{ "src": "/favicon/Icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "/favicon/Icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Kontak",
       "short_name": "Kontak",
       "url": "/contact",
-      "icons": [{ "src": "/favicon/Icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "/favicon/Icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Forum",
+      "short_name": "Forum",
+      "url": "/forum",
+      "icons": [
+        {
+          "src": "/favicon/Icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Artikel",
+      "short_name": "Artikel",
+      "url": "/article",
+      "icons": [
+        {
+          "src": "/favicon/Icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "short_name": "Login",
+      "url": "/auth/login",
+      "icons": [
+        {
+          "src": "/favicon/Icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ],
-  "display_override": ["window-controls-overlay"],
+  "display_override": [
+    "window-controls-overlay"
+  ],
   "edge_side_panel": {
     "preferred_width": 496
   },
   "icons": [
     {
-      "src": "/favicon/Icon-512.png",
+      "src": "/favicon/icons-vector.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/maskable/maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/favicon/Icon-512.png",
+      "src": "/maskable/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable/maskable-512.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "/favicon/Icon-192.png",
+      "src": "/maskable/maskable-192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
@@ -114,5 +184,20 @@
         }
       ]
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/static/images/ss-narrow.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/static/images/ss-wide.png",
+      "type": "image/jpg",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ],
+  "id": "nesas-smart-school"
 }

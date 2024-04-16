@@ -21,7 +21,7 @@ export const metadata = {
   description: siteConfig.description,
   icons: {
     icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/icon-512.png',
+    shortcut: '/favicon/Icon-512.png',
     apple: '/favicon/apple-touch-icon.png'
   },
   manifest: '/favicon/manifest.json'
