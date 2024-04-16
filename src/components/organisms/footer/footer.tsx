@@ -27,22 +27,23 @@ export const Footer = () => {
 
           <ul className="flex items-center gap-2">
             <li>
-              <Link target="_blank" href="https://www.instagram.com/smkn1sumedang.official">
+              <Link aria-label="Instagram Nesas" target="_blank" href="https://www.instagram.com/smkn1sumedang.official">
                 <InstagramIcon size={20} />
               </Link>
             </li>
             <li>
-              <Link target="_blank" href="https://www.facebook.com/smknesas/">
+              <Link aria-label="Facebook Nesas" target="_blank" href="https://www.facebook.com/smknesas/">
                 <FacebookIcon size={20} />
               </Link>
             </li>
             <li>
-              <Link target="_blank" href="tel:0261202056">
+              <Link aria-label="Nomor HP. Nesas" target="_blank" href="tel:0261202056">
                 <PhoneIcon size={20} />
               </Link>
             </li>
             <li>
               <Link
+                aria-label="Lokasi Nesas"
                 target="_blank"
                 href="https://www.google.com/maps/place/SMK+Negeri+1+Sumedang+(kampus+depan)/@-6.8376568,107.9274251,15z/data=!4m6!3m5!1s0x2e68d135ab91cee5:0xbbf00d892056f010!8m2!3d-6.8376568!4d107.9274251!16s%2Fg%2F1pzq19l_r?entry=ttu"
               >

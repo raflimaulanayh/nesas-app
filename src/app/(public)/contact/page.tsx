@@ -9,7 +9,7 @@ export const metadata = {
 
 const ContactPage = () => {
   return (
-    <SiteLayout>
+    <SiteLayout title="Kontak">
       <Container>
         <div className="relative bg-white isolate">
           <div className="grid mx-auto max-w-7xl lg:grid-cols-2">

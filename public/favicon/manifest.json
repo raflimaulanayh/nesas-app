@@ -11,10 +11,7 @@
     }
   ],
   "prefer_related_applications": true,
-  "categories": [
-    "education",
-    "social"
-  ],
+  "categories": ["education", "social"],
   "share_target": {
     "action": "/users",
     "method": "POST",
@@ -99,9 +96,7 @@
       ]
     }
   ],
-  "display_override": [
-    "window-controls-overlay"
-  ],
+  "display_override": ["window-controls-overlay"],
   "edge_side_panel": {
     "preferred_width": 496
   },

@@ -95,7 +95,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <SiteLayout>
+    <SiteLayout title="Lengkapi Data Guru">
       <Container>
         <div className="flex flex-col justify-center min-h-screen">
           <div className="max-w-4xl py-10 sm:mx-auto sm:w-full">

@@ -3,14 +3,14 @@ import { SiteLayout } from '@/components/templates/site-layout'
 
 const TeacherCompleteSuccessPage = () => {
   return (
-    <SiteLayout>
+    <SiteLayout className="Sukses">
       <Container>
         <div className="flex flex-col min-h-screen py-14 lg:py-20">
           <div className="max-w-4xl py-10 sm:mx-auto sm:w-full">
             <div className="flex flex-col items-center px-6 py-10 space-y-6 bg-white border-2 rounded-md shadow-md sm:px-12">
-              <h1 className="text-3xl font-medium leading-9 tracking-tight text-center text-primary">
+              <h2 className="text-3xl font-medium leading-9 tracking-tight text-center text-primary">
                 Selamat, Data Berhasil Dilengkapi!
-              </h1>
+              </h2>
               <p className="text-lg text-center text-gray-700">
                 Terima kasih telah melengkapi data Anda. Kami akan melakukan verifikasi terhadap informasi yang Anda berikan.
               </p>

@@ -7,7 +7,7 @@ export const metadata = {
 
 const ForumPage = () => {
   return (
-    <SiteLayout>
+    <SiteLayout title="Forum">
       <ForumContent />
     </SiteLayout>
   )

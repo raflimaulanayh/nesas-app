@@ -9,7 +9,7 @@ export const metadata = {
 
 const ForumDetailPage = ({ params }: Params) => {
   return (
-    <SiteLayout>
+    <SiteLayout title="Detail Forum">
       <ForumContentDetail params={params} />
     </SiteLayout>
   )

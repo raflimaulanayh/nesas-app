@@ -7,7 +7,7 @@ export const metadata = {
 
 const ChatBotPage = () => {
   return (
-    <SiteLayout>
+    <SiteLayout title="Chatbot">
       <Chat />
     </SiteLayout>
   )

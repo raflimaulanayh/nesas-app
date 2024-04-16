@@ -7,7 +7,7 @@ export const metadata = {
 
 const ArticlePage = () => {
   return (
-    <SiteLayout>
+    <SiteLayout title="Artikel">
       <ArticleContent />
     </SiteLayout>
   )

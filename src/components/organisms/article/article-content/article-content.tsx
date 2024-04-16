@@ -18,7 +18,7 @@ export const ArticleContent = () => {
     <Container className="py-14">
       {!loadArticles && (
         <section className="space-y-4">
-          <h1 className="text-2xl font-medium sm:text-3xl">Artikel</h1>
+          <h2 className="text-2xl font-medium sm:text-3xl">Artikel</h2>
           <article className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {filtered?.map((item: any) => (
               <Link key={item.id} href={`article/${item.slug}`}>

@@ -19,10 +19,10 @@ const CompletePage = () => {
   }
 
   return (
-    <SiteLayout>
+    <SiteLayout title="Lenkapi Data">
       <Container className="flex items-center justify-center min-h-screen -mt-20">
         <div className="w-full p-6 space-y-4 text-center bg-white rounded-md shadow sm:max-w-sm">
-          <h1 className="text-2xl font-semibold text-primary">Tolong lengkapi data anda!</h1>
+          <h2 className="text-2xl font-semibold text-primary">Tolong lengkapi data anda!</h2>
           <p className="font-medium text-slate-800">Pilih posisi anda</p>
           <div className="flex items-center justify-center gap-4">
             <Link

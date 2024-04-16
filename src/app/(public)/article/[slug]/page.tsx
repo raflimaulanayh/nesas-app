@@ -9,7 +9,7 @@ export const metadata = {
 
 const ArticleDetailPage = ({ params }: Params) => {
   return (
-    <SiteLayout>
+    <SiteLayout className="Detail Artikel">
       <ArticleContentDetail params={params} />
     </SiteLayout>
   )

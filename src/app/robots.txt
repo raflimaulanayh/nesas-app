@@ -1,5 +1,5 @@
 User-Agent: *
 Allow: /
-Disallow: /private/
+Disallow: /dashboard/:path*
 
 Sitemap: https://nss.nesas.tech/sitemap.xml

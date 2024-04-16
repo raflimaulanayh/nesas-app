@@ -25,7 +25,7 @@ export const ForumContent = () => {
       {!loadAForums && (
         <section className="space-y-4">
           <header className="flex items-center justify-between">
-            <h1 className="text-2xl font-medium sm:text-3xl">Forum</h1>
+            <h2 className="text-2xl font-medium sm:text-3xl">Forum</h2>
             {user && (
               <Button onClick={() => setOpenForm(true)} className="bg-primary">
                 Buat Forum

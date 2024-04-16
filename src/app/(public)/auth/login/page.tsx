@@ -25,7 +25,7 @@ export default function LoginPage() {
   }
 
   return (
-    <SiteLayout>
+    <SiteLayout title="Login">
       <Container>
         <div className="flex flex-col py-14 lg:py-20 min-h-screen sm:mx-auto sm:w-full sm:max-w-[480px]">
           <Suspense fallback={<Skeleton className="w-full h-96" />}>

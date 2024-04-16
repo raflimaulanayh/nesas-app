@@ -11,7 +11,7 @@ export const metadata = {
 
 const LandingPage = () => {
   return (
-    <SiteLayout>
+    <SiteLayout title="Home">
       <LandingHero />
       <LandingAbout />
       <LandingMajor />

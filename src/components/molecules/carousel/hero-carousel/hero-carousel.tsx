@@ -49,7 +49,7 @@ export const HeroCarousel = ({ data }: any) => {
         })
       ]}
       setApi={setApi}
-      className="relative w-full h-full"
+      className="relative"
     >
       <CarouselContent>
         {data?.map((item: any, index: number) => (
@@ -57,7 +57,7 @@ export const HeroCarousel = ({ data }: any) => {
             key={index}
             className={cn(
               isLoading && 'bg-primary blur',
-              'duration-300 transition-all flex items-center lg:w-full min-h-[30vh] lg:min-h-[80vh] relative'
+              'duration-300 transition-all flex items-center w-full h-[30vh] lg:h-[80vh] relative'
             )}
           >
             <div className="absolute bottom-0 z-20 w-10/12 h-full bg-gradient-to-r from-primary/90 via-primary/50 to-primary/0" />
@@ -66,7 +66,7 @@ export const HeroCarousel = ({ data }: any) => {
                 <h2 className="text-xl font-medium text-white sm:text-2xl lg:text-4xl line-clamp-2">{item.title}</h2>
                 <p className="text-sm text-slate-200 lg:text-base line-clamp-3">{item.description}</p>
                 <div>
-                  <Link href={`/article/${item.slug}`}>
+                  <Link aria-label={'URL Artikel ' + item.title} href={`/article/${item.slug}`}>
                     <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium bg-white rounded-md sm:text-base hover:bg-white/80 text-primary">
                       Baca selengkapnya <ChevronRightIcon size={20} />
                     </button>
@@ -76,10 +76,11 @@ export const HeroCarousel = ({ data }: any) => {
             </Container>
             <Image
               src={item.picture || '/static/images/nesas-view.jpg'}
+              quality={80}
               alt={`slide-${index}`}
               onLoadingComplete={() => setLoading(false)}
               fill
-              className={cn(isLoading ? 'blur-md' : 'blur-0', 'duration-300 object-center object-cover')}
+              className={cn(isLoading && 'bg-primary', 'duration-300 transition-all object-center object-cover')}
             />
           </CarouselItem>
         ))}
@@ -89,7 +90,7 @@ export const HeroCarousel = ({ data }: any) => {
           {data.map((_: any, index: number) => (
             <div
               className={cn(
-                ' h-3 w-3 rounded-full transition-all ease-in-out duration-500',
+                'h-3 w-3 rounded-full transition-all ease-in-out duration-500',
                 index + 1 == current ? 'bg-white' : 'bg-white/50'
               )}
               key={index}

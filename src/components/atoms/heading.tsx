@@ -17,7 +17,7 @@ export const Heading = ({ text, className, url }: HeadingProps) => {
   const urls = url || router.back()
 
   return (
-    <h1>
+    <h2>
       <Link
         href={urls || '#!'}
         className={cn('text-lg lg:text-2xl font-semibold text-primary inline-flex items-center gap-2', className)}
@@ -25,6 +25,6 @@ export const Heading = ({ text, className, url }: HeadingProps) => {
         {url && <ArrowLeftIcon size={24} />}
         {typeof text === 'string' ? <span>{text}</span> : text}
       </Link>
-    </h1>
+    </h2>
   )
 }
