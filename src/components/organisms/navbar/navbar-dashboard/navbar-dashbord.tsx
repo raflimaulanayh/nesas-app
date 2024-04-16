@@ -90,7 +90,7 @@ export const NavbarDashboard = () => {
         </div>
       </div>
 
-      <nav className="fixed bottom-0 z-50 w-full py-3 shadow-sm rounded-t-xl bg-[url(/static/images/bg-navbar.png)] bg-contain lg:hidden">
+      <nav className="fixed bottom-0 z-50 w-full py-3 shadow-sm rounded-t-xl bg-[url(/static/images/bg-navbar.webp)] bg-contain lg:hidden">
         <Container>
           <ul className="grid grid-cols-4 gap-1 text-center place-items-center">
             {navigationAdminMobile.map((item) => {

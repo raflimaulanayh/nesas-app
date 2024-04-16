@@ -57,7 +57,7 @@ export const HeroCarousel = ({ data }: any) => {
             key={index}
             className={cn(
               isLoading && 'bg-primary blur',
-              'duration-300 transition-all flex items-center w-full h-[30vh] lg:h-[80vh] relative'
+              'duration-300 transition-all flex items-center w-full min-h-[30vh] max-h-[40vh] lg:min-h-[80vh] lg:max-h-[90vh] relative'
             )}
           >
             <div className="absolute bottom-0 z-20 w-10/12 h-full bg-gradient-to-r from-primary/90 via-primary/50 to-primary/0" />
