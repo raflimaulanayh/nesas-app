@@ -1,20 +1,15 @@
+import { siteConfig } from '@/constants/config'
+
 export const HeadMetaData = () => {
-  const LDJsonString = `{
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Nesas Smart School",
-    "alternateName": "NSS",
-    "url": "https://nss.nesas.tech/",
-    "logo": "https://nss.nesas.tech/favicon/Icon-512.png",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://nss.nesas.tech/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  }`
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Website',
+    name: siteConfig.name,
+    alternateName: 'NSS',
+    url: 'https://nss.nesas.tech/',
+    image: 'https://nss.nesas.tech/favicon/Icon-512.png',
+    description: siteConfig.description
+  }
 
   return (
     <head>
@@ -23,7 +18,7 @@ export const HeadMetaData = () => {
         name="description"
         content="Nesas Smart School (NSS) adalah sebuah aplikasi inovatif yang dirancang khusus untuk memperkaya pengalaman belajar di SMK Negeri 1 Sumedang. Dengan fokus utama pada kenyamanan dan kemudahan, aplikasi ini memberikan akses cepat dan terpadu ke berbagai fitur yang mendukung kegiatan akademis dan kehidupan sekolah sehari-hari."
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(LDJsonString) }}></script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <meta name="application-name" content="Nesas Smart School" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
