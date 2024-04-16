@@ -15,7 +15,7 @@ export const Footer = () => {
   return (
     <footer
       className={cn(
-        'text-sm pb-16 lg:pb-0 bg-no-repeat rounded-t-xl text-center text-white bg-cover bg-center w-full sm:text-base bg-[url(/static/images/bg-navbar.webp)]',
+        'text-sm pb-16 lg:pb-0 bg-no-repeat rounded-t-2xl text-center text-white bg-cover bg-center w-full sm:text-base bg-[url(/static/images/bg-navbar.webp)]',
         pathname === '/chatbot' ? 'hidden' : 'block'
       )}
     >

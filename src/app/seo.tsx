@@ -38,6 +38,7 @@ export const HeadMetaData = () => {
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon/Icon-16.png" />
       <link rel="icon" type="image/png" sizes="192x192" href="/favicon/Icon-192.png" />
       <link rel="icon" type="image/png" sizes="512x512" href="/favicon/Icon-512.png" />
+      <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
       <link rel="manifest" href="/favicon/manifest.json" />
       <link rel="mask-icon" href="/favicon/apple-touch-icon.png" color="#4338ca" />
       <link rel="shortcut icon" href="/favicon/favicon.ico" />

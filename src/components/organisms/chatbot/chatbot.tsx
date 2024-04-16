@@ -154,7 +154,7 @@ export function Chat() {
           )}
 
           {/* Input Bar */}
-          <div className="px-2 py-4 bg-white">
+          <div className="px-2 bg-white py-7">
             <Container className="flex items-center justify-between">
               <AnimatePresence initial={false}>
                 <motion.div

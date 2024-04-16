@@ -183,7 +183,7 @@ export const Navbar = () => {
         </Container>
       </nav>
 
-      <nav className="fixed bottom-0 z-50 w-full py-3 shadow-sm rounded-t-xl bg-[url(/static/images/bg-navbar.webp)] bg-contain sm:hidden">
+      <nav className="fixed bottom-0 z-50 w-full py-5 shadow-sm rounded-t-2xl bg-[url(/static/images/bg-navbar.webp)] bg-contain sm:hidden">
         <Container>
           <ul className="flex items-center justify-around text-center">
             {navigationGeneral.map((item) => {
@@ -195,12 +195,12 @@ export const Navbar = () => {
                         <item.icon size={23} />
                         <span>{item.label}</span>
                       </PopoverTrigger>
-                      <PopoverContent className="mb-3">
-                        <ul className="space-y-2 text-sm font-medium text-end">
+                      <PopoverContent className="m-5 min-w-28">
+                        <ul className="space-y-2 text-sm font-medium text-center">
                           {item.childs.map((item) => (
                             <li
                               key={item.label}
-                              className={cn(pathname === item.url ? 'text-primary' : 'hover:text-primary')}
+                              className={cn(pathname === item.url ? 'text-primary' : 'hover:text-primary text-slate-800')}
                             >
                               <Link href={item.url}>{item.label}</Link>
                             </li>

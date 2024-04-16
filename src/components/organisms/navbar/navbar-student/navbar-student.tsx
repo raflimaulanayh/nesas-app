@@ -13,7 +13,7 @@ export const NavbarStudent = () => {
 
   return (
     <Fragment>
-      <nav className="fixed bottom-0 z-50 w-full py-3 shadow-sm rounded-t-xl bg-[url(/static/images/bg-navbar.webp)] bg-contain">
+      <nav className="fixed bottom-0 z-50 w-full py-5 shadow-sm rounded-t-xl bg-[url(/static/images/bg-navbar.webp)] bg-contain">
         <Container>
           <ul className="grid grid-cols-4 gap-1 text-center place-items-center">
             {navigationStudent.map((item) => {
@@ -25,12 +25,12 @@ export const NavbarStudent = () => {
                         <item.icon size={23} />
                         <span>{item.label}</span>
                       </PopoverTrigger>
-                      <PopoverContent className="mb-3">
-                        <ul className="space-y-2 text-sm font-medium text-end">
+                      <PopoverContent className="m-5 min-w-28">
+                        <ul className="space-y-2 text-sm font-medium text-center">
                           {item.childs.map((item) => (
                             <li
                               key={item.label}
-                              className={cn(pathname === item.url ? 'text-primary' : 'hover:text-primary')}
+                              className={cn(pathname === item.url ? 'text-primary' : 'hover:text-primary text-slate-800')}
                             >
                               <Link href={item.url}>{item.label}</Link>
                             </li>

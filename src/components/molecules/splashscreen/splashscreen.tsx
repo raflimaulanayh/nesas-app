@@ -33,12 +33,12 @@ export const SplashScreen = () => {
     return (
       <div
         className={cn(
-          'fixed top-0 z-[100] flex items-center justify-center w-screen h-screen bg-white transition-all duration-300 ease-in-out flex-col',
+          'fixed top-0 z-[100] flex items-center justify-center w-screen h-screen bg-white transition-all duration-300 ease-in-out',
           !isLoading && 'opacity-0',
           isFinished && 'hidden'
         )}
       >
-        <h1 className="text-3xl font-medium tracking-wider text-center sm:text-5xl text-primary">
+        <h1 className="absolute text-3xl font-medium tracking-wider text-center top-[45%] sm:text-5xl text-primary">
           <Typewriter
             options={{
               strings: 'Nesas Smart School',
