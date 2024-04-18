@@ -37,12 +37,12 @@ export const columns: ColumnDef<Majors>[] = [
     accessorKey: 'short_name',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Nama" />,
     cell: ({ row }) => {
-      const short_name: string = row.getValue('short_name')
-      const long_name: string = row.getValue('long_name')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const data: any = row.original
 
       return (
         <div>
-          {long_name} {`(${short_name})`}
+          {data?.long_name} {`(${data?.short_name})`}
         </div>
       )
     }
