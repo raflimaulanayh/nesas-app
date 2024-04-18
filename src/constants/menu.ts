@@ -9,7 +9,6 @@ import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2'
 import { IoInformationCircleSharp } from 'react-icons/io5'
 import { LuUserCircle2 } from 'react-icons/lu'
 import { MdOutlineArticle } from 'react-icons/md'
-import { PiExam } from 'react-icons/pi'
 import { RiArticleFill, RiCustomerService2Fill } from 'react-icons/ri'
 import { TbLayoutDashboard } from 'react-icons/tb'
 
@@ -107,7 +106,6 @@ export const navigationAdmin = [
   { label: 'Artikel', url: '/dashboard/article', icon: MdOutlineArticle },
   { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
   { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
-  { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
   // { label: 'Pembayaran', url: '/dashboard/payment', icon: RiMoneyDollarBoxLine },
   {
     label: 'Lainnya',
@@ -134,7 +132,6 @@ export const navigationAdminMobile = [
     childs: [
       { label: 'Forum', url: '/dashboard/forum', icon: HiAnnotation },
       { label: 'PKL', url: '/dashboard/internship', icon: AiOutlineReconciliation },
-      { label: 'Ujikom', url: '/dashboard/ujikom', icon: PiExam },
       { label: 'User', url: '/dashboard/user', icon: LuUserCircle2 },
       { label: 'Guru', url: '/dashboard/teacher', icon: BsPersonWorkspace },
       { label: 'Siswa', url: '/dashboard/student', icon: GrUserManager },

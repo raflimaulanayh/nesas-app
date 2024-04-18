@@ -6,7 +6,6 @@ import prisma from '@/lib/utils/prisma'
 export const createTeacher = async (data: Teacher) => {
   try {
     const teacherPostionIds = data.teacherPostionIds || []
-    const ujikomIds = data.ujikomIds || []
 
     const teacherPositions = await prisma.educationalPositions.findMany({
       where: {
@@ -16,16 +15,6 @@ export const createTeacher = async (data: Teacher) => {
 
     if (teacherPositions.length !== teacherPostionIds.length) {
       throw new Error('One or more teacher positions not found')
-    }
-
-    const ujikoms = await prisma.ujikoms.findMany({
-      where: {
-        id: { in: teacherPostionIds }
-      }
-    })
-
-    if (ujikoms.length !== ujikomIds.length) {
-      throw new Error('One or more ujikoms not found')
     }
 
     if (data.nip) {
@@ -59,7 +48,6 @@ export const createTeacher = async (data: Teacher) => {
         name: data.name,
         gender: data.gender,
         teacherPositions: { connect: teacherPositions.map((permission: { id: string }) => ({ id: permission.id })) },
-        ujikoms: { connect: ujikoms.map((ujikom: { id: string }) => ({ id: ujikom.id })) },
         birth_date: data.birth_date,
         phone_number: data.phone_number,
         address: data.address,
@@ -67,8 +55,7 @@ export const createTeacher = async (data: Teacher) => {
         end_date: data.end_date
       },
       include: {
-        teacherPositions: true,
-        ujikoms: true
+        teacherPositions: true
       }
     })
 

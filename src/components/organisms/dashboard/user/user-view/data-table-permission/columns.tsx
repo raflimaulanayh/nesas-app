@@ -123,7 +123,7 @@ export const columns: ColumnDef<Users>[] = [
               <button
                 onClick={() => handleUpdate(true)}
                 aria-label="Status Action Approve"
-                className="inline px-3 py-1.5 text-white bg-green-600 rounded"
+                className="inline px-3 py-1.5 text-white bg-green-500 rounded"
               >
                 Setujui
               </button>

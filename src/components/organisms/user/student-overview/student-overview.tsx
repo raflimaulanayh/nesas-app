@@ -5,7 +5,6 @@ import { useCurrentUser } from '@/hooks/use-current-user'
 import Link from 'next/link'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import { HiAnnotation } from 'react-icons/hi'
-import { PiExamFill } from 'react-icons/pi'
 import { SiOnlyoffice } from 'react-icons/si'
 import { TbSquareChevronRightFilled } from 'react-icons/tb'
 
@@ -75,16 +74,10 @@ export const StudentOverView = () => {
               <TbSquareChevronRightFilled size={24} className="text-primary" />
             </Link>
           </li>
-          <li>
+          <li className="col-span-2">
             <Link href="/student/internship" className="flex flex-col p-4 space-y-2 bg-gray-100 shadow lg:p-6 rounded-xl">
               <SiOnlyoffice size={40} className="text-primary" />
               <span className="font-semibold text-slate-800">PKL</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/student/ujikom" className="flex flex-col p-4 space-y-2 bg-gray-100 shadow lg:p-6 rounded-xl">
-              <PiExamFill size={40} className="text-primary" />
-              <span className="font-semibold text-slate-800">UjiKom</span>
             </Link>
           </li>
 

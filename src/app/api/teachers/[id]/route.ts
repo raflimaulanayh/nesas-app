@@ -10,8 +10,7 @@ export async function GET(request: Request, { params }: Params) {
     const teacher = await prisma.teachers.findUnique({
       where: { id },
       include: {
-        teacherPositions: true,
-        ujikoms: true
+        teacherPositions: true
       }
     })
 
@@ -26,7 +25,7 @@ export async function PUT(request: Request, { params }: Params) {
     const data = await request.json()
     const id = params.id
 
-    const { nip, name, gender, phone_number, address, join_date, end_date, birth_date, user_id, ujikoms } = data
+    const { nip, name, gender, phone_number, address, join_date, end_date, birth_date, user_id } = data
 
     const updatedTeacher = await prisma.teachers.update({
       where: { id },
@@ -39,12 +38,10 @@ export async function PUT(request: Request, { params }: Params) {
         join_date,
         end_date,
         birth_date,
-        user_id,
-        ujikoms
+        user_id
       },
       include: {
-        teacherPositions: true,
-        ujikoms: true
+        teacherPositions: true
       }
     })
 

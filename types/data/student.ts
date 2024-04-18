@@ -23,7 +23,6 @@ interface TStudent {
     end_date?: string
     graduate_status?: GraduateStatus
     internship_id?: string
-    ujikom_id?: string
     user_id?: string
   }[]
 }
@@ -43,7 +42,6 @@ interface Student {
   end_date?: string
   graduate_status?: GraduateStatus
   internship_id?: string
-  ujikom_id?: string
   user_id?: string
 }
 

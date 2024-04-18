@@ -71,8 +71,7 @@ export async function GET() {
   try {
     const teachers = await prisma.teachers.findMany({
       include: {
-        teacherPositions: true,
-        ujikoms: true
+        teacherPositions: true
       }
     })
 

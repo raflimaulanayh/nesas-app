@@ -26,7 +26,12 @@ export const Sidebar = () => {
                   {navigationAdmin.map((item) => {
                     if (item.childs) {
                       return (
-                        <Accordion key={item.label} type="single" collapsible>
+                        <Accordion
+                          defaultValue={item.childs.some((childItem) => pathname === childItem.url) ? 'item-1' : ''}
+                          key={item.label}
+                          type="single"
+                          collapsible
+                        >
                           <AccordionItem value="item-1">
                             <AccordionTrigger
                               className={cn(
@@ -43,7 +48,7 @@ export const Sidebar = () => {
                               </span>
                             </AccordionTrigger>
                             <AccordionContent className="p-4 my-2 bg-white rounded-md">
-                              <ul>
+                              <ul className="space-y-1">
                                 {item.childs.map((item) => (
                                   <li key={item.label}>
                                     <Link

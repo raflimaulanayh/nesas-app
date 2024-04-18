@@ -134,7 +134,6 @@ model Students {
   end_date            String?
   graduate_status     GraduateStatus? @default(ongoing)
   internship_id       String?
-  ujikom_id           String?
   proof               String?
   createdAt           DateTime        @default(now())
   updatedAt           DateTime        @updatedAt
@@ -145,7 +144,6 @@ model Students {
   @@index([class_id])
   @@index([user_id])
   @@index([internship_id])
-  @@index([ujikom_id])
 }
 
 model Internships {
@@ -236,17 +234,6 @@ enum InternshipStatus {
 enum GenderType {
   male
   female
-}
-
-enum UjikomStatus {
-  not_started
-  pending_review
-  approved
-  revision
-  rejected
-  canceled
-  ongoing
-  completed
 }
 
 enum TypeUserActivity {

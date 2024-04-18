@@ -12,7 +12,6 @@ interface TTeacher {
     join_date?: string
     end_date?: string
     user_id?: string
-    ujikomIds?: string[]
     teacherPostionIds?: string[]
   }[]
 }
@@ -28,7 +27,6 @@ interface Teacher {
   join_date?: string
   end_date?: string
   user_id?: string
-  ujikomIds?: string[]
   teacherPostionIds?: string[]
 }
 

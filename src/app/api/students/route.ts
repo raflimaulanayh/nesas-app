@@ -84,7 +84,6 @@ export async function GET() {
       include: {
         class: true,
         internship: true,
-        ujikom: true,
         user: true
       }
     })

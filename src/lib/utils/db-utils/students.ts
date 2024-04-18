@@ -47,8 +47,7 @@ export const createStudent = async (data: Student) => {
         address: data.address,
         join_date: data.join_date,
         end_date: data.end_date,
-        internship_id: data.internship_id,
-        ujikom_id: data.ujikom_id
+        internship_id: data.internship_id
       }
     })
 

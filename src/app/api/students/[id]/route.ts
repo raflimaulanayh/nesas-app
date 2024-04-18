@@ -12,7 +12,6 @@ export async function GET(request: Request, { params }: Params) {
       include: {
         class: true,
         internship: true,
-        ujikom: true,
         user: true
       }
     })
@@ -42,7 +41,6 @@ export async function PUT(request: Request, { params }: Params) {
       birth_date,
       graduate_status,
       internship_id,
-      ujikom_id,
       user_id
     } = data
 
@@ -62,7 +60,6 @@ export async function PUT(request: Request, { params }: Params) {
         birth_date,
         graduate_status,
         internship_id,
-        ujikom_id,
         user_id
       }
     })
