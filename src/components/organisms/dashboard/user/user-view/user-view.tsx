@@ -37,7 +37,7 @@ export const UserView = () => {
             <Tabs defaultValue="view" className="py-5 space-y-4">
               <TabsList>
                 <TabsTrigger value="view">Kelola User</TabsTrigger>
-                <TabsTrigger value="permission">Perizinan User</TabsTrigger>
+                <TabsTrigger value="permission">Permohonan User</TabsTrigger>
               </TabsList>
 
               <TabsContent value="view">

@@ -20,19 +20,25 @@ import { toast } from '@/components/atoms/ui/use-toast'
 import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
 import { ROLES_OPTIONS, STATUS_USER_OPTIONS } from '../data-options'
-import { defaultValues, formSchema } from '../schema'
+import { UpdateUserSchema } from '../schema'
 
 export const UserUpdateForm = ({ params }: Params) => {
   const user = useCurrentUser()
   const [loading, setLoading] = useState(false)
   const { data: users, isLoading: loadUsers } = useSWR(`/users/${params.id}`)
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: defaultValues
+  const form = useForm<z.infer<typeof UpdateUserSchema>>({
+    resolver: zodResolver(UpdateUserSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      role: '',
+      active: '',
+      photo: []
+    }
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof UpdateUserSchema>) {
     setLoading(true)
 
     let photoUrl: string | undefined
@@ -113,7 +119,7 @@ export const UserUpdateForm = ({ params }: Params) => {
             <FileUploads name="photo" label="Foto" {...form} />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
-            {loading ? <Loading /> : 'Tambah'}
+            {loading ? <Loading /> : 'Update'}
           </Button>
         </form>
       )}

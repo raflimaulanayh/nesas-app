@@ -58,7 +58,7 @@ export const RegisterForm = () => {
 
   return (
     <Tabs defaultValue="student" className="w-full">
-      <div className="px-6 py-10 space-y-4 bg-white border-2 rounded-md shadow-md">
+      <div className="px-4 py-10 space-y-4 bg-white border-2 rounded-md shadow-md sm:px-6">
         <HeaderForm form={form} tablist={tablist} handleRole={setRole} />
         {!isHydrated && (
           <div className="flex items-center justify-center min-h-[18rem]">

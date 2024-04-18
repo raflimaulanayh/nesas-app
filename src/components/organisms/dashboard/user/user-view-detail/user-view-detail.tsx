@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useHydration } from '@/hooks/use-hydration'
-import api from '@/services/api'
-import { InfoIcon, UserCheck } from 'lucide-react'
-import moment from 'moment'
+import { InfoIcon, ScanLine, UserCheck, UserMinus } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { Fragment, useState } from 'react'
 import useSWR from 'swr'
 import { Params } from 'types/data/params'
@@ -17,10 +17,13 @@ import { toast } from '@/components/atoms/ui/use-toast'
 import { UserDetailCardSubmissionDetailCard } from '@/components/molecules/card/user-detail-card'
 
 import { cn } from '@/lib/utils'
+import { updateStatusUser } from '@/lib/utils/actions/update-status-user'
 import { formatDate } from '@/lib/utils/format-date'
+import { formatTime } from '@/lib/utils/format-time'
 
 export const UserViewDetail = ({ params }: Params) => {
   const [openModal, setOpenModal] = useState(false)
+  const [approved, setApproved] = useState(false)
   const [loading, setLoading] = useState(false)
   const isHydrated = useHydration()
   const items = [
@@ -29,7 +32,7 @@ export const UserViewDetail = ({ params }: Params) => {
     { label: 'Detail User' }
   ]
 
-  const { data: users, isLoading: loadUsers, mutate: mutateUsers } = useSWR(`/users/${params.id}`)
+  const { data: users, isLoading: loadUsers, mutate: mutateUser } = useSWR(`/users/${params.id}`)
   const { data: classes } = useSWR('/classes')
   const data = users?.data
 
@@ -42,27 +45,35 @@ export const UserViewDetail = ({ params }: Params) => {
     setLoading(true)
 
     const body = {
-      active: true
+      id: data?.id,
+      email: data?.email,
+      role: data?.role,
+      data_id: teacher ? teacher?.id : student?.id
     }
-    await api
-      .put(`/users/${params.id}`, body)
-      .then(({ status }) => {
-        if (status == 200) {
-          mutateUsers()
-          toast({
-            title: 'User berhasil disetujui!'
-          })
-        }
-      })
-      .catch(() => {
+    try {
+      const response = await updateStatusUser(body, approved)
+      if (response?.success) {
         toast({
-          title: 'User gagal disetujui!',
+          title: response?.success
+        })
+
+        if (response?.redirectUrl) {
+          window.location.href = response?.redirectUrl
+        }
+        mutateUser()
+        console.log(response.success)
+      } else {
+        toast({
+          title: response?.error,
           variant: 'destructive'
         })
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+        console.error(response.error)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+
+    setLoading(false)
   }
 
   const handleSubmit = () => {
@@ -92,13 +103,15 @@ export const UserViewDetail = ({ params }: Params) => {
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
                     <span className="text-sm font-medium text-gray-500">
-                      Tanggal dibuat: {data?.createdAt ? moment(data.createdAt).format('MMMM Do YYYY, h:mm:ss a') : '-'}{' '}
+                      Tanggal dibuat: {data?.createdAt ? formatTime(data.createdAt) : '-'}{' '}
                     </span>
                     <div className="flex items-center gap-x-1">
                       <span
                         className={cn(
                           'capitalize rounded-md px-3 py-1.5 text-sm font-medium border',
-                          data?.active == false ? 'bg-red-50 text-red-600' : 'bg-green-100 text-green-600'
+                          data?.active == false
+                            ? 'bg-red-50 text-red-600 border-red-600'
+                            : 'bg-green-100 text-green-600 border-green-600'
                         )}
                       >
                         {data?.active == false ? 'Meminta perizinan' : 'Aktif' ?? '-'}
@@ -107,14 +120,31 @@ export const UserViewDetail = ({ params }: Params) => {
                   </div>
 
                   {data?.active == false && (
-                    <Button
-                      onClick={() => setOpenModal(true)}
-                      disabled={loading}
-                      className="space-x-1 text-white bg-primary"
-                    >
-                      <UserCheck size={20} />
-                      <span>Setujui</span>
-                    </Button>
+                    <div className="flex items-center gap-4">
+                      <Button
+                        onClick={() => {
+                          setOpenModal(true)
+                          setApproved(true)
+                        }}
+                        disabled={loading}
+                        className="space-x-1 text-white bg-primary"
+                      >
+                        <UserCheck size={20} />
+                        <span>Setujui</span>
+                      </Button>
+
+                      <Button
+                        onClick={() => {
+                          setOpenModal(true)
+                          setApproved(false)
+                        }}
+                        disabled={loading}
+                        className="space-x-1 text-white bg-red-600"
+                      >
+                        <UserMinus size={20} />
+                        <span>Tolak</span>
+                      </Button>
+                    </div>
                   )}
                 </div>
               </div>
@@ -125,6 +155,42 @@ export const UserViewDetail = ({ params }: Params) => {
                   <UserDetailCardSubmissionDetailCard label="Username" value={data?.username ?? '-'} />
                   <UserDetailCardSubmissionDetailCard label="Email" value={data?.email ?? '-'} />
                   <UserDetailCardSubmissionDetailCard label="Role" value={data?.role} className="capitalize" />
+                  {student?.proof && (
+                    <UserDetailCardSubmissionDetailCard
+                      label="Bukti"
+                      value={
+                        <Link href={student.proof} target="_blank">
+                          <Image
+                            src={student.proof}
+                            alt="Foto Bukti"
+                            width={150}
+                            height={150}
+                            className="object-contain mt-1 rounded-md"
+                          />
+                        </Link>
+                      }
+                    />
+                  )}
+
+                  {teacher?.proof && (
+                    <UserDetailCardSubmissionDetailCard
+                      label="Bukti"
+                      value={
+                        <Link href={teacher.proof} target="_blank">
+                          <div className="relative h-auto mt-2 hover:opacity-80 w-52">
+                            <ScanLine className="absolute z-20 p-1 text-white rounded-md h-7 w-7 bg-primary top-2 left-2" />
+                            <Image
+                              src={teacher.proof}
+                              alt="Foto Bukti"
+                              width={150}
+                              height={150}
+                              className="object-contain rounded-md"
+                            />
+                          </div>
+                        </Link>
+                      }
+                    />
+                  )}
                 </div>
               </div>
 
@@ -198,7 +264,7 @@ export const UserViewDetail = ({ params }: Params) => {
       <Modal open={openModal} setOpen={setOpenModal} className="flex flex-col">
         <InfoIcon />
         <p className="text-xl font-semibold">Konfirmasi</p>
-        <p>Kamu yakin ingin menyetujui?</p>
+        <p>Kamu yakin ingin {approved ? 'menyetujui' : 'menolak'}?</p>
         <Button className="w-full h-auto py-3 rounded-full bg-primary hover:bg-secondary-blue" onClick={handleSubmit}>
           Ya, Konfirmasi
         </Button>

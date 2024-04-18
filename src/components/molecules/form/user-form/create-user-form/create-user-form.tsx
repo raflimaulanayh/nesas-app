@@ -18,18 +18,18 @@ import { toast } from '@/components/atoms/ui/use-toast'
 import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
 import { ROLES_OPTIONS, STATUS_USER_OPTIONS } from '../data-options'
-import { defaultValues, formSchema } from '../schema'
+import { defaultValues, CreateUserSchema } from '../schema'
 
 export const UserCreateForm = () => {
   const user = useCurrentUser()
   const [loading, setLoading] = useState(false)
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof CreateUserSchema>>({
+    resolver: zodResolver(CreateUserSchema),
     defaultValues: defaultValues
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof CreateUserSchema>) {
     setLoading(true)
 
     let photoUrl: string | undefined

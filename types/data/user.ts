@@ -20,6 +20,8 @@ interface User {
   accountComplete?: boolean
   active?: any
   photo?: any
+  teachers?: string[]
+  students?: string[]
   createdAt?: string
 }
 
