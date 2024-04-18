@@ -44,7 +44,7 @@ export const DateInput: React.FC<DateInputProps> = ({
           <FormItem>
             <div
               className={cn(
-                'border-2  pt-2 rounded-md overflow-hidden',
+                'border-2  pt-2 rounded-md bg-white overflow-hidden',
                 className,
                 isFocus ? 'border-primary' : 'border-gray-200'
               )}

@@ -37,7 +37,9 @@ export const Textarea: React.FC<Input> = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <div className={cn('border-2  pt-2 rounded-md', className, isFocus ? 'border-primary' : 'border-gray-200')}>
+          <div
+            className={cn('border-2 bg-white pt-2 rounded-md', className, isFocus ? 'border-primary' : 'border-gray-200')}
+          >
             {label && (
               <Label className="px-3 text-sm text-primary">
                 {label} {required && <span className="text-red-600">*</span>}
@@ -53,7 +55,7 @@ export const Textarea: React.FC<Input> = ({
               />
             </FormControl>
           </div>
-          {hint && <span className="text-xs text-gray-500">{hint}</span>}
+          {hint && <span className="text-xs text-red-600">{hint}</span>}
           <FormMessage />
         </FormItem>
       )}

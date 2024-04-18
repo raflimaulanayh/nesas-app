@@ -19,9 +19,19 @@ interface FileUpload extends FormProps<FieldValues> {
   disabled?: boolean
   hint?: string
   isVerified?: boolean
+  defaultValue?: string
 }
 
-export const FileUploads: React.FC<FileUpload> = ({ control, name, label, required = false, className, hint, ...props }) => {
+export const FileUploads: React.FC<FileUpload> = ({
+  control,
+  name,
+  label,
+  required = false,
+  className,
+  hint,
+  defaultValue,
+  ...props
+}) => {
   return (
     <FormField
       {...props}
@@ -34,12 +44,13 @@ export const FileUploads: React.FC<FileUpload> = ({ control, name, label, requir
           </Label>
           <FormControl>
             <FormFileUpload
+              defaultValue={defaultValue}
               onChange={(newValue) => field.onChange(newValue)}
               value={field.value}
               onRemove={(newValue) => field.onChange(newValue)}
             />
           </FormControl>
-          {hint && <p className="text-xs leading-tight text-gray-500">{hint}</p>}
+          {hint && <p className="text-xs leading-tight text-red-600">{hint}</p>}
           <FormMessage />
         </FormItem>
       )}

@@ -8,10 +8,10 @@ import { SiteLayout } from '@/components/templates/site-layout'
 const NewPasswordPage = () => {
   return (
     <SiteLayout title="New Password">
-      <div className="flex flex-col min-h-screen py-14 lg:py-20">
+      <div className="flex flex-col min-h-[80vh] py-14 lg:py-20">
         <Container>
           <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
-            <div className="px-6 py-10 bg-white shadow sm:rounded-lg sm:px-12">
+            <div className="px-6 py-10 bg-white border-2 rounded-md shadow-md sm:px-12">
               <h2 className="mb-5 text-3xl font-medium leading-9 tracking-tight text-center text-primary">
                 Enter a new password
               </h2>

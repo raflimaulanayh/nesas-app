@@ -13,8 +13,8 @@ export default function TeacherLayout({ children }: { children: React.ReactNode 
       redirect('/dashboard')
     } else redirect('/')
   }
-  user?.active !== true && redirect('/auth/register/complete/teacher/success')
-  user?.accountComplete !== true && redirect('/auth/register/complete')
+  user?.active !== true && redirect('/auth/login')
+  // user?.accountComplete !== true && redirect('/auth/register/complete')
 
   return <div>{children}</div>
 }

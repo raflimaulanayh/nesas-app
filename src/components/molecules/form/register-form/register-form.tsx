@@ -2,83 +2,96 @@
 'use client'
 import { useHydration } from '@/hooks/use-hydration'
 import { zodResolver } from '@hookform/resolvers/zod'
-import Link from 'next/link'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
-import { RegisterSchema } from 'schemas'
+import { getRegisterSchema } from 'schemas'
 import * as z from 'zod'
 
-import { Alert } from '@/components/atoms/alert'
 import { Input } from '@/components/atoms/form-input'
 import { Loading } from '@/components/atoms/icons'
-import { Button } from '@/components/atoms/ui/button'
 import { Form } from '@/components/atoms/ui/form'
+import { Tabs, TabsContent } from '@/components/atoms/ui/tabs'
 
 import { register } from '@/lib/utils/actions/register'
 
+import { FooterForm } from './footer-form'
+import { HeaderForm } from './header-form'
+import { StudentForm, TeacherForm } from './role-form'
+import { defaultValues } from './schema'
+
 export const RegisterForm = () => {
+  const tablist = ['student', 'teacher']
+  const [role, setRole] = useState<string>('student')
   const isHydrated = useHydration()
 
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
 
-  const form = useForm<z.infer<typeof RegisterSchema>>({
-    resolver: zodResolver(RegisterSchema),
-    defaultValues: {
-      username: '',
-      email: '',
-      password: ''
-    }
+  const schema = getRegisterSchema(role || 'student')
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+    defaultValues: defaultValues
   })
 
-  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
+  console.log(form.formState.errors)
+  const onSubmit = (values: z.infer<typeof schema>) => {
+    console.log('Form values:', values)
     setError('')
 
+    const formValuesWithRole = { ...values, role }
+
     startTransition(() => {
-      register(values).then((data) => {
-        setError(data.error)
-        setSuccess(data.success)
+      register(formValuesWithRole).then(async (data) => {
+        setError(data?.error)
+        setSuccess(data?.success)
+        if (data?.success) {
+          form.reset()
+
+          if (data?.redirectUrl) {
+            window.location.href = data.redirectUrl
+          }
+        }
       })
     })
   }
 
   return (
-    <div className="px-6 py-10 bg-white border-2 rounded-md shadow-md sm:px-12">
-      <h2 className="mb-5 text-3xl font-medium leading-9 tracking-tight text-center uppercase text-primary">Register</h2>
-      {!isHydrated && (
-        <div className="flex items-center justify-center min-h-[18rem]">
-          <Loading />
-        </div>
-      )}
-      {isHydrated && (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            {error && <Alert message={error} type="error" />}
-            <Input name="username" label="Username" required placeholder="Masukan username" {...form} />
-            <Input name="email" label="Email" required placeholder="Masukan alamat email" {...form} />
-            <Input name="password" label="Password" required type="password" placeholder="Masukan password" {...form} />
-            {success && <Alert message={success} type="success" />}
-            <div className="flex justify-center py-2">
-              <Button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
-                disabled={isPending}
-              >
-                {isPending ? <Loading /> : 'Register'}
-              </Button>
-            </div>
-            <div className="space-y-1">
-              <p className="text-center text-gray-700 ">
-                <span>Sudah punya akun?</span>
-                <Link href="/auth/login">
-                  <span className="text-indigo-700 hover:underline"> Login</span>
-                </Link>
-              </p>
-            </div>
-          </form>
-        </Form>
-      )}
-    </div>
+    <Tabs defaultValue="student" className="w-full">
+      <div className="px-6 py-10 space-y-4 bg-white border-2 rounded-md shadow-md">
+        <HeaderForm form={form} tablist={tablist} handleRole={setRole} />
+        {!isHydrated && (
+          <div className="flex items-center justify-center min-h-[18rem]">
+            <Loading />
+          </div>
+        )}
+        {isHydrated && (
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <div className="p-4 space-y-4 rounded-sm bg-slate-50">
+                <h3 className="font-medium text-primary">Informasi Akun</h3>
+                <Input name="username" label="Username" required placeholder="Masukan username" {...form} />
+                <Input name="email" label="Email" required placeholder="Masukan alamat email" {...form} />
+                <Input name="password" label="Password" required type="password" placeholder="Masukan password" {...form} />
+              </div>
+
+              <TabsContent value="student" className="space-y-4">
+                <StudentForm form={form} />
+              </TabsContent>
+
+              <TabsContent value="teacher">
+                <TeacherForm form={form} />
+              </TabsContent>
+
+              {/* <TabsContent value="officer">
+                <OfficerForm form={form} />
+              </TabsContent> */}
+
+              <FooterForm success={success} error={error} isPending={isPending} />
+            </form>
+          </Form>
+        )}
+      </div>
+    </Tabs>
   )
 }

@@ -36,7 +36,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <body className="min-h-screen antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <React.Fragment>
-            <NextTopLoader color="#4338CA" shadow="0 0 10px #ffffff,0 0 5px #ffffff" showSpinner={true} />
+            <NextTopLoader color="#4338CA" showSpinner={true} />
             <ClientProvider session={session}>{children}</ClientProvider>
             <SpeedInsights />
             <Analytics />

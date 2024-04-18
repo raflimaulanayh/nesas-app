@@ -7,7 +7,7 @@ export interface OptionProps {
 
 export const GRADUATE_STATUS_OPTIONS = [
   {
-    label: 'Proses',
+    label: 'Sedang berlangsung',
     value: 'ongoing'
   },
   {
@@ -15,7 +15,7 @@ export const GRADUATE_STATUS_OPTIONS = [
     value: 'graduated'
   },
   {
-    label: 'Dropout',
+    label: 'Dropout (DO)',
     value: 'dropout'
   },
   {

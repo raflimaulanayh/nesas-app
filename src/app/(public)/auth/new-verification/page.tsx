@@ -9,7 +9,7 @@ const NewVerificationPage = () => {
   return (
     <SiteLayout title="Verifikasi">
       <Container>
-        <div className="flex flex-col min-h-screen py-14 lg:py-20">
+        <div className="flex flex-col min-h-[80vh] py-14 lg:py-20">
           <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
             <Suspense fallback={<Skeleton className="w-full h-96" />}>
               <NewVerificationForm />

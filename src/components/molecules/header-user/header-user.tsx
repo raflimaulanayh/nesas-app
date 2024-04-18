@@ -3,19 +3,20 @@
 import { useCurrentUser } from '@/hooks/use-current-user'
 import { useHydration } from '@/hooks/use-hydration'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import useSWR from 'swr'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/atoms/ui/avatar'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/ui/popover'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
 import Container from '@/components/templates/container/container'
 
+import { cn } from '@/lib/utils'
+import { logout } from '@/lib/utils/actions/logout'
 import { getInitials } from '@/lib/utils/get-initial'
 
 export const HeaderUser = () => {
   const isHydrated = useHydration()
   const user = useCurrentUser()
-  const router = usePathname()
   const { data: users, isLoading: loadUsers } = useSWR(`/users/${user?.id}`)
   const { data: classes } = useSWR('/classes')
 
@@ -63,14 +64,39 @@ export const HeaderUser = () => {
                   </span>
                 </div>
 
-                <Link href={`${router}/settings`}>
-                  <Avatar className="w-14 h-14">
-                    <AvatarImage src={'/'} alt="Avatar" />
-                    <AvatarFallback className="text-lg font-medium">
-                      {getInitials(student?.name ?? (user?.username || 'AN'))}
-                    </AvatarFallback>
-                  </Avatar>
-                </Link>
+                <Popover>
+                  <PopoverTrigger>
+                    <Avatar className="w-14 h-14">
+                      <AvatarImage src={user?.photo || '/'} alt="Avatar" />
+                      <AvatarFallback className="text-lg font-medium">
+                        {getInitials(student?.name ?? (user?.username || 'AN'))}
+                      </AvatarFallback>
+                    </Avatar>
+                  </PopoverTrigger>
+
+                  <PopoverContent align="end" className="p-2 mt-2 mr-1 min-w-32">
+                    <ul className="space-y-2">
+                      <li>
+                        <Link
+                          href="/student/setting"
+                          className={cn('block px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
+                        >
+                          Profil
+                        </Link>
+                      </li>
+                      <li className="flex">
+                        <button
+                          onClick={() => logout()}
+                          className={cn(
+                            'px-3 py-1 w-full flex justify-start text-sm leading-6 hover:bg-slate-100 rounded text-gray-900'
+                          )}
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </PopoverContent>
+                </Popover>
               </div>
             )}
           </div>

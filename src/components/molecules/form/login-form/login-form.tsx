@@ -4,7 +4,7 @@ import { useHydration } from '@/hooks/use-hydration'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { useState, useTransition } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoginSchema } from 'schemas'
 import * as z from 'zod'
@@ -24,7 +24,7 @@ export const LoginForm = () => {
 
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
-  const [isPending, startTransition] = useTransition()
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -34,24 +34,26 @@ export const LoginForm = () => {
     }
   })
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
     setError('')
+    setIsSubmitting(true)
 
-    startTransition(() => {
-      login(values, callbackUrl)
-        .then((data: any) => {
-          if (data?.error) {
-            form.reset()
-            setError(data.error)
-          }
+    try {
+      const data = await login(values, callbackUrl)
 
-          if (data?.success) {
-            form.reset()
-            setSuccess(data.success)
-          }
-        })
-        .catch(() => setError('Something went wrong'))
-    })
+      if (data?.error) {
+        setError(data.error)
+      }
+
+      if (data?.success) {
+        setSuccess(data.success)
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      setError('Something went wrong!')
+    }
+
+    setIsSubmitting(false)
   }
 
   return (
@@ -73,9 +75,9 @@ export const LoginForm = () => {
               <Button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
-                disabled={isPending}
+                disabled={isSubmitting}
               >
-                {isPending ? <Loading /> : 'Login'}
+                {isSubmitting ? <Loading /> : 'Login'}
               </Button>
             </div>
             <div className="space-y-1">

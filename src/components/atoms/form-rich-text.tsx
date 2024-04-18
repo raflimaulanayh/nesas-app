@@ -15,6 +15,7 @@ interface RichTextProps {
   required?: boolean
   className?: string
   defaultValue?: string
+  height?: string
 }
 
 export const RichText: React.FC<RichTextProps> = ({
@@ -24,6 +25,7 @@ export const RichText: React.FC<RichTextProps> = ({
   required = false,
   className,
   defaultValue,
+  height,
   ...props
 }) => {
   return (
@@ -38,7 +40,7 @@ export const RichText: React.FC<RichTextProps> = ({
               {label} {required && <span className="text-red-600"> *</span>}
             </Label>
           </div>
-          <TinyEditor defaultValue={defaultValue || ''} onChange={field.onChange} />
+          <TinyEditor height={height} defaultValue={defaultValue || ''} onChange={field.onChange} />
           <FormMessage />
         </FormItem>
       )}
@@ -46,7 +48,15 @@ export const RichText: React.FC<RichTextProps> = ({
   )
 }
 
-export const TinyEditor = ({ onChange, defaultValue }: { onChange: (data: string) => void; defaultValue: string }) => {
+export const TinyEditor = ({
+  onChange,
+  defaultValue,
+  height
+}: {
+  onChange: (data: string) => void
+  defaultValue: string
+  height?: string
+}) => {
   const [isFocus, setIsFocus] = useState(false)
 
   const handleEditorChange = (content: string) => {
@@ -61,7 +71,7 @@ export const TinyEditor = ({ onChange, defaultValue }: { onChange: (data: string
           onFocus={() => setIsFocus(true)}
           apiKey="oy9aih0lyzqgbbpjz6zj1fen4o28hf31tppl9i8fxnoy5tsl"
           init={{
-            height: '300px',
+            height: height || '300px',
             branding: false,
             menubar: true,
             plugins:

@@ -50,7 +50,9 @@ export const Select: React.FC<SelectProps> = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <div className={cn('border-2  pt-2 rounded-md', className, isFocus ? 'border-primary' : 'border-gray-200')}>
+          <div
+            className={cn('border-2 bg-white pt-2 rounded-md', className, isFocus ? 'border-primary' : 'border-gray-200')}
+          >
             <Label className="px-3 text-sm text-primary">
               {label} {required && <span className="text-red-600"> *</span>}
             </Label>

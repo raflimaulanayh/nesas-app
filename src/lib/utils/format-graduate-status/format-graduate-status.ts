@@ -4,7 +4,7 @@ export const formatGraduateStatus = (status: 'ongoing' | 'graduated' | 'dropout'
 
   switch (status) {
     case 'ongoing':
-      statusShow = 'Proses'
+      statusShow = 'Sedang berlangsung'
       customCSS = 'bg-blue-100 text-blue-700'
       break
 
@@ -14,7 +14,7 @@ export const formatGraduateStatus = (status: 'ongoing' | 'graduated' | 'dropout'
       break
 
     case 'dropout':
-      statusShow = 'Dropout'
+      statusShow = 'Dropout (DO'
       customCSS = 'bg-red-100 text-red-700'
       break
 

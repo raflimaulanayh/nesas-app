@@ -1,21 +1,24 @@
-import { z } from 'zod'
-
-export const formSchema = z.object({
-  username: z.string().nonempty({ message: 'Username harus diisi' }),
-  email: z
-    .string()
-    .nonempty({
-      message: 'Email harus diisi'
-    })
-    .email({
-      message: 'Email tidak valid'
-    }),
-  password: z
-    .string()
-    .nonempty({
-      message: 'Password harus diisi'
-    })
-    .min(6, {
-      message: 'Password minimal 6 karakter'
-    })
-})
+export const defaultValues = {
+  username: '',
+  email: '',
+  password: '',
+  proof: [],
+  nis: '',
+  nisn: '',
+  name: '',
+  nip: '',
+  class_id: '',
+  graduate_status: 'ongoing',
+  gender: undefined,
+  birth_date: '',
+  phone_number: '',
+  phone_number_parent: '',
+  address: '',
+  join_date: '',
+  end_date: '',
+  contact: '',
+  quota: '',
+  leader_name: '',
+  majors: undefined,
+  requirements: ''
+}

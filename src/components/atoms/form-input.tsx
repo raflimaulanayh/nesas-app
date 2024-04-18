@@ -44,7 +44,7 @@ export const Input: React.FC<Input> = ({
         <FormItem>
           <div
             className={cn(
-              'border-2  pt-2 rounded-md',
+              'border-2  pt-2 rounded-md bg-white',
               className,
               isFocus ? 'border-primary' : 'border-gray-200',
               disabled ? 'bg-gray-100' : ''
@@ -76,7 +76,7 @@ export const Input: React.FC<Input> = ({
               />
             </FormControl>
           </div>
-          {hint && <p className="text-xs leading-tight text-gray-500">{hint}</p>}
+          {hint && <p className="text-xs leading-tight text-red-600">{hint}</p>}
           <FormMessage />
         </FormItem>
       )}
