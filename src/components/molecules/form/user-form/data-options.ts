@@ -4,11 +4,15 @@ export const ROLES_OPTIONS = [
     value: 'admin'
   },
   {
-    label: 'Student',
+    label: 'Operator',
+    value: 'operator'
+  },
+  {
+    label: 'Siswa',
     value: 'student'
   },
   {
-    label: 'Teacher',
+    label: 'Guru',
     value: 'teacher'
   },
   {

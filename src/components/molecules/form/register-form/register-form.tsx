@@ -71,7 +71,14 @@ export const RegisterForm = () => {
               <div className="p-4 space-y-4 rounded-sm bg-slate-50">
                 <h3 className="font-medium text-primary">Informasi Akun</h3>
                 <Input name="username" label="Username" required placeholder="Masukan username" {...form} />
-                <Input name="email" label="Email" required placeholder="Masukan alamat email" {...form} />
+                <Input
+                  name="email"
+                  label="Email"
+                  required
+                  placeholder="Masukkan alamat email"
+                  hint="Pastikan alamat email yang Anda masukkan sudah terdaftar di Gmail."
+                  {...form}
+                />
                 <Input name="password" label="Password" required type="password" placeholder="Masukan password" {...form} />
               </div>
 

@@ -25,6 +25,8 @@ export const NavbarDashboard = () => {
     { name: 'Home', href: '/' }
   ]
 
+  const hideUrl = ['/dashboard/user']
+
   return (
     <Fragment>
       <div className="sticky top-0 z-40 flex items-center justify-between w-full px-4 py-4 bg-white border-b border-gray-200 shadow-sm shrink-0 gap-x-4 sm:gap-x-6 sm:px-6 lg:px-8">
@@ -95,6 +97,9 @@ export const NavbarDashboard = () => {
           <ul className="grid grid-cols-4 gap-1 text-center place-items-center">
             {navigationAdminMobile.map((item) => {
               if (item?.childs) {
+                const filteredChilds =
+                  user?.role === 'admin' ? item?.childs : item?.childs.filter((child) => !hideUrl.includes(child.url))
+
                 return (
                   <li key={item.label}>
                     <Popover>
@@ -104,7 +109,7 @@ export const NavbarDashboard = () => {
                       </PopoverTrigger>
                       <PopoverContent className="m-5 min-w-28">
                         <ul className="space-y-2 text-sm font-medium text-center">
-                          {item.childs.map((item) => (
+                          {filteredChilds.map((item) => (
                             <li
                               key={item.label}
                               className={cn(pathname === item.url ? 'text-primary' : 'hover:text-primary text-slate-800')}

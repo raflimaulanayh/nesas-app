@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { navigationAdmin } from '@/constants/menu'
+import { useCurrentUser } from '@/hooks/use-current-user'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -10,7 +11,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { cn } from '@/lib/utils'
 
 export const Sidebar = () => {
+  const user = useCurrentUser()
   const pathname = usePathname()
+
+  const hideUrl = ['/dashboard/user']
 
   return (
     <div>
@@ -25,6 +29,9 @@ export const Sidebar = () => {
                 <ul role="list" className="-mx-2 space-y-1">
                   {navigationAdmin.map((item) => {
                     if (item.childs) {
+                      const filteredChilds =
+                        user?.role === 'admin' ? item?.childs : item?.childs.filter((child) => !hideUrl.includes(child.url))
+
                       return (
                         <Accordion
                           defaultValue={item.childs.some((childItem) => pathname === childItem.url) ? 'item-1' : ''}
@@ -49,7 +56,7 @@ export const Sidebar = () => {
                             </AccordionTrigger>
                             <AccordionContent className="p-4 my-2 bg-white rounded-md">
                               <ul className="space-y-1">
-                                {item.childs.map((item) => (
+                                {filteredChilds.map((item) => (
                                   <li key={item.label}>
                                     <Link
                                       href={item.url}
