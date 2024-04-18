@@ -161,7 +161,9 @@ export const Navbar = () => {
                     <li>
                       <button
                         onClick={() => logout()}
-                        className={cn('flex w-full px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
+                        className={cn(
+                          'px-3 py-1 w-full flex justify-start text-sm leading-6 bg-red-600 text-white rounded hover:bg-red-700'
+                        )}
                       >
                         Logout
                       </button>

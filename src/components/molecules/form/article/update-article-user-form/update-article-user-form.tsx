@@ -93,8 +93,8 @@ export const ArticleUpdateUserForm = ({ params }: Params) => {
   return (
     <Form {...form}>
       {loadArticle && (
-        <div className="flex justify-center w-full h-screen py-20">
-          <Loading className="w-12 h-12" />
+        <div className="h-[50vh] w-full flex justify-center items-center">
+          <Loading className="w-10 h-10 text-primary" />
         </div>
       )}
       {!loadArticle && (

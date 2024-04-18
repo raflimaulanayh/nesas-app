@@ -96,8 +96,11 @@ model EducationalPositions {
 
 model Majors {
   id                   String                 @id @default(cuid())
-  name                 String
+  long_name            String
+  short_name           String
+  logo                 String?
   description          String?                @db.Text
+  content              String?                @db.Text
   image                String?
   createdAt            DateTime               @default(now())
   updatedAt            DateTime               @updatedAt
@@ -112,7 +115,7 @@ model Classes {
   major_id  String?
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  major     Majors?    @relation(fields: [major_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  major     Majors?    @relation(fields: [major_id], references: [id], onDelete: Restrict, onUpdate: SetNull)
   students  Students[]
 
   @@index([major_id])

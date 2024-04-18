@@ -88,7 +88,7 @@ export const HeaderUser = () => {
                         <button
                           onClick={() => logout()}
                           className={cn(
-                            'px-3 py-1 w-full flex justify-start text-sm leading-6 hover:bg-slate-100 rounded text-gray-900'
+                            'px-3 py-1 w-full flex justify-start text-sm leading-6 bg-red-600 text-white rounded hover:bg-red-700'
                           )}
                         >
                           Logout
