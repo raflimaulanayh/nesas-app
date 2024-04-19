@@ -101,7 +101,7 @@ export const Sidebar = () => {
               </li>
               <li className="mt-auto">
                 <Link
-                  href="/setting"
+                  href="/dashboard/setting"
                   className="flex p-2 -mx-2 text-sm font-semibold leading-6 rounded-md text-slate-200 group gap-x-3 hover:bg-indigo-700 hover:text-white"
                 >
                   <IoSettingsOutline className="w-6 h-6 text-slate-200 shrink-0 group-hover:text-white" aria-hidden="true" />

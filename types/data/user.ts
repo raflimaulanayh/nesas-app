@@ -6,6 +6,7 @@ interface TUser {
     password: string
     role: string
     accountComplete?: boolean
+    emailVerified?: string
     active?: any
     photo?: any
     createdAt?: string
@@ -18,6 +19,7 @@ interface User {
   password: string
   role: string
   accountComplete?: boolean
+  emailVerified?: string
   active?: any
   photo?: any
   teachers?: string[]

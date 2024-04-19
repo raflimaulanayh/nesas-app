@@ -39,13 +39,17 @@ export const UserCreateForm = () => {
 
     const status = values.active == 'true'
 
+    const date = new Date()
+    const isoDateString = date.toISOString()
+
     const body = {
       username: values.username,
       email: values.email,
       role: values.role,
       password: values.password,
       active: status,
-      photo: photoUrl
+      photo: photoUrl,
+      emailVerified: isoDateString
     }
 
     await api

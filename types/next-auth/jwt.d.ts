@@ -5,7 +5,7 @@ declare module 'next-auth/jwt' {
     jwt: string
     user: {
       username: string
-      role: 'admin' | 'student' | 'teacher' | 'finance' | 'hubinmas' | 'copywritter'
+      role: 'admin' | 'operator' | 'student' | 'teacher' | 'finance' | 'hubinmas' | 'copywritter'
       photo?: string
       emailVerified?: string
       active?: boolean

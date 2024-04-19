@@ -26,6 +26,7 @@ export const createUser = async (data: User) => {
         role: data.role,
         accountComplete: data.accountComplete,
         active: data.active,
+        emailVerified: data.emailVerified,
         photo: data.photo
       },
       include: {

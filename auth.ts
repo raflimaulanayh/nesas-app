@@ -44,7 +44,14 @@ export const {
       if (session.user) {
         session.user.username = token.username as string
         session.user.email = token.email as string
-        session.user.role = token.role as 'admin' | 'student' | 'teacher' | 'finance' | 'hubinmas' | 'copywritter'
+        session.user.role = token.role as
+          | 'admin'
+          | 'operator'
+          | 'student'
+          | 'teacher'
+          | 'finance'
+          | 'hubinmas'
+          | 'copywritter'
         session.user.emailVerified = token.emailVerified as Date
         session.user.photo = token.photo as string
         session.user.active = token.active as boolean

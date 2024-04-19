@@ -45,6 +45,8 @@ export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: s
     if (existingUser.accountComplete !== null || existingUser.accountComplete !== false) {
       if (role === 'admin') {
         redirectTo = '/dashboard'
+      } else if (role === 'operator') {
+        redirectTo = '/dashboard'
       } else if (role === 'student') {
         redirectTo = '/student'
       } else if (role === 'teacher') {
@@ -53,7 +55,7 @@ export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: s
         redirectTo = callbackUrl || DEFAULT_LOGIN_REDIRECT
       }
     } else {
-      redirectTo = '/auth/register/complete'
+      redirectTo = '/auth/login'
     }
 
     TrackUserActivity(email, 'signin', 'Melakukan login')

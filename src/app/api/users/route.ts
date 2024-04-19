@@ -13,6 +13,7 @@ const createUserSchema = z
     password: z.string(),
     role: z.string(),
     active: z.boolean(),
+    emailVerified: z.optional(z.string()),
     photo: z.optional(z.string())
   })
   .strict()
