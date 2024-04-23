@@ -6,7 +6,7 @@ import api from '@/services/api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import useSWR from 'swr'
+import useSWR, { mutate } from 'swr'
 import { z } from 'zod'
 
 import { Input } from '@/components/atoms/form-input'
@@ -70,6 +70,7 @@ export const FormChoiceInternsip = ({ companyId }: any) => {
           title: 'Berhasil!',
           description: 'Selamat, Anda berhasil memilih tempat PKL.'
         })
+        mutate('/internships')
         TrackUserActivity(user?.email ?? 'no-identifier', 'create', 'Memilih tempat PKL')
         form.reset()
       }

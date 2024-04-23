@@ -9,7 +9,12 @@ export const POST = async (request: Request) => {
 
     const { name, address, contact, majors, leader_name, status, quota, requirements } = json
 
-    const majorIds = majors?.filter((major: any) => major.id).map((major: any) => major.id)
+    // const majorIds = majors?.map((major: any) => ({ id: major.id }))
+    console.log(majors)
+    let majorIds: { id: string }[] = []
+    if (majors && majors.length > 0) {
+      majorIds = majors.map((majorId: string) => ({ id: majorId }))
+    }
 
     const createCompanyInternships = await prisma.companyInternships.create({
       data: {
@@ -21,6 +26,9 @@ export const POST = async (request: Request) => {
         quota: quota,
         requirements: requirements,
         majors: { connect: majorIds }
+      },
+      include: {
+        majors: true
       }
     })
 

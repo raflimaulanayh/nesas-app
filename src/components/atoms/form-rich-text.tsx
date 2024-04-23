@@ -73,13 +73,10 @@ export const TinyEditor = ({
           init={{
             height: height || '300px',
             branding: false,
-            menubar: true,
             plugins:
-              'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags typography inlinecss markdown',
+              'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
             toolbar:
-              'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | checklist numlist bullist indent outdent | emoticons charmap',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name'
+              'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat'
           }}
           onEditorChange={handleEditorChange}
           initialValue={defaultValue}

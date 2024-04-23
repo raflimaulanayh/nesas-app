@@ -41,13 +41,18 @@ export const createTeacher = async (data: Teacher) => {
       }
     }
 
+    let teacherPositionIds: { id: string }[] = []
+    if (teacherPositions && teacherPositions.length > 0) {
+      teacherPositionIds = teacherPositions.map((position: any) => ({ id: position.id }))
+    }
+
     const result = await prisma.teachers.create({
       data: {
         nip: data.nip,
         user_id: data.user_id,
         name: data.name,
         gender: data.gender,
-        teacherPositions: { connect: teacherPositions.map((permission: { id: string }) => ({ id: permission.id })) },
+        teacherPositions: { connect: teacherPositionIds },
         birth_date: data.birth_date,
         phone_number: data.phone_number,
         address: data.address,

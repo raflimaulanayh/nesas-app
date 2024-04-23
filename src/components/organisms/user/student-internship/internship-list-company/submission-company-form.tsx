@@ -5,7 +5,7 @@ import api from '@/services/api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import useSWR from 'swr'
+import useSWR, { mutate } from 'swr'
 import { z } from 'zod'
 
 import { Checkbox } from '@/components/atoms/form-checkbox'
@@ -104,6 +104,7 @@ export const FormSubmissionCompany = () => {
             title: 'Berhasil!',
             description: 'Selamat, anda telah berhasil mengajukan tempat PKL.'
           })
+          mutate('/internships/companies')
           TrackUserActivity(user?.email ?? 'no-identifier', 'create', 'Mengajukan tempat PKL')
           form.reset()
           form.setValue('requirements', '')
