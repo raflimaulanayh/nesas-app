@@ -20,7 +20,7 @@ export const HeaderUser = () => {
   const { data: users, isLoading: loadUsers } = useSWR(`/users/${user?.id}`)
   const { data: classes } = useSWR('/classes')
 
-  const student = users?.data?.students[0]
+  const student = users?.data?.students
 
   const getClassByStudent = (class_id: string) => {
     const classStudent = classes?.data?.find((item: { id: string }) => item.id == class_id)

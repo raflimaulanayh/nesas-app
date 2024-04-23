@@ -26,10 +26,13 @@ export const StudentOverView = () => {
     let totalDataCount = accountComplete ? 1 : 0
     let completeDataCount = 0
 
-    if (students) {
-      totalDataCount += students.length
+    // Periksa apakah properti students adalah array, jika tidak, ubah menjadi array dengan satu elemen
+    const studentsArray = Array.isArray(students) ? students : [students]
 
-      completeDataCount = students.filter(
+    if (studentsArray) {
+      totalDataCount += studentsArray.length
+
+      completeDataCount = studentsArray.filter(
         (student: Student) =>
           student.address &&
           student.birth_date &&
