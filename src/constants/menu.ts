@@ -143,7 +143,7 @@ export const navigationAdminMobile = [
 
 export const navigationStudent = [
   { label: 'Overview', url: '/student', icon: TbLayoutDashboard },
-  { label: 'Forum', url: '/student/forum', icon: MdOutlineArticle },
+  { label: 'Forum', url: '/forum', icon: MdOutlineArticle },
   { label: 'PKL', url: '/student/internship', icon: HiAnnotation },
   {
     label: 'Lainnya',

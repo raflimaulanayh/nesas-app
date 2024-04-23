@@ -44,25 +44,27 @@ export const Checkbox: React.FC<CheckboxProps> = ({
               {label} {required && !isTOR && <span className="text-red-600"> *</span>}
             </Label>
           </div>
-          {options?.map((item) => (
-            <FormItem className="flex items-center space-x-3 space-y-0" key={`${name}_${item.value}`}>
-              <FormControl>
-                <FormCheckbox
-                  id={`${name}_${item.value}`}
-                  checked={field.value?.includes(item.value)}
-                  onCheckedChange={(checked) => {
-                    return checked
-                      ? field.onChange([...field.value, item.value])
-                      : field.onChange(field.value?.filter((value: unknown) => value !== item.value))
-                  }}
-                  className="w-5 h-5 border-2 border-gray-300 data-[state=checked]:border-primary"
-                />
-              </FormControl>
-              <Label className="font-normal cursor-pointer" htmlFor={`${name}_${item.value}`}>
-                {item.label}
-              </Label>
-            </FormItem>
-          ))}
+          <div className="grid grid-cols-2 gap-5">
+            {options?.map((item) => (
+              <FormItem className="flex items-center space-x-3 space-y-0" key={`${name}_${item.value}`}>
+                <FormControl>
+                  <FormCheckbox
+                    id={`${name}_${item.value}`}
+                    checked={field.value?.includes(item.value)}
+                    onCheckedChange={(checked) => {
+                      return checked
+                        ? field.onChange([...field.value, item.value])
+                        : field.onChange(field.value?.filter((value: unknown) => value !== item.value))
+                    }}
+                    className="w-5 h-5 border-2 border-gray-300 data-[state=checked]:border-primary"
+                  />
+                </FormControl>
+                <Label className="font-normal cursor-pointer" htmlFor={`${name}_${item.value}`}>
+                  {item.label}
+                </Label>
+              </FormItem>
+            ))}
+          </div>
           <FormMessage />
         </FormItem>
       )}

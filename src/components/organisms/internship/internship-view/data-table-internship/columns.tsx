@@ -84,8 +84,17 @@ export const columns: ColumnDef<Users>[] = [
       return value.includes(row.getValue(status))
     },
     cell: ({ row }) => {
-      const status: 'not_started' | 'pending' | 'approved' | 'rejected' | 'canceled' | 'ongoing' | 'completed' =
-        row.getValue('status')
+      const status:
+        | 'not_started'
+        | 'pending'
+        | 'approved'
+        | 'interviewing'
+        | 'getted_kuota'
+        | 'rejected'
+        | 'canceled'
+        | 'ongoing'
+        | 'completed'
+        | 'sidang_completed' = row.getValue('status')
       const format = formatInternshipStatus(status)
 
       return <div className={cn(format.customCSS, 'p-2 rounded-md text-sm font-medium inline')}>{format.statusShow}</div>

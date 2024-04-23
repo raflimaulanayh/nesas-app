@@ -2,10 +2,13 @@ enum InternshipStatus {
   not_started = 'not_started',
   pending = 'pending',
   approved = 'approved',
+  interviewing = 'interviewing',
+  getted_kuota = 'getted_kuota',
   rejected = 'rejected',
   canceled = 'canceled',
   ongoing = 'ongoing',
-  completed = 'completed'
+  completed = 'completed',
+  sidang_completed = 'sidang_completed'
 }
 
 interface TInternship {
@@ -14,7 +17,7 @@ interface TInternship {
     start_date?: string
     end_date?: string
     status: InternshipStatus
-    studentIds?: string[]
+    students?: string[]
   }[]
 }
 
@@ -23,7 +26,7 @@ interface Internship {
   start_date?: string
   end_date?: string
   status: InternshipStatus
-  studentIds?: string[]
+  students?: string[]
 }
 
 export type { TInternship, Internship }

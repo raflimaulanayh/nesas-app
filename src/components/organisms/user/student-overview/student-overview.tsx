@@ -52,7 +52,7 @@ export const StudentOverView = () => {
       <Container>
         <ul className="grid grid-cols-2 gap-5 -mt-24">
           <li className="col-span-2 p-4 bg-white shadow lg:p-6 rounded-xl">
-            <Link href="/student/settings" className="flex items-center justify-between gap-x-4">
+            <Link href="/student/setting" className="flex items-center justify-between gap-x-4">
               <div className="flex items-center gap-x-3">
                 <div className="text-primary h-14 w-14">
                   <CircularProgressbar
@@ -82,7 +82,7 @@ export const StudentOverView = () => {
           </li>
 
           <li className="col-span-2 p-4 bg-white border shadow lg:p-6 rounded-xl">
-            <Link href="/student/forum" className="flex items-center justify-between gap-x-4">
+            <Link href="/forum" className="flex items-center justify-between gap-x-4">
               <div className="flex items-center gap-x-3">
                 <HiAnnotation size={50} className="w-12 h-12 text-primary" />
                 <div className="flex flex-col w-9/12">

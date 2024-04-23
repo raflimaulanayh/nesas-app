@@ -10,7 +10,7 @@ export const StudentLayout = ({ children }: StudentLayoutProps) => (
   <main>
     <div className="flex flex-col flex-1 w-full bg-white">
       <HeaderUser />
-      <div>{children}</div>
+      <div className="mb-5 lg:mb-20">{children}</div>
       <NavbarStudent />
     </div>
   </main>

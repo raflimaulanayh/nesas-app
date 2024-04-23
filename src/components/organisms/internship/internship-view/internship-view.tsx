@@ -36,7 +36,18 @@ export const InternshipView = () => {
   }
 
   const getDataByStatusInternship = (
-    statuses: ('not_started' | 'pending' | 'approved' | 'rejected' | 'canceled' | 'ongoing' | 'completed')[]
+    statuses: (
+      | 'not_started'
+      | 'pending'
+      | 'approved'
+      | 'interviewing'
+      | 'getted_kuota'
+      | 'rejected'
+      | 'canceled'
+      | 'ongoing'
+      | 'completed'
+      | 'sidang_completed'
+    )[]
   ) => {
     const filterDataByStatus = dataInternships?.filter((item: Internship) => statuses.includes(item.status))
 
@@ -60,7 +71,16 @@ export const InternshipView = () => {
 
               <TabsContent value="view-internship">
                 <DataTableViewInternship
-                  data={getDataByStatusInternship(['approved', 'completed', 'canceled', 'rejected', 'ongoing'])}
+                  data={getDataByStatusInternship([
+                    'approved',
+                    'interviewing',
+                    'getted_kuota',
+                    'rejected',
+                    'canceled',
+                    'ongoing',
+                    'completed',
+                    'sidang_completed'
+                  ])}
                   columns={ColumnView}
                   mutate={mutateUser}
                   isLoading={userLoading}

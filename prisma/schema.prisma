@@ -179,6 +179,26 @@ model CompanyInternships {
   internships  Internships[]
 }
 
+enum CompanyStatus {
+  active
+  not_active
+  pending
+  filled
+}
+
+enum InternshipStatus {
+  not_started   
+  pending
+  approved
+  interviewing
+  getted_kuota
+  rejected
+  canceled
+  ongoing
+  completed
+  sidang_completed
+}
+
 model UserActivities {
   id              String           @id @default(cuid())
   identifier      String?
@@ -210,28 +230,12 @@ model Articles {
   @@index([user_id])
 }
 
-enum CompanyStatus {
-  active
-  not_active
-  pending
-  filled
-}
 
 enum GraduateStatus {
   ongoing
   graduated
   dropout
   transferred
-}
-
-enum InternshipStatus {
-  not_started
-  pending
-  approved
-  rejected
-  canceled
-  ongoing
-  completed
 }
 
 enum GenderType {

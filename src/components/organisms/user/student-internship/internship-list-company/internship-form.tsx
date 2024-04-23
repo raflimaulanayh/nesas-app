@@ -6,6 +6,7 @@ import api from '@/services/api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import useSWR from 'swr'
 import { z } from 'zod'
 
 import { Input } from '@/components/atoms/form-input'
@@ -18,21 +19,14 @@ import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
 export const FormChoiceInternsip = ({ companyId }: any) => {
   const user = useCurrentUser()
+  const { data: users } = useSWR(`/users/${user?.id}`)
   const [loading, setLoading] = useState(false)
 
   const formSchema = z.object({
-    student_id: z.array(
-      z.string().nonempty({
-        message: 'Nama Lengkap harus diisi'
-      })
-    ),
     start_date: z.string().nonempty({
       message: 'Tanggal mulai harus diisi'
     }),
     end_date: z.string().nonempty({
-      message: 'Tanggal berakhir harus diisi'
-    }),
-    status: z.string().nonempty({
       message: 'Tanggal berakhir harus diisi'
     })
   })
@@ -40,47 +34,54 @@ export const FormChoiceInternsip = ({ companyId }: any) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      student_id: ['clunq1jzn00013nwj1o5e6r3u'],
       start_date: '',
-      end_date: '',
-      status: 'pending'
+      end_date: ''
     }
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true)
 
-    const body = {
-      company_id: companyId,
-      student_id: values.student_id,
-      start_date: values.start_date,
-      end_date: values.end_date,
-      status: values.status
+    if (!users || !users.data || !users.data.students || users.data.students.length === 0) {
+      toast({
+        title: 'Error!',
+        description: 'Data mahasiswa tidak tersedia atau tidak valid.',
+        variant: 'destructive'
+      })
+      setLoading(false)
+
+      return
     }
 
-    await api
-      .post('/internships', body)
-      .then(({ status }) => {
-        if (status == 200) {
-          toast({
-            title: 'Berhasil!',
-            description: 'Selamat, anda telah berhasil memilih tempat PKL.'
-          })
-          TrackUserActivity(user?.email ?? '', 'create', 'Memilih tempat PKL')
+    const studentId = users.data.students[0].id
 
-          setTimeout(() => {
-            setLoading(false)
-          }, 1000)
-        }
-      })
-      .catch(() => {
-        setLoading(false)
+    const body = {
+      company_id: companyId,
+      students: [studentId],
+      start_date: values.start_date,
+      end_date: values.end_date,
+      status: 'pending'
+    }
+
+    try {
+      const response = await api.post('/internships', body)
+      if (response.status === 200) {
         toast({
-          title: 'Gagal diajukan!',
-          description: 'Maaf, terjadi kesalahan!',
-          variant: 'destructive'
+          title: 'Berhasil!',
+          description: 'Selamat, Anda berhasil memilih tempat PKL.'
         })
+        TrackUserActivity(user?.email ?? 'no-identifier', 'create', 'Memilih tempat PKL')
+        form.reset()
+      }
+    } catch (error: any) {
+      toast({
+        title: 'Gagal diajukan!',
+        description: 'Maaf, terjadi kesalahan!',
+        variant: 'destructive'
       })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -91,7 +92,7 @@ export const FormChoiceInternsip = ({ companyId }: any) => {
             name="start_date"
             label="Tanggal Mulai"
             type="date"
-            placeholder="Masukan tanggal mulai"
+            placeholder="Masukkan tanggal mulai"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-700 sm:text-sm sm:leading-6"
             {...form}
           />
@@ -99,7 +100,7 @@ export const FormChoiceInternsip = ({ companyId }: any) => {
             name="end_date"
             label="Tanggal Berakhir"
             type="date"
-            placeholder="Masukan tanggal berakhir"
+            placeholder="Masukkan tanggal berakhir"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-700 sm:text-sm sm:leading-6"
             {...form}
           />

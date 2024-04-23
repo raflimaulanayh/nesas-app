@@ -68,9 +68,9 @@ export const LoginForm = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             {error && <Alert message={error} type="error" />}
+            {success && <Alert message={success} type="success" />}
             <Input name="email" label="Email" required placeholder="Masukan alamat email" {...form} />
             <Input name="password" label="Password" required type="password" placeholder="Masukan password" {...form} />
-            {success && <Alert message={success} type="success" />}
             <div className="flex justify-center py-2">
               <Button
                 type="submit"

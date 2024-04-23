@@ -10,10 +10,13 @@ enum InternshipStatus {
   not_started = 'not_started',
   pending = 'pending',
   approved = 'approved',
+  interviewing = 'interviewing',
+  getted_kuota = 'getted_kuota',
   rejected = 'rejected',
   canceled = 'canceled',
   ongoing = 'ongoing',
-  completed = 'completed'
+  completed = 'completed',
+  sidang_completed = 'sidang_completed'
 }
 
 const createInternshipSchema = z

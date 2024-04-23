@@ -96,7 +96,7 @@ export const columns: ColumnDef<Users>[] = [
     cell: ({ row }) => {
       const value: any[] = row.getValue('majors')
 
-      return <ul className="pl-4 list-decimal">{value?.map((item) => <li key={item?.id}>{item?.name}</li>)}</ul>
+      return <ul className="pl-4 list-decimal">{value?.map((item) => <li key={item?.id}>{item?.short_name}</li>)}</ul>
     },
     enableSorting: false,
     enableHiding: false

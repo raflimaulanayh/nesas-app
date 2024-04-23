@@ -1,3 +1,5 @@
+import { Student } from './student'
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface TUser {
   data: {
@@ -22,8 +24,8 @@ interface User {
   emailVerified?: string
   active?: any
   photo?: any
-  teachers?: string[]
-  students?: string[]
+  teachers?: any
+  students?: Student[]
   createdAt?: string
 }
 

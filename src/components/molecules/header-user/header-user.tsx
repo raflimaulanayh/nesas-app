@@ -84,6 +84,14 @@ export const HeaderUser = () => {
                           Profil
                         </Link>
                       </li>
+                      <li>
+                        <Link
+                          href="/"
+                          className={cn('block px-3 py-1 text-sm leading-6 hover:bg-slate-100 rounded text-gray-900')}
+                        >
+                          Home
+                        </Link>
+                      </li>
                       <li className="flex">
                         <button
                           onClick={() => logout()}

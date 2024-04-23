@@ -15,7 +15,10 @@ export const createInternship = async (internship: Internship) => {
   }
 
   // Membuat internship mahasiswa yang akan dihubungkan
-  const students = internship.studentIds?.filter((student: any) => student.id).map((student: any) => student.id)
+  let students: { id: string }[] = []
+  if (internship.students && internship.students.length > 0) {
+    students = internship.students.filter((student: any) => student.id).map((student: any) => ({ id: student.id }))
+  }
 
   try {
     // Membuat internship baru
@@ -26,6 +29,9 @@ export const createInternship = async (internship: Internship) => {
         end_date: internship.end_date,
         status: internship.status,
         students: { connect: students }
+      },
+      include: {
+        students: true
       }
     })
 

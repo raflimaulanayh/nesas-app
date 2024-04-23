@@ -53,7 +53,7 @@ export function DataTableViewInternship<TData extends { id: string }, TValue>({
   const handleDelete = async () => {
     try {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      await useDelete('/users', rowSelection)
+      await useDelete('/internships', rowSelection)
       mutate()
     } catch (error) {
       console.error('Error deleting data:', error)

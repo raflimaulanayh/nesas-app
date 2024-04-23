@@ -34,9 +34,7 @@ export const RegisterForm = () => {
     defaultValues: defaultValues
   })
 
-  console.log(form.formState.errors)
   const onSubmit = (values: z.infer<typeof schema>) => {
-    console.log('Form values:', values)
     setError('')
 
     const formValuesWithRole = { ...values, role }

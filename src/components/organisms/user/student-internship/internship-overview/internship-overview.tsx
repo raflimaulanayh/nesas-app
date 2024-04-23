@@ -1,5 +1,6 @@
 'use client'
 
+import { useCurrentUser } from '@/hooks/use-current-user'
 import Link from 'next/link'
 import { PiArrowLeftBold } from 'react-icons/pi'
 import useSWR from 'swr'
@@ -14,6 +15,9 @@ import { ListCompany } from '../internship-list-company'
 import { InternshipStatus } from '../status'
 
 export const InternshipOverView = () => {
+  const user = useCurrentUser()
+  const { data: users } = useSWR(`/users/${user?.id}`)
+
   const {
     data: listCompany,
     mutate: mutateListCompany,
@@ -57,12 +61,13 @@ export const InternshipOverView = () => {
                 listCompany={listCompany}
                 mutateListCompany={mutateListCompany}
                 loadListCompany={loadListCompany}
+                user={users?.data}
               />
             )}
           </TabsContent>
           <TabsContent value="choice">
             {listCompany && listCompany.data && (
-              <ListCompany data={listCompany} mutate={mutateListCompany} isLoading={loadListCompany} />
+              <ListCompany data={listCompany} mutate={mutateListCompany} isLoading={loadListCompany} user={users?.data} />
             )}
           </TabsContent>
         </Tabs>

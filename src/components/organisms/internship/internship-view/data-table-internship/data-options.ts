@@ -20,11 +20,23 @@ export const STATUS_OPTIONS = [
     value: 'canceled'
   },
   {
+    label: 'Sedang interview',
+    value: 'interviewing'
+  },
+  {
+    label: 'Mendapatkan Kuota',
+    value: 'getted_kuota'
+  },
+  {
     label: 'Sedang berlangsung',
     value: 'ongoing'
   },
   {
     label: 'Selesai',
     value: 'completed'
+  },
+  {
+    label: 'PKL Selesai',
+    value: 'sidang_completed'
   }
 ]

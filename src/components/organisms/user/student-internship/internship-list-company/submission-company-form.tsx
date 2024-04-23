@@ -1,7 +1,6 @@
 'use client'
 
 import { useCurrentUser } from '@/hooks/use-current-user'
-import { toast } from '@/hooks/use-toast'
 import api from '@/services/api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
@@ -11,10 +10,12 @@ import { z } from 'zod'
 
 import { Checkbox } from '@/components/atoms/form-checkbox'
 import { Input } from '@/components/atoms/form-input'
+import { RichText } from '@/components/atoms/form-rich-text'
 import { Textarea } from '@/components/atoms/form-textarea'
 import { Loading } from '@/components/atoms/icons'
 import { Button } from '@/components/atoms/ui/button'
 import { Form } from '@/components/atoms/ui/form'
+import { toast } from '@/components/atoms/ui/use-toast'
 
 import { TrackUserActivity } from '@/lib/utils/actions/user-activity'
 
@@ -32,8 +33,8 @@ export const FormSubmissionCompany = () => {
   const { data: majors, isLoading: loadMajors } = useSWR('/majors')
 
   if (!loadMajors && majors) {
-    majors.data.map((item: { name: string; id: string }) => {
-      return MAJOR_OPTIONS.push({ label: item.name, value: item.id })
+    majors.data.map((item: { short_name: string; id: string }) => {
+      return MAJOR_OPTIONS.push({ label: item.short_name, value: item.id })
     })
   }
 
@@ -103,7 +104,9 @@ export const FormSubmissionCompany = () => {
             title: 'Berhasil!',
             description: 'Selamat, anda telah berhasil mengajukan tempat PKL.'
           })
-          TrackUserActivity(user?.email ?? '', 'create', 'Mengajukan tempat PKL')
+          TrackUserActivity(user?.email ?? 'no-identifier', 'create', 'Mengajukan tempat PKL')
+          form.reset()
+          form.setValue('requirements', '')
 
           setTimeout(() => {
             setLoading(false)
@@ -134,8 +137,8 @@ export const FormSubmissionCompany = () => {
           />
           <Input name="quota" label="Jumlah Kuota" type="number" placeholder="Masukan jumlah kuota" {...form} />
           <Input name="leader_name" label="Nama Pimpinan" placeholder="Masukan nama pimpinan" {...form} />
-          <Checkbox control={form.control} name="majors" label="Jurusan Relevan" options={MAJOR_OPTIONS} />
-          <Textarea name="requirements" label="Persyaratan" placeholder="Masukan persyaratan" {...form} />
+          <Checkbox name="majors" label="Jurusan Relevan" options={MAJOR_OPTIONS} {...form} />
+          <RichText name="requirements" label="Persyaratan" height="400px" {...form} />
           <Textarea name="address" label="Alamat" placeholder="Masukan alamat lengkap" {...form} />
         </div>
         <Button disabled={loading} className="ml-auto" type="submit">

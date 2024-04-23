@@ -1,5 +1,15 @@
 export const formatInternshipStatus = (
-  status: 'not_started' | 'pending' | 'approved' | 'rejected' | 'canceled' | 'ongoing' | 'completed'
+  status:
+    | 'not_started'
+    | 'pending'
+    | 'approved'
+    | 'interviewing'
+    | 'getted_kuota'
+    | 'rejected'
+    | 'canceled'
+    | 'ongoing'
+    | 'completed'
+    | 'sidang_completed'
 ): { statusShow: string; customCSS: string } => {
   let statusShow = ''
   let customCSS = ''
@@ -10,12 +20,20 @@ export const formatInternshipStatus = (
       customCSS = 'bg-slate-200 text-slate-700'
       break
     case 'pending':
-      statusShow = 'Menunggu'
+      statusShow = 'Pending'
       customCSS = 'bg-blue-100 text-blue-700'
       break
     case 'approved':
       statusShow = 'Disetujui'
       customCSS = 'bg-green-100 text-green-700'
+      break
+    case 'interviewing':
+      statusShow = 'Interviewing'
+      customCSS = 'bg-yellow-100 text-yellow-700'
+      break
+    case 'getted_kuota':
+      statusShow = 'Mendapatkan Kuota'
+      customCSS = 'bg-purple-100 text-purple-700'
       break
     case 'rejected':
       statusShow = 'Ditolak'
@@ -32,6 +50,10 @@ export const formatInternshipStatus = (
     case 'completed':
       statusShow = 'Selesai'
       customCSS = 'bg-primary/20 text-primary'
+      break
+    case 'sidang_completed':
+      statusShow = 'PKL Selesai'
+      customCSS = 'bg-green-100 text-green-700'
       break
     default:
       statusShow = ''
