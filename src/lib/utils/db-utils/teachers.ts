@@ -5,15 +5,15 @@ import prisma from '@/lib/utils/prisma'
 
 export const createTeacher = async (data: Teacher) => {
   try {
-    const teacherPostionIds = data.teacherPostionIds || []
+    const teacherPostions = data.teacherPostions || []
 
     const teacherPositions = await prisma.educationalPositions.findMany({
       where: {
-        id: { in: teacherPostionIds }
+        id: { in: teacherPostions }
       }
     })
 
-    if (teacherPositions.length !== teacherPostionIds.length) {
+    if (teacherPositions.length !== teacherPostions.length) {
       throw new Error('One or more teacher positions not found')
     }
 

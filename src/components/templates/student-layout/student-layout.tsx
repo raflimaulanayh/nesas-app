@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation'
 
-import { HeaderUser } from '@/components/molecules/header-user'
+import { HeaderStudent } from '@/components/molecules/header-student'
 import { NavbarStudent } from '@/components/organisms/navbar/navbar-student'
 
 interface StudentLayoutProps {
@@ -14,7 +14,7 @@ export const StudentLayout = ({ children }: StudentLayoutProps) => {
   return (
     <main>
       <div className="flex flex-col flex-1 w-full bg-white">
-        {pathname !== '/student/setting' && <HeaderUser />}
+        {pathname !== '/student/setting' && <HeaderStudent />}
         <div className="mb-5 lg:mb-20">{children}</div>
         <NavbarStudent />
       </div>

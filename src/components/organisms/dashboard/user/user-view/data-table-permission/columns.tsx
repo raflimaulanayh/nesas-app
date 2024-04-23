@@ -73,7 +73,7 @@ export const columns: ColumnDef<Users>[] = [
           id: data?.id,
           email: data?.email,
           role: data?.role,
-          data_id: data?.role === 'teacher' ? data?.teachers[0]?.id : data?.students[0]?.id
+          data_id: data?.role === 'teacher' ? data?.teachers?.id : data?.students?.id
         }
 
         try {

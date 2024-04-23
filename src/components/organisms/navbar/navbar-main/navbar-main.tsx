@@ -9,11 +9,13 @@ import { usePathname } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
 import { IoChevronDownSharp } from 'react-icons/io5'
 
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/atoms/ui/avatar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/ui/popover'
 import Container from '@/components/templates/container/container'
 
 import { cn } from '@/lib/utils'
 import { logout } from '@/lib/utils/actions/logout'
+import { getInitials } from '@/lib/utils/get-initial'
 
 export const Navbar = () => {
   const user = useCurrentUser()
@@ -128,17 +130,10 @@ export const Navbar = () => {
               <Popover>
                 <PopoverTrigger className="-m-1.5 flex gap-2 items-center p-1.5">
                   <span className="sr-only">Open user menu</span>
-                  {user?.photo ? (
-                    <Image src={user.photo} alt={`photo ${user.username}`} height={28} width={28} className="rounded-full" />
-                  ) : (
-                    <Image
-                      src="/static/icons/user.svg"
-                      alt="Photo dummy user"
-                      height={28}
-                      width={28}
-                      className="rounded-full"
-                    />
-                  )}
+                  <Avatar className="w-7 h-7">
+                    <AvatarImage src={user?.photo || '/'} alt="Avatar" />
+                    <AvatarFallback className="text-sm font-medium">{getInitials(user?.username || 'AN')}</AvatarFallback>
+                  </Avatar>
                   <span className="hidden lg:flex lg:items-center">
                     <span className="text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">
                       {user?.username}

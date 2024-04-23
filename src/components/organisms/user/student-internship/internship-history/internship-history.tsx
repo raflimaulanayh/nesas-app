@@ -18,7 +18,7 @@ interface ListCompanyProps {
 
 export const InternshipHistory = ({ listCompany, listInternship, loadListCompany, user }: ListCompanyProps) => {
   const filteredInternships = listInternship?.data?.filter((internship) => {
-    return internship?.students?.some((student: any) => student.id === user?.students?.[0]?.id)
+    return internship?.students?.some((student: any) => student.id === user?.students?.id)
   })
 
   const filteredSubmissionPending = listCompany?.data?.filter((company: { status: string }) => {

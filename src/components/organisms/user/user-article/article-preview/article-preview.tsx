@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
+import { useCurrentUser } from '@/hooks/use-current-user'
 import { CalendarRange } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,6 +16,7 @@ import Container from '@/components/templates/container/container'
 import { formatTime } from '@/lib/utils/format-time'
 
 export const ArticlePreview = ({ params }: Params) => {
+  const user = useCurrentUser()
   const { data: article, isLoading: loadArticle } = useSWR(`/articles/${params.id}`)
   const data = article?.data
 
@@ -22,7 +24,7 @@ export const ArticlePreview = ({ params }: Params) => {
     <div className="rounded-3xl pt-7 lg:py-10 relative -mt-32 bg-white overflow-y-auto pb-32 min-h-[70vh]">
       <Container className="space-y-4">
         <div className="flex items-center justify-between gap-2">
-          <Link href="/student/article" className="flex items-center gap-2">
+          <Link href={`/${user?.role || 'student'}/article`} className="flex items-center gap-2">
             <PiArrowLeftBold size={25} />
             <h2 className="text-lg font-semibold text-slate-900">Preview Artikel</h2>
           </Link>

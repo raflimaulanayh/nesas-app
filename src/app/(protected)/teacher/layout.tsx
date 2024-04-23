@@ -9,7 +9,7 @@ export default function TeacherLayout({ children }: { children: React.ReactNode 
   if (user?.role !== 'teacher') {
     if (user?.role === 'student') {
       redirect('/student')
-    } else if (user?.role === 'admin') {
+    } else if (user?.role === 'admin' || user?.role === 'operator') {
       redirect('/dashboard')
     } else redirect('/')
   }

@@ -57,7 +57,7 @@ export const ArticleList = () => {
     <div className="rounded-3xl pt-7 lg:py-10 relative -mt-32 bg-white overflow-y-auto pb-32 min-h-[70vh]">
       <Container className="space-y-4">
         <div className="flex items-center justify-between gap-2">
-          <Link href="/student" className="flex items-center gap-2">
+          <Link href={`/${user?.role || 'student'}`} className="flex items-center gap-2">
             <PiArrowLeftBold size={25} />
             <h2 className="text-lg font-semibold text-slate-900">Menu Artikel</h2>
           </Link>
@@ -74,7 +74,7 @@ export const ArticleList = () => {
           </div>
           <div>
             <Link
-              href="/student/article/create"
+              href={`/${user?.role || 'student'}/article/create`}
               className="flex items-center w-full px-3 text-sm font-semibold leading-6 text-center text-white bg-indigo-600 rounded-md shadow-sm h-9 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Tambah artikel
@@ -95,8 +95,8 @@ export const ArticleList = () => {
                   picture={item.picture}
                   status={item.status}
                   updatedAt={item.updatedAt}
-                  urlDetail={`/student/article/${item.id}`}
-                  urlEdit={`/student/article/update/${item.id}`}
+                  urlDetail={`/${user?.role || 'student'}/article/${item.id}`}
+                  urlEdit={`/${user?.role || 'student'}/article/update/${item.id}`}
                   loading={loading}
                   handleDelete={() => {
                     setOpenModal(true)

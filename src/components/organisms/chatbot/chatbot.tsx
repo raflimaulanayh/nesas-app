@@ -12,11 +12,12 @@ import { MdChevronRight } from 'react-icons/md'
 import Typewriter from 'typewriter-effect'
 
 import { Loading } from '@/components/atoms/icons'
-import { Avatar, AvatarImage } from '@/components/atoms/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/atoms/ui/avatar'
 import { Input } from '@/components/atoms/ui/input'
 import Container from '@/components/templates/container/container'
 
 import { cn } from '@/lib/utils'
+import { getInitials } from '@/lib/utils/get-initial'
 
 const QUESTIONS = [
   'Apa saja program keahlian atau jurusan yang tersedia di SMKN 1 Sumedang?',
@@ -105,11 +106,14 @@ export function Chat() {
                     <Avatar className="flex items-center justify-center">
                       <AvatarImage
                         className="rounded-full"
-                        src={session?.user?.photo ?? '/static/icons/user-v2.png'}
+                        src={session?.user?.photo ?? '/'}
                         alt={message.role}
                         width={60}
                         height={60}
                       />
+                      <AvatarFallback className="text-lg font-medium">
+                        {getInitials(session?.user?.username || 'NT')}
+                      </AvatarFallback>
                     </Avatar>
                   )}
                   <span

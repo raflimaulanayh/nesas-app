@@ -53,7 +53,7 @@ export const FormChoiceInternsip = ({ companyId }: any) => {
       return
     }
 
-    const studentId = users.data.students[0].id
+    const studentId = users.data.students.id
 
     const body = {
       company_id: companyId,

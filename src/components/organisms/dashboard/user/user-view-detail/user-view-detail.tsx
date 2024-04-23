@@ -36,10 +36,10 @@ export const UserViewDetail = ({ params }: Params) => {
   const { data: classes } = useSWR('/classes')
   const data = users?.data
 
-  const student = data?.students[0]
+  const student = data?.students
   const dataClass = classes?.data?.find((item: any) => item.id == student?.class_id)
 
-  const teacher = data?.teachers[0]
+  const teacher = data?.teachers
 
   async function onSubmitStatus() {
     setLoading(true)

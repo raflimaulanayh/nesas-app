@@ -129,7 +129,14 @@ const TeacherFields = z.object({
   name: z.string().nonempty({
     message: 'Nama harus diisi'
   }),
-  gender: z.nativeEnum(Genders)
+  gender: z.nativeEnum(Genders),
+  proof: z.optional(
+    z.array(
+      z.object({
+        url: z.string()
+      })
+    )
+  )
 })
 
 const OfficerFields = z.object({

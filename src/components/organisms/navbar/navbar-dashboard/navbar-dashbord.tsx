@@ -8,12 +8,14 @@ import { Fragment } from 'react'
 import { IoChevronDownSharp } from 'react-icons/io5'
 import { MdNotificationsNone } from 'react-icons/md'
 
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/atoms/ui/avatar'
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/atoms/ui/popover'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
 import Container from '@/components/templates/container/container'
 
 import { cn } from '@/lib/utils'
 import { logout } from '@/lib/utils/actions/logout'
+import { getInitials } from '@/lib/utils/get-initial'
 
 export const NavbarDashboard = () => {
   const isHydrated = useHydration()
@@ -48,13 +50,10 @@ export const NavbarDashboard = () => {
               <Popover>
                 <PopoverTrigger className="-m-1.5 flex gap-2 items-center p-1.5">
                   <span className="sr-only">Open user menu</span>
-                  <Image
-                    src={user?.photo || '/static/icons/user.svg'}
-                    alt={'Photo' + user?.username || 'User'}
-                    height={28}
-                    width={28}
-                    className="rounded-full"
-                  />
+                  <Avatar className="w-7 h-7">
+                    <AvatarImage src={user?.photo || '/'} alt="Avatar" />
+                    <AvatarFallback className="text-sm font-medium">{getInitials(user?.username || 'AN')}</AvatarFallback>
+                  </Avatar>
                   <span className="hidden lg:flex lg:items-center">
                     <span className="text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">
                       {user?.username}

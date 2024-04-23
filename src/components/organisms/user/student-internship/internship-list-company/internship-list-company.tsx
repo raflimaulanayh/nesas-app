@@ -26,7 +26,7 @@ interface ListCompanyProps {
 
 export const ListCompany = ({ data, isLoading, user }: ListCompanyProps) => {
   const [searchQuery, setSearchQuery] = useState('')
-  const { data: student } = useSWR(`/students/${user?.students?.[0]?.id}`)
+  const { data: student } = useSWR(`/students/${user?.students?.id}`)
   const handleInputChange = (event: any) => {
     setSearchQuery(event.target.value)
   }

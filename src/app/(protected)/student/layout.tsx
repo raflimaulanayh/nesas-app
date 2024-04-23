@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 export default function TeacherLayout({ children }: { children: React.ReactNode }) {
   const user = useCurrentUser()
 
-  if (user?.role !== 'student' && user?.role !== 'admin') {
+  if (user?.role !== 'student' && user?.role !== 'admin' && user?.role !== 'operator') {
     if (user?.role === 'hubinmas') {
       redirect('/dashboard')
     } else if (user?.role === 'teacher') {

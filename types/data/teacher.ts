@@ -12,7 +12,7 @@ interface TTeacher {
     join_date?: string
     end_date?: string
     user_id?: string
-    teacherPostionIds?: string[]
+    teacherPostions?: string[]
   }[]
 }
 
@@ -27,7 +27,7 @@ interface Teacher {
   join_date?: string
   end_date?: string
   user_id?: string
-  teacherPostionIds?: string[]
+  teacherPostions?: string[]
 }
 
 export type { Teacher, TTeacher }

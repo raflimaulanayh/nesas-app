@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils'
 import { logout } from '@/lib/utils/actions/logout'
 import { getInitials } from '@/lib/utils/get-initial'
 
-export const HeaderUser = () => {
+export const HeaderStudent = () => {
   const isHydrated = useHydration()
   const user = useCurrentUser()
   const { data: users, isLoading: loadUsers } = useSWR(`/users/${user?.id}`)
