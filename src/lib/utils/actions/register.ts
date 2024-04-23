@@ -4,12 +4,10 @@
 import bcrypt from 'bcryptjs'
 import cuid from 'cuid'
 
-import { sendVerificationEmail } from '../mail'
 import prisma from '../prisma'
 import { getStudentByNIS, getStudentByNISN } from '../prisma/student'
 import { getTeacherByNIP } from '../prisma/teacher'
 import { getUserByEmail, getUserById } from '../prisma/user'
-import { generateVerificationToken } from '../token'
 
 export const register = async (values: any) => {
   const {
@@ -72,7 +70,6 @@ export const register = async (values: any) => {
 
     try {
       // Create user and student records
-      console.log('Membuat rekaman pengguna dan siswa...')
       await prisma.users.create({
         data: {
           id: user_id,
@@ -85,7 +82,6 @@ export const register = async (values: any) => {
         }
       })
 
-      console.log('Rekaman pengguna dan siswa berhasil dibuat.')
       await prisma.students.create({
         data: {
           user_id,
@@ -104,9 +100,6 @@ export const register = async (values: any) => {
           proof: proofUrl
         }
       })
-
-      const verificationToken = await generateVerificationToken(email)
-      await sendVerificationEmail(email, verificationToken.token)
 
       return {
         success: 'Akun berhasil diregistrasi, silahkan cek email untuk verifikasi akun!',

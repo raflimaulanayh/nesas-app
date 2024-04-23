@@ -73,7 +73,7 @@ export const ForumCard = ({
       onClick={() => router.push(url)}
       className={cn(
         className,
-        'flex flex-col justify-between gap-3 p-5 bg-white border rounded shadow-md hover:bg-slate-100 sm:h-52 border-b-slate-300'
+        'flex flex-col cursor-pointer justify-between gap-3 p-5 bg-white border rounded shadow-md hover:bg-slate-100 sm:h-52 border-b-slate-300'
       )}
     >
       <figcaption className="space-y-1">

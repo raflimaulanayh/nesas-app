@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
+
 import { useHydration } from '@/hooks/use-hydration'
+import api from '@/services/api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
@@ -34,23 +36,45 @@ export const RegisterForm = () => {
     defaultValues: defaultValues
   })
 
-  const onSubmit = (values: z.infer<typeof schema>) => {
+  const onSubmit = async (values: z.infer<typeof schema>) => {
     setError('')
+    setSuccess('')
 
     const formValuesWithRole = { ...values, role }
 
     startTransition(() => {
-      register(formValuesWithRole).then(async (data) => {
-        setError(data?.error)
-        setSuccess(data?.success)
-        if (data?.success) {
-          form.reset()
+      register(formValuesWithRole)
+        .then(async (data) => {
+          setError(data?.error)
+          setSuccess(data?.success)
 
-          if (data?.redirectUrl) {
-            window.location.href = data.redirectUrl
+          if (data?.success) {
+            if (role === 'student') {
+              const body = {
+                email: values.email
+              }
+
+              try {
+                const response = await api.post(`/verification-token`, body)
+                if (response.status === 200) {
+                  console.log('success create account')
+                }
+              } catch (error) {
+                console.error('Error sending verification email:', error)
+              }
+            }
+
+            form.reset()
+
+            if (data?.redirectUrl) {
+              window.location.href = data.redirectUrl
+            }
           }
-        }
-      })
+        })
+        .catch((error) => {
+          console.error('Error registering user:', error)
+          setError('An error occurred while registering. Please try again.')
+        })
     })
   }
 
