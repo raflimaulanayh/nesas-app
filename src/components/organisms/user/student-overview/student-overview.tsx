@@ -14,6 +14,7 @@ import { Student } from 'types/data/student'
 
 import Container from '@/components/templates/container/container'
 import { MdArticle } from 'react-icons/md'
+import { IoCalendarSharp } from 'react-icons/io5'
 
 export const StudentOverView = () => {
   const user = useCurrentUser()
@@ -74,7 +75,16 @@ export const StudentOverView = () => {
               <TbSquareChevronRightFilled size={24} className="text-primary" />
             </Link>
           </li>
-          <li className="col-span-2">
+          <li>
+            <Link
+              href="/student/lesson-schedule"
+              className="flex flex-col p-4 space-y-2 bg-gray-100 shadow lg:p-6 rounded-xl"
+            >
+              <IoCalendarSharp size={40} className="text-primary" />
+              <span className="font-semibold text-slate-800">Jadwal Pelajaran</span>
+            </Link>
+          </li>
+          <li>
             <Link href="/student/internship" className="flex flex-col p-4 space-y-2 bg-gray-100 shadow lg:p-6 rounded-xl">
               <SiOnlyoffice size={40} className="text-primary" />
               <span className="font-semibold text-slate-800">PKL</span>

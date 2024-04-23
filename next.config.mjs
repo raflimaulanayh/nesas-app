@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
-
 import withPWA from 'next-pwa'
+import os from 'os'
 
 const nextConfig = {
   ...withPWA({
@@ -26,6 +26,22 @@ const nextConfig = {
     API_URL: process.env.API_URL,
     // NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     AUTH_SECRET: process.env.AUTH_SECRET
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.node$/,
+      use: [
+        {
+          loader: 'nextjs-node-loader',
+          options: {
+            flags: os.constants.dlopen.RTLD_NOW,
+            outputPath: config.output.path
+          }
+        }
+      ]
+    })
+
+    return config
   }
 }
 
