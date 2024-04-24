@@ -14,6 +14,8 @@ import { columns as ColumnViewCompany } from './data-table-company/columns'
 import { DataTableViewCompany } from './data-table-company/table'
 import { columns as ColumnView } from './data-table-internship/columns'
 import { DataTableViewInternship } from './data-table-internship/table'
+import { columns as ColumnInterview } from './data-table-internview-internship/columns'
+import { DataTableInternviewInternship } from './data-table-internview-internship/table'
 import { columns as ColumnPermissionCompany } from './data-table-permission-company/columns'
 import { DataTablePermissionCompany } from './data-table-permission-company/table'
 import { columns as ColumnPermission } from './data-table-permission-internship/columns'
@@ -21,7 +23,7 @@ import { DataTablePermissionInternship } from './data-table-permission-internshi
 
 export const InternshipView = () => {
   const isHydrated = useHydration()
-  const { data: internships, mutate: mutateUser, isLoading: userLoading } = useSWR('/internships')
+  const { data: internships, mutate: mutateInternship, isLoading: userLoading } = useSWR('/internships')
   const dataInternships = internships?.data === undefined ? [{}] : internships.data
 
   const { data: companies, mutate: mutateCompany, isLoading: companiesLoading } = useSWR('/internships/companies')
@@ -67,6 +69,7 @@ export const InternshipView = () => {
             <Tabs defaultValue="view-internship" className="py-5 space-y-4">
               <TabsList>
                 <TabsTrigger value="view-internship">Kelola PKL</TabsTrigger>
+                <TabsTrigger value="view-interview">Sesi Interview</TabsTrigger>
                 <TabsTrigger value="permission-internship">Pengajuan PKL</TabsTrigger>
                 <TabsTrigger value="view-company">Daftar Perusahaan</TabsTrigger>
                 <TabsTrigger value="permission-company">Pengajuan Perusahaan</TabsTrigger>
@@ -75,7 +78,6 @@ export const InternshipView = () => {
               <TabsContent value="view-internship">
                 <DataTableViewInternship
                   data={getDataByStatusInternship([
-                    'approved',
                     'interviewing',
                     'dropoff_completed',
                     'pickup_completed',
@@ -87,7 +89,15 @@ export const InternshipView = () => {
                     'sidang_completed'
                   ])}
                   columns={ColumnView}
-                  mutate={mutateUser}
+                  mutate={mutateInternship}
+                  isLoading={userLoading}
+                />
+              </TabsContent>
+              <TabsContent value="view-interview">
+                <DataTableInternviewInternship
+                  data={getDataByStatusInternship(['approved'])}
+                  columns={ColumnInterview}
+                  mutate={mutateInternship}
                   isLoading={userLoading}
                 />
               </TabsContent>
@@ -95,7 +105,7 @@ export const InternshipView = () => {
                 <DataTablePermissionInternship
                   data={getDataByStatusInternship(['pending'])}
                   columns={ColumnPermission}
-                  mutate={mutateUser}
+                  mutate={mutateInternship}
                   isLoading={userLoading}
                 />
               </TabsContent>
@@ -111,7 +121,7 @@ export const InternshipView = () => {
                 <DataTablePermissionCompany
                   data={getDataByStatusCompany(['pending'])}
                   columns={ColumnPermissionCompany}
-                  mutate={mutateUser}
+                  mutate={mutateInternship}
                   isLoading={companiesLoading}
                 />
               </TabsContent>
