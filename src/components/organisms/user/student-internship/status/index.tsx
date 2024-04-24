@@ -335,8 +335,7 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'dropoff_completed' ||
-                      statusPKL === 'pickup_completed' ||
+                    statusPKL === 'pickup_completed' ||
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
@@ -353,8 +352,7 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'dropoff_completed' ||
-                        statusPKL === 'pickup_completed' ||
+                      statusPKL === 'pickup_completed' ||
                         statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
                         statusPKL === 'completed' ||
