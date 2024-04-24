@@ -1,22 +1,42 @@
-export const ROLES_OPTIONS = [
+export const STATUS_OPTIONS = [
   {
-    label: 'Admin',
-    value: 'admin'
+    label: 'Belum mulai',
+    value: 'not_started'
   },
   {
-    label: 'Student',
-    value: 'student'
+    label: 'Pending',
+    value: 'pending'
   },
   {
-    label: 'Teacher',
-    value: 'teacher'
+    label: 'Disetujui',
+    value: 'approved'
   },
   {
-    label: 'Hubinmas',
-    value: 'hubinmas'
+    label: 'Ditolak',
+    value: 'rejected'
   },
   {
-    label: 'Copywritter',
-    value: 'copywritter'
+    label: 'Dibatalkan',
+    value: 'canceled'
+  },
+  {
+    label: 'Sedang interview',
+    value: 'interviewing'
+  },
+  {
+    label: 'Mendapatkan Kuota',
+    value: 'getted_kuota'
+  },
+  {
+    label: 'Sedang berlangsung',
+    value: 'ongoing'
+  },
+  {
+    label: 'Selesai',
+    value: 'completed'
+  },
+  {
+    label: 'PKL Selesai',
+    value: 'sidang_completed'
   }
 ]

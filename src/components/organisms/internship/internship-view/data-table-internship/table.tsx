@@ -129,7 +129,7 @@ export function DataTableViewInternship<TData extends { id: string }, TValue>({
         </div>
       </div>
       <div className="border rounded-md">
-        <Table className="w-[1200px]">
+        <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

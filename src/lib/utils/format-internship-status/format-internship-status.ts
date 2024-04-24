@@ -7,6 +7,8 @@ export const formatInternshipStatus = (
     | 'getted_kuota'
     | 'rejected'
     | 'canceled'
+    | 'dropoff_completed'
+    | 'pickup_completed'
     | 'ongoing'
     | 'completed'
     | 'sidang_completed'
@@ -42,6 +44,14 @@ export const formatInternshipStatus = (
     case 'canceled':
       statusShow = 'Dibatalkan'
       customCSS = 'bg-gray-100 text-gray-700'
+      break
+    case 'dropoff_completed':
+      statusShow = 'Pengantaran Selesai'
+      customCSS = 'bg-green-100 text-blue-700'
+      break
+    case 'pickup_completed':
+      statusShow = 'Penjemputan Selesai'
+      customCSS = 'bg-green-100 text-blue-700'
       break
     case 'ongoing':
       statusShow = 'Sedang berlangsung'

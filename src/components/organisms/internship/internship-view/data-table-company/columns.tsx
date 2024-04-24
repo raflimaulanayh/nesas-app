@@ -47,7 +47,7 @@ export const columns: ColumnDef<Users>[] = [
   {
     accessorKey: 'address',
     header: ({ column }) => <DataTableColumnHeader column={column} title="Alamat" />,
-    cell: ({ row }) => <div>{row.getValue('address')}</div>,
+    cell: ({ row }) => <div className="max-w-80">{row.getValue('address')}</div>,
     enableHiding: false
   },
   {
@@ -78,15 +78,8 @@ export const columns: ColumnDef<Users>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Persyaratan" />,
     cell: ({ row }) => {
       const value: string = row.getValue('requirements')
-      const splitData = value ? value?.split(',').map((item) => item.trim()) : ([{}] as string[])
 
-      return (
-        <ul className="pl-4 list-decimal">
-          {splitData.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      )
+      return <div dangerouslySetInnerHTML={{ __html: value }} className="[&>ul]:list-disc" />
     },
     enableHiding: false
   },
@@ -123,7 +116,12 @@ export const columns: ColumnDef<Users>[] = [
   {
     id: 'actions',
     cell: ({ row }) => (
-      <DataTableRowActions detailAble urlDetail="/dashboard/internship/company" endpoint="/internships" row={row} />
+      <DataTableRowActions
+        detailAble
+        urlDetail="/dashboard/internship/company"
+        endpoint="/internships/companies"
+        row={row}
+      />
     )
   }
 ]

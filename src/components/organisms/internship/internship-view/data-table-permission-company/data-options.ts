@@ -8,7 +8,7 @@ export const STATUS_OPTIONS = [
     value: 'not_active'
   },
   {
-    label: 'Menunggu',
+    label: 'Pending',
     value: 'pending'
   },
   {

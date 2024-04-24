@@ -14,7 +14,7 @@ export const formatCompanyStatus = (
       customCSS = 'bg-green-100 text-green-700'
       break
     case 'pending':
-      statusShow = 'Menunggu'
+      statusShow = 'Pending'
       customCSS = 'bg-blue-100 text-blue-700'
       break
     case 'filled':

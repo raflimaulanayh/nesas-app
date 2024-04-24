@@ -25,8 +25,7 @@ export const InternshipStatus = () => {
   const formattedDateRange = `${formattedStartDate} - ${formattedEndDate}`
 
   const guideBook: string | null = 'https://utfs.io/f/c7e724b4-f172-473b-9029-8cf692327d18-1el5u7.pdf'
-  const certificatePKL =
-    'https://d20ohkaloyme4g.cloudfront.net/img/document_thumbnails/5d259d9da5b269822245e334f949c649/thumb_1200_848.png'
+  const certificatePKL = 'https://utfs.io/f/9d3d0c38-936e-4e65-a617-33b71ae47aff-32kz2f.pdf'
   const suratPengajuan = 'https://imgv2-1-f.scribdassets.com/img/document/536150722/original/310b7bc5a4/1713194174?v=1'
 
   return (
@@ -163,10 +162,20 @@ export const InternshipStatus = () => {
                     )}
                   >
                     <span>Pengajuan ke tempat PKL</span>
-                    <Button onClick={() => window.open(suratPengajuan, '_blank')} size="sm" className="space-x-1 text-xs">
-                      <IoMdDocument size={16} />
-                      <span>Lihat</span>
-                    </Button>
+                    {statusPKL === 'approved' ||
+                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'ongoing' ||
+                      statusPKL === 'completed' ||
+                      (statusPKL === 'sidang_completed' && (
+                        <Button
+                          onClick={() => window.open(suratPengajuan, '_blank')}
+                          size="sm"
+                          className="space-x-1 text-xs"
+                        >
+                          <IoMdDocument size={16} />
+                          <span>Lihat</span>
+                        </Button>
+                      ))}
                   </p>
                 </div>
               </div>
@@ -219,6 +228,47 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
+                    statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'ongoing' ||
+                      statusPKL === 'completed' ||
+                      statusPKL === 'sidang_completed'
+                      ? 'bg-green-500'
+                      : 'bg-gray-400',
+                    'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
+                  )}
+                >
+                  <RxCheck className="w-5 h-5 text-white" aria-hidden="true" />
+                </span>
+              </div>
+              <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                <div>
+                  <p
+                    className={cn(
+                      statusPKL === 'dropoff_completed' ||
+                        statusPKL === 'getted_kuota' ||
+                        statusPKL === 'ongoing' ||
+                        statusPKL === 'completed' ||
+                        statusPKL === 'sidang_completed'
+                        ? 'text-slate-900'
+                        : 'text-slate-400',
+                      'text-sm'
+                    )}
+                  >
+                    Pengataran ke tempat PKL
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div className="relative pb-8">
+            <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-slate-400" aria-hidden="true" />
+            <div className="relative flex space-x-3">
+              <div>
+                <span
+                  className={cn(
                     statusPKL === 'ongoing' || statusPKL === 'completed' || statusPKL === 'sidang_completed'
                       ? 'bg-green-500'
                       : 'bg-gray-400',
@@ -239,6 +289,49 @@ export const InternshipStatus = () => {
                     )}
                   >
                     Sedang dalam proses PKL (estimasi: {formattedDateRange}){' '}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div className="relative pb-8">
+            <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-slate-400" aria-hidden="true" />
+            <div className="relative flex space-x-3">
+              <div>
+                <span
+                  className={cn(
+                    statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'pickup_completed' ||
+                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'ongoing' ||
+                      statusPKL === 'completed' ||
+                      statusPKL === 'sidang_completed'
+                      ? 'bg-green-500'
+                      : 'bg-gray-400',
+                    'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
+                  )}
+                >
+                  <RxCheck className="w-5 h-5 text-white" aria-hidden="true" />
+                </span>
+              </div>
+              <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                <div>
+                  <p
+                    className={cn(
+                      statusPKL === 'dropoff_completed' ||
+                        statusPKL === 'pickup_completed' ||
+                        statusPKL === 'getted_kuota' ||
+                        statusPKL === 'ongoing' ||
+                        statusPKL === 'completed' ||
+                        statusPKL === 'sidang_completed'
+                        ? 'text-slate-900'
+                        : 'text-sla te-400',
+                      'text-sm'
+                    )}
+                  >
+                    Penjemputan dari tempat PKL
                   </p>
                 </div>
               </div>

@@ -44,6 +44,9 @@ export const InternshipView = () => {
       | 'getted_kuota'
       | 'rejected'
       | 'canceled'
+      | 'dropoff_completed'
+      | 'pickup_completed'
+      | 'ongoing'
       | 'ongoing'
       | 'completed'
       | 'sidang_completed'
@@ -74,6 +77,8 @@ export const InternshipView = () => {
                   data={getDataByStatusInternship([
                     'approved',
                     'interviewing',
+                    'dropoff_completed',
+                    'pickup_completed',
                     'getted_kuota',
                     'rejected',
                     'canceled',

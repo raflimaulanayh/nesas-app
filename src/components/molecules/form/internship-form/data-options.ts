@@ -4,7 +4,7 @@ export const STATUS_OPTIONS = [
     value: 'not_started'
   },
   {
-    label: 'Menunggu',
+    label: 'Pending',
     value: 'pending'
   },
   {

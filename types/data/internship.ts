@@ -6,6 +6,8 @@ enum InternshipStatus {
   getted_kuota = 'getted_kuota',
   rejected = 'rejected',
   canceled = 'canceled',
+  dropoff_completed = 'dropoff_completed',
+  pickup_completed = 'pickup_completed',
   ongoing = 'ongoing',
   completed = 'completed',
   sidang_completed = 'sidang_completed'

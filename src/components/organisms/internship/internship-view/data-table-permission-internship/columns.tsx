@@ -113,6 +113,6 @@ export const columns: ColumnDef<Users>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row }) => <DataTableRowActions detailAble endpoint="/internships/companies" row={row} />
+    cell: ({ row }) => <DataTableRowActions detailAble endpoint="/internships" row={row} />
   }
 ]

@@ -8,10 +8,6 @@ export const STATUS_OPTIONS = [
     value: 'not_active'
   },
   {
-    label: 'Menunggu',
-    value: 'pending'
-  },
-  {
     label: 'Penuh/terisi',
     value: 'filled'
   }

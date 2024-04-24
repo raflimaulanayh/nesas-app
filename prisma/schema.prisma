@@ -266,7 +266,9 @@ enum InternshipStatus {
   approved
   rejected
   canceled
+  dropoff_completed
   ongoing
+  pickup_completed
   completed
   interviewing
   getted_kuota

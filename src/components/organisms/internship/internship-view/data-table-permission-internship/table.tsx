@@ -30,7 +30,7 @@ import { DataTableFacetedFilter } from '@/components/molecules/data-table/data-t
 import { DataTablePagination } from '@/components/molecules/data-table/data-table-pagination'
 import { DataTableToolbar } from '@/components/molecules/data-table/data-table-toolbar'
 
-import { ROLES_OPTIONS } from './data-options'
+import { STATUS_OPTIONS } from './data-options'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -53,7 +53,7 @@ export function DataTablePermissionInternship<TData extends { id: string }, TVal
   const handleDelete = async () => {
     try {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      await useDelete('/internships/companies', rowSelection)
+      await useDelete('/internships', rowSelection)
       mutate()
     } catch (error) {
       console.error('Error deleting data:', error)
@@ -112,8 +112,8 @@ export function DataTablePermissionInternship<TData extends { id: string }, TVal
             table={table}
             children={
               <div className="flex items-center flex-1 space-x-2">
-                {table.getColumn('role') && (
-                  <DataTableFacetedFilter column={table.getColumn('role')} title="Role" options={ROLES_OPTIONS} />
+                {table.getColumn('status') && (
+                  <DataTableFacetedFilter column={table.getColumn('status')} title="Status" options={STATUS_OPTIONS} />
                 )}
               </div>
             }
@@ -129,7 +129,7 @@ export function DataTablePermissionInternship<TData extends { id: string }, TVal
         </div>
       </div>
       <div className="border rounded-md">
-        <Table className="w-[1200px]">
+        <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

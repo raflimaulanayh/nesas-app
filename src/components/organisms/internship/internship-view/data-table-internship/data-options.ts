@@ -4,7 +4,7 @@ export const STATUS_OPTIONS = [
     value: 'not_started'
   },
   {
-    label: 'Menunggu',
+    label: 'Pending',
     value: 'pending'
   },
   {
@@ -26,6 +26,14 @@ export const STATUS_OPTIONS = [
   {
     label: 'Mendapatkan Kuota',
     value: 'getted_kuota'
+  },
+  {
+    label: 'Pengataran Selesai',
+    value: 'dropoff_completed'
+  },
+  {
+    label: 'Penjemputan Selesai',
+    value: 'pickup_completed'
   },
   {
     label: 'Sedang berlangsung',

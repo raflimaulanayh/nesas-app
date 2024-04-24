@@ -53,7 +53,7 @@ export function DataTableViewCompany<TData extends { id: string }, TValue>({
   const handleDelete = async () => {
     try {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      await useDelete('/internship/comapanies', rowSelection)
+      await useDelete('/internships/companies', rowSelection)
       mutate()
     } catch (error) {
       console.error('Error deleting data:', error)
@@ -129,7 +129,7 @@ export function DataTableViewCompany<TData extends { id: string }, TValue>({
         </div>
       </div>
       <div className="border rounded-md">
-        <Table className="w-[1800px]">
+        <Table className="w-[2500px]">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
