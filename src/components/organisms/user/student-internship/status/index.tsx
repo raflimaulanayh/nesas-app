@@ -46,7 +46,10 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'pending' ||
+                    statusPKL === 'pickup_completed' ||
+                      statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'pending' ||
                       statusPKL === 'approved' ||
                       statusPKL === 'interviewing' ||
                       statusPKL === 'getted_kuota' ||
@@ -65,7 +68,10 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'pending' ||
+                      statusPKL === 'pickup_completed' ||
+                        statusPKL === 'dropoff_completed' ||
+                        statusPKL === 'getted_kuota' ||
+                        statusPKL === 'pending' ||
                         statusPKL === 'approved' ||
                         statusPKL === 'interviewing' ||
                         statusPKL === 'getted_kuota' ||
@@ -91,7 +97,10 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'approved' ||
+                    statusPKL === 'pickup_completed' ||
+                      statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'approved' ||
                       statusPKL === 'interviewing' ||
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
@@ -109,7 +118,10 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'approved' ||
+                      statusPKL === 'pickup_completed' ||
+                        statusPKL === 'dropoff_completed' ||
+                        statusPKL === 'getted_kuota' ||
+                        statusPKL === 'approved' ||
                         statusPKL === 'interviewing' ||
                         statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
@@ -134,7 +146,10 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'approved' ||
+                    statusPKL === 'pickup_completed' ||
+                      statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'approved' ||
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
@@ -151,7 +166,10 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'approved' ||
+                      statusPKL === 'pickup_completed' ||
+                        statusPKL === 'dropoff_completed' ||
+                        statusPKL === 'getted_kuota' ||
+                        statusPKL === 'approved' ||
                         statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
                         statusPKL === 'completed' ||
@@ -163,6 +181,8 @@ export const InternshipStatus = () => {
                   >
                     <span>Pengajuan ke tempat PKL</span>
                     {statusPKL === 'approved' ||
+                      statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
@@ -189,7 +209,10 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'getted_kuota' ||
+                    statusPKL === 'pickup_completed' ||
+                      statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
                       statusPKL === 'sidang_completed'
@@ -205,7 +228,9 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'getted_kuota' ||
+                      statusPKL === 'pickup_completed' ||
+                        statusPKL === 'dropoff_completed' ||
+                        statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
                         statusPKL === 'completed' ||
                         statusPKL === 'sidang_completed'
@@ -228,7 +253,8 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'dropoff_completed' ||
+                    statusPKL === 'pickup_completed' ||
+                      statusPKL === 'dropoff_completed' ||
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
@@ -245,7 +271,8 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'dropoff_completed' ||
+                      statusPKL === 'pickup_completed' ||
+                        statusPKL === 'dropoff_completed' ||
                         statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
                         statusPKL === 'completed' ||
@@ -255,7 +282,7 @@ export const InternshipStatus = () => {
                       'text-sm'
                     )}
                   >
-                    Pengataran ke tempat PKL
+                    Pengantaran ke tempat PKL
                   </p>
                 </div>
               </div>
@@ -269,7 +296,10 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'ongoing' || statusPKL === 'completed' || statusPKL === 'sidang_completed'
+                    statusPKL === 'pickup_completed' ||
+                      statusPKL === 'ongoing' ||
+                      statusPKL === 'completed' ||
+                      statusPKL === 'sidang_completed'
                       ? 'bg-green-500'
                       : 'bg-gray-400',
                     'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
@@ -282,7 +312,10 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'ongoing' || statusPKL === 'completed' || statusPKL === 'sidang_completed'
+                      statusPKL === 'pickup_completed' ||
+                        statusPKL === 'ongoing' ||
+                        statusPKL === 'completed' ||
+                        statusPKL === 'sidang_completed'
                         ? 'text-slate-900'
                         : 'text-slate-400',
                       'text-sm'
