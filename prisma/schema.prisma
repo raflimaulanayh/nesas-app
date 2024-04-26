@@ -79,7 +79,7 @@ model Teachers {
   proof            String?
   createdAt        DateTime               @default(now())
   updatedAt        DateTime               @updatedAt
-  user             Users?                 @relation(fields: [user_id], references: [id])
+  user             Users?                 @relation(fields: [user_id], references: [id], onDelete: SetNull)
   teacherPositions EducationalPositions[] @relation("EducationalPositionsToTeachers")
 
   @@index([user_id])
@@ -142,7 +142,7 @@ model Students {
   updatedAt           DateTime        @updatedAt
   class               Classes?        @relation(fields: [class_id], references: [id], onDelete: Restrict)
   internship          Internships?    @relation(fields: [internship_id], references: [id], onDelete: SetNull)
-  user                Users?          @relation(fields: [user_id], references: [id])
+  user                Users?          @relation(fields: [user_id], references: [id], onDelete: SetNull)
 
   @@index([class_id])
   @@index([user_id])

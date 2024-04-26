@@ -30,8 +30,8 @@ export const formatInternshipStatus = (
       customCSS = 'bg-green-100 text-green-700'
       break
     case 'interviewing':
-      statusShow = 'Interviewing'
-      customCSS = 'bg-yellow-100 text-yellow-700'
+      statusShow = 'Lolos interview'
+      customCSS = 'bg-green-100 text-green-700'
       break
     case 'getted_kuota':
       statusShow = 'Mendapatkan Kuota'
@@ -47,11 +47,11 @@ export const formatInternshipStatus = (
       break
     case 'dropoff_completed':
       statusShow = 'Pengantaran Selesai'
-      customCSS = 'bg-green-100 text-blue-700'
+      customCSS = 'bg-green-100 text-green-700'
       break
     case 'pickup_completed':
       statusShow = 'Penjemputan Selesai'
-      customCSS = 'bg-green-100 text-blue-700'
+      customCSS = 'bg-green-100 text-green-700'
       break
     case 'ongoing':
       statusShow = 'Sedang berlangsung'

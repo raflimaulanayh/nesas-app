@@ -52,7 +52,6 @@ export const InternshipStatus = () => {
                       statusPKL === 'pending' ||
                       statusPKL === 'approved' ||
                       statusPKL === 'interviewing' ||
-                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
                       statusPKL === 'sidang_completed'
@@ -74,7 +73,6 @@ export const InternshipStatus = () => {
                         statusPKL === 'pending' ||
                         statusPKL === 'approved' ||
                         statusPKL === 'interviewing' ||
-                        statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
                         statusPKL === 'completed' ||
                         statusPKL === 'sidang_completed'
@@ -102,7 +100,6 @@ export const InternshipStatus = () => {
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'approved' ||
                       statusPKL === 'interviewing' ||
-                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
                       statusPKL === 'sidang_completed'
@@ -149,8 +146,6 @@ export const InternshipStatus = () => {
                     statusPKL === 'pickup_completed' ||
                       statusPKL === 'dropoff_completed' ||
                       statusPKL === 'getted_kuota' ||
-                      statusPKL === 'approved' ||
-                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
                       statusPKL === 'sidang_completed'
@@ -169,8 +164,6 @@ export const InternshipStatus = () => {
                       statusPKL === 'pickup_completed' ||
                         statusPKL === 'dropoff_completed' ||
                         statusPKL === 'getted_kuota' ||
-                        statusPKL === 'approved' ||
-                        statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
                         statusPKL === 'completed' ||
                         statusPKL === 'sidang_completed'
@@ -180,22 +173,17 @@ export const InternshipStatus = () => {
                     )}
                   >
                     <span>Pengajuan ke tempat PKL</span>
-                    {statusPKL === 'approved' ||
+                    {(statusPKL === 'pickup_completed' ||
                       statusPKL === 'dropoff_completed' ||
-                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
-                      (statusPKL === 'sidang_completed' && (
-                        <Button
-                          onClick={() => window.open(suratPengajuan, '_blank')}
-                          size="sm"
-                          className="space-x-1 text-xs"
-                        >
-                          <IoMdDocument size={16} />
-                          <span>Lihat</span>
-                        </Button>
-                      ))}
+                      statusPKL === 'sidang_completed') && (
+                      <Button onClick={() => window.open(suratPengajuan, '_blank')} size="sm" className="space-x-1 text-xs">
+                        <IoMdDocument size={16} />
+                        <span>Lihat</span>
+                      </Button>
+                    )}
                   </p>
                 </div>
               </div>
@@ -211,7 +199,6 @@ export const InternshipStatus = () => {
                   className={cn(
                     statusPKL === 'pickup_completed' ||
                       statusPKL === 'dropoff_completed' ||
-                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
@@ -255,7 +242,6 @@ export const InternshipStatus = () => {
                   className={cn(
                     statusPKL === 'pickup_completed' ||
                       statusPKL === 'dropoff_completed' ||
-                      statusPKL === 'getted_kuota' ||
                       statusPKL === 'ongoing' ||
                       statusPKL === 'completed' ||
                       statusPKL === 'sidang_completed'
@@ -273,7 +259,6 @@ export const InternshipStatus = () => {
                     className={cn(
                       statusPKL === 'pickup_completed' ||
                         statusPKL === 'dropoff_completed' ||
-                        statusPKL === 'getted_kuota' ||
                         statusPKL === 'ongoing' ||
                         statusPKL === 'completed' ||
                         statusPKL === 'sidang_completed'
@@ -335,11 +320,7 @@ export const InternshipStatus = () => {
               <div>
                 <span
                   className={cn(
-                    statusPKL === 'pickup_completed' ||
-                      statusPKL === 'getted_kuota' ||
-                      statusPKL === 'ongoing' ||
-                      statusPKL === 'completed' ||
-                      statusPKL === 'sidang_completed'
+                    statusPKL === 'pickup_completed' || statusPKL === 'completed' || statusPKL === 'sidang_completed'
                       ? 'bg-green-500'
                       : 'bg-gray-400',
                     'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
@@ -352,13 +333,9 @@ export const InternshipStatus = () => {
                 <div>
                   <p
                     className={cn(
-                      statusPKL === 'pickup_completed' ||
-                        statusPKL === 'getted_kuota' ||
-                        statusPKL === 'ongoing' ||
-                        statusPKL === 'completed' ||
-                        statusPKL === 'sidang_completed'
+                      statusPKL === 'pickup_completed' || statusPKL === 'completed' || statusPKL === 'sidang_completed'
                         ? 'text-slate-900'
-                        : 'text-sla te-400',
+                        : 'text-slate-400',
                       'text-sm'
                     )}
                   >

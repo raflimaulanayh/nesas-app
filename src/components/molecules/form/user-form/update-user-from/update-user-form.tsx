@@ -97,7 +97,7 @@ export const UserUpdateForm = ({ params }: Params) => {
       form.setValue('email', users?.data?.email || '')
       form.setValue('role', users?.data?.role || '')
       form.setValue('active', users?.data?.active == true ? 'true' : 'false' || '')
-      // form.setValue('photo', users?.data?.photo || '');
+      // form.setValue('photo', users?.data?.photo || '')
     }
   }, [users, form])
 
@@ -116,7 +116,7 @@ export const UserUpdateForm = ({ params }: Params) => {
             <Select name="role" label="Role" placeholder="Pilih role" option={ROLES_OPTIONS} {...form} />
             {/* <Input name="password" label="Password" type="password" placeholder="Masukan password" {...form} /> */}
             <Select name="active" label="Status" placeholder="Pilih status" option={STATUS_USER_OPTIONS} {...form} />
-            <FileUploads name="photo" label="Foto" {...form} />
+            <FileUploads defaultPhoto={users?.data?.photo} name="photo" label="Foto" {...form} />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
             {loading ? <Loading /> : 'Update'}

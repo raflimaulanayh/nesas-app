@@ -19,7 +19,8 @@ interface FileUpload extends FormProps<FieldValues> {
   disabled?: boolean
   hint?: string
   isVerified?: boolean
-  defaultValue?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultPhoto?: string
 }
 
 export const FileUploads: React.FC<FileUpload> = ({
@@ -29,7 +30,7 @@ export const FileUploads: React.FC<FileUpload> = ({
   required = false,
   className,
   hint,
-  defaultValue,
+  defaultPhoto,
   ...props
 }) => {
   return (
@@ -44,9 +45,9 @@ export const FileUploads: React.FC<FileUpload> = ({
           </Label>
           <FormControl>
             <FormFileUpload
-              defaultValue={defaultValue}
               onChange={(newValue) => field.onChange(newValue)}
               value={field.value}
+              defaultPhoto={defaultPhoto}
               onRemove={(newValue) => field.onChange(newValue)}
             />
           </FormControl>

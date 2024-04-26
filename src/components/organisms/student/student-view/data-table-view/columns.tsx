@@ -125,7 +125,9 @@ export const columns: ColumnDef<Users>[] = [
       const status: 'ongoing' | 'graduated' | 'dropout' | 'transferred' = row.getValue('graduate_status')
       const format = formatGraduateStatus(status)
 
-      return <div className={cn(format.customCSS, 'p-2 rounded-md text-sm font-medium inline')}>{format.statusShow}</div>
+      return (
+        <div className={cn(format.customCSS, 'p-2 rounded-md text-sm font-medium inline-block')}>{format.statusShow}</div>
+      )
     }
   },
   {
@@ -150,6 +152,6 @@ export const columns: ColumnDef<Users>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row }) => <DataTableRowActions detailAble endpoint="/student" row={row} />
+    cell: ({ row }) => <DataTableRowActions detailAble endpoint="/students" row={row} />
   }
 ]

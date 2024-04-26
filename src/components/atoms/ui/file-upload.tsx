@@ -15,12 +15,12 @@ interface ImageUploadProps {
   onChange?: (newFiles: any[]) => void
   onRemove: (removedFiles: any[]) => void
   value: any[]
-  defaultValue?: string
+  defaultPhoto?: string
 }
 
 const IMG_MAX_LIMIT = 2
 
-export const FileUpload: React.FC<ImageUploadProps> = ({ onChange, onRemove, value = [], defaultValue }) => {
+export const FileUpload: React.FC<ImageUploadProps> = ({ onChange, onRemove, value = [], defaultPhoto }) => {
   const onDeleteFile = async (key: string) => {
     const filteredFiles = value.filter((item) => item.key !== key)
     onRemove(filteredFiles)
@@ -62,6 +62,25 @@ export const FileUpload: React.FC<ImageUploadProps> = ({ onChange, onRemove, val
   return (
     <div>
       <div className={cn('flex items-center max-w-full overflow-hidden gap-4', value.length > 0 && 'mt-1 mb-4')}>
+        {value.length === 0 && defaultPhoto && (
+          <div
+            className={cn(
+              loading && 'animate-pulse bg-slate-300 h-[200px]',
+              'relative w-[200px] h-auto rounded-md overflow-hidden'
+            )}
+          >
+            <div>
+              <Image
+                width={200}
+                height={200}
+                onLoadingComplete={() => setLoading(false)}
+                className="object-contain w-full max-h-[200px]"
+                alt="Image"
+                src={defaultPhoto}
+              />
+            </div>
+          </div>
+        )}
         {!!value.length &&
           value.map((item) => (
             <div
@@ -83,7 +102,7 @@ export const FileUpload: React.FC<ImageUploadProps> = ({ onChange, onRemove, val
                   onLoadingComplete={() => setLoading(false)}
                   className="object-contain w-full max-h-[200px]"
                   alt="Image"
-                  src={item.url || defaultValue || ''}
+                  src={item.url || ''}
                 />
               </div>
             </div>
